@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huashu.huashuManager.mapper.ErrorCodeLibMapper">
+  <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.ErrorCodeLib">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="album" jdbcType="VARCHAR" property="album" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="error_code" jdbcType="VARCHAR" property="errorCode" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="isdel" jdbcType="INTEGER" property="isdel" />
+    <result column="analysis" jdbcType="LONGVARCHAR" property="analysis" />
+    <result column="plan" jdbcType="LONGVARCHAR" property="plan" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from error_code_lib
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.huashu.huashuManager.model.ErrorCodeLib">
+    insert into error_code_lib (id, album, code, 
+      error_code, type, isdel, 
+      analysis, plan)
+    values (#{id,jdbcType=INTEGER}, #{album,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{errorCode,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{isdel,jdbcType=INTEGER}, 
+      #{analysis,jdbcType=LONGVARCHAR}, #{plan,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.ErrorCodeLib">
+    update error_code_lib
+    set album = #{album,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      error_code = #{errorCode,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      isdel = #{isdel,jdbcType=INTEGER},
+      analysis = #{analysis,jdbcType=LONGVARCHAR},
+      plan = #{plan,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, album, code, error_code, type, isdel, analysis, plan
+    from error_code_lib
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, album, code, error_code, type, isdel, analysis, plan
+    from error_code_lib
+  </select>
+</mapper>

@@ -4,8 +4,12 @@ spring:
   datasource:
     url: jdbc:MySQL://118.31.40.61:3306/huasu?useUnicode=true&characterEncoding=utf8&autoReconnect=true
     username: root
-    password: huashu2017
+    password: huasu2017
     driver-class-name: com.mysql.jdbc.Driver
+  http:
+    encoding:
+      force: true
+
 mybatis:
-  config-location: classpath:mybatis-config.xml
+  config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mapper/*.xml

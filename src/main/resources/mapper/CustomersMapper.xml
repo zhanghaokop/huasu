@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huashu.huashuManager.mapper.CustomersMapper">
+  <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.Customers">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="abb" jdbcType="VARCHAR" property="abb" />
+    <result column="cn_abb" jdbcType="VARCHAR" property="cnAbb" />
+    <result column="legal_person" jdbcType="VARCHAR" property="legalPerson" />
+    <result column="we_chat" jdbcType="VARCHAR" property="weChat" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="town" jdbcType="VARCHAR" property="town" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bank_account" jdbcType="VARCHAR" property="bankAccount" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="tax_id" jdbcType="VARCHAR" property="taxId" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+    <result column="total_sale" jdbcType="INTEGER" property="totalSale" />
+    <result column="last_sale" jdbcType="INTEGER" property="lastSale" />
+    <result column="album" jdbcType="VARCHAR" property="album" />
+    <result column="rem" jdbcType="VARCHAR" property="rem" />
+    <result column="isdel" jdbcType="INTEGER" property="isdel" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from customers
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.huashu.huashuManager.model.Customers">
+    insert into customers (id, company, user_id, 
+      pwd, abb, cn_abb, legal_person, 
+      we_chat, province, town, 
+      bank_name, bank_account, tel, 
+      tax_id, level, total_sale, 
+      last_sale, album, rem, 
+      isdel)
+    values (#{id,jdbcType=INTEGER}, #{company,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{pwd,jdbcType=VARCHAR}, #{abb,jdbcType=VARCHAR}, #{cnAbb,jdbcType=VARCHAR}, #{legalPerson,jdbcType=VARCHAR}, 
+      #{weChat,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{town,jdbcType=VARCHAR}, 
+      #{bankName,jdbcType=VARCHAR}, #{bankAccount,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
+      #{taxId,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, #{totalSale,jdbcType=INTEGER}, 
+      #{lastSale,jdbcType=INTEGER}, #{album,jdbcType=VARCHAR}, #{rem,jdbcType=VARCHAR}, 
+      #{isdel,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.Customers">
+    update customers
+    set company = #{company,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      abb = #{abb,jdbcType=VARCHAR},
+      cn_abb = #{cnAbb,jdbcType=VARCHAR},
+      legal_person = #{legalPerson,jdbcType=VARCHAR},
+      we_chat = #{weChat,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      town = #{town,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_account = #{bankAccount,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      tax_id = #{taxId,jdbcType=VARCHAR},
+      level = #{level,jdbcType=VARCHAR},
+      total_sale = #{totalSale,jdbcType=INTEGER},
+      last_sale = #{lastSale,jdbcType=INTEGER},
+      album = #{album,jdbcType=VARCHAR},
+      rem = #{rem,jdbcType=VARCHAR},
+      isdel = #{isdel,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, company, user_id, pwd, abb, cn_abb, legal_person, we_chat, province, town, 
+    bank_name, bank_account, tel, tax_id, level, total_sale, last_sale, album, rem, isdel
+    from customers
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, company, user_id, pwd, abb, cn_abb, legal_person, we_chat, province, town, 
+    bank_name, bank_account, tel, tax_id, level, total_sale, last_sale, album, rem, isdel
+    from customers
+  </select>
+</mapper>

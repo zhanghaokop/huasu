@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huashu.huashuManager.mapper.UsersMapper">
+  <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.Users">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="driving_type" jdbcType="VARCHAR" property="drivingType" />
+    <result column="birth" jdbcType="DATE" property="birth" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="album" jdbcType="VARCHAR" property="album" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="submit_time" jdbcType="TIMESTAMP" property="submitTime" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from users
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.huashu.huashuManager.model.Users">
+    insert into users (id, name, phone, 
+      sex, driving_type, birth, 
+      company, address, album, 
+      open_id, submit_time, level, 
+      score)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{drivingType,jdbcType=VARCHAR}, #{birth,jdbcType=DATE}, 
+      #{company,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{album,jdbcType=VARCHAR}, 
+      #{openId,jdbcType=VARCHAR}, #{submitTime,jdbcType=TIMESTAMP}, #{level,jdbcType=VARCHAR}, 
+      #{score,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.Users">
+    update users
+    set name = #{name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      driving_type = #{drivingType,jdbcType=VARCHAR},
+      birth = #{birth,jdbcType=DATE},
+      company = #{company,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      album = #{album,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR},
+      submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      level = #{level,jdbcType=VARCHAR},
+      score = #{score,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, phone, sex, driving_type, birth, company, address, album, open_id, 
+    submit_time, level, score
+    from users
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="select" resultMap="BaseResultMap" parameterType="com.huashu.huashuManager.model.Users">
+    select id, name, phone, sex, driving_type, birth, company, address, album, open_id,
+    submit_time, level, score
+    from users
+    <where>
+      <if test="name != null and name != ''">
+        name = #{name,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, phone, sex, driving_type, birth, company, address, album, open_id, 
+    submit_time, level, score
+    from users
+  </select>
+</mapper>

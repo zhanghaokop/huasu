@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huashu.huashuManager.mapper.RepairNoMapper">
+  <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.RepairNo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="repair_no" jdbcType="VARCHAR" property="repairNo" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="plate_no" jdbcType="VARCHAR" property="plateNo" />
+    <result column="sub_company" jdbcType="VARCHAR" property="subCompany" />
+    <result column="error_code" jdbcType="VARCHAR" property="errorCode" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="submit_time" jdbcType="TIMESTAMP" property="submitTime" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="lng" jdbcType="VARCHAR" property="lng" />
+    <result column="lat" jdbcType="VARCHAR" property="lat" />
+    <result column="isdel" jdbcType="INTEGER" property="isdel" />
+    <result column="assignStation" jdbcType="VARCHAR" property="assignstation" />
+    <result column="actualStation" jdbcType="VARCHAR" property="actualstation" />
+    <result column="repair_start_time" jdbcType="TIMESTAMP" property="repairStartTime" />
+    <result column="repair_solution" jdbcType="VARCHAR" property="repairSolution" />
+    <result column="repair_end_time" jdbcType="TIMESTAMP" property="repairEndTime" />
+    <result column="star" jdbcType="INTEGER" property="star" />
+    <result column="evaluate" jdbcType="VARCHAR" property="evaluate" />
+    <result column="finish_time" jdbcType="TIMESTAMP" property="finishTime" />
+    <result column="finished" jdbcType="INTEGER" property="finished" />
+    <result column="album" jdbcType="LONGVARCHAR" property="album" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from repair_no
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.huashu.huashuManager.model.RepairNo">
+    insert into repair_no (id, repair_no, open_id, 
+      plate_no, sub_company, error_code, 
+      description, submit_time, status, 
+      lng, lat, isdel, assignStation, 
+      actualStation, repair_start_time, repair_solution, 
+      repair_end_time, star, evaluate, 
+      finish_time, finished, album
+      )
+    values (#{id,jdbcType=INTEGER}, #{repairNo,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, 
+      #{plateNo,jdbcType=VARCHAR}, #{subCompany,jdbcType=VARCHAR}, #{errorCode,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{submitTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, 
+      #{lng,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR}, #{isdel,jdbcType=INTEGER}, #{assignstation,jdbcType=VARCHAR}, 
+      #{actualstation,jdbcType=VARCHAR}, #{repairStartTime,jdbcType=TIMESTAMP}, #{repairSolution,jdbcType=VARCHAR}, 
+      #{repairEndTime,jdbcType=TIMESTAMP}, #{star,jdbcType=INTEGER}, #{evaluate,jdbcType=VARCHAR}, 
+      #{finishTime,jdbcType=TIMESTAMP}, #{finished,jdbcType=INTEGER}, #{album,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.RepairNo">
+    update repair_no
+    set repair_no = #{repairNo,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR},
+      plate_no = #{plateNo,jdbcType=VARCHAR},
+      sub_company = #{subCompany,jdbcType=VARCHAR},
+      error_code = #{errorCode,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR},
+      lng = #{lng,jdbcType=VARCHAR},
+      lat = #{lat,jdbcType=VARCHAR},
+      isdel = #{isdel,jdbcType=INTEGER},
+      assignStation = #{assignstation,jdbcType=VARCHAR},
+      actualStation = #{actualstation,jdbcType=VARCHAR},
+      repair_start_time = #{repairStartTime,jdbcType=TIMESTAMP},
+      repair_solution = #{repairSolution,jdbcType=VARCHAR},
+      repair_end_time = #{repairEndTime,jdbcType=TIMESTAMP},
+      star = #{star,jdbcType=INTEGER},
+      evaluate = #{evaluate,jdbcType=VARCHAR},
+      finish_time = #{finishTime,jdbcType=TIMESTAMP},
+      finished = #{finished,jdbcType=INTEGER},
+      album = #{album,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, repair_no, open_id, plate_no, sub_company, error_code, description, submit_time, 
+    status, lng, lat, isdel, assignStation, actualStation, repair_start_time, repair_solution, 
+    repair_end_time, star, evaluate, finish_time, finished, album
+    from repair_no
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, repair_no, open_id, plate_no, sub_company, error_code, description, submit_time, 
+    status, lng, lat, isdel, assignStation, actualStation, repair_start_time, repair_solution, 
+    repair_end_time, star, evaluate, finish_time, finished, album
+    from repair_no
+  </select>
+</mapper>

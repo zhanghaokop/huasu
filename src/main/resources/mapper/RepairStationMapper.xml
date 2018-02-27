@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huashu.huashuManager.mapper.RepairStationMapper">
+  <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.RepairStation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="station_name" jdbcType="VARCHAR" property="stationName" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="lng" jdbcType="VARCHAR" property="lng" />
+    <result column="lat" jdbcType="VARCHAR" property="lat" />
+    <result column="isdel" jdbcType="INTEGER" property="isdel" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from repair_station
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.huashu.huashuManager.model.RepairStation">
+    insert into repair_station (id, station_name, address, 
+      lng, lat, isdel)
+    values (#{id,jdbcType=INTEGER}, #{stationName,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{lng,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR}, #{isdel,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.RepairStation">
+    update repair_station
+    set station_name = #{stationName,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      lng = #{lng,jdbcType=VARCHAR},
+      lat = #{lat,jdbcType=VARCHAR},
+      isdel = #{isdel,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, station_name, address, lng, lat, isdel
+    from repair_station
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, station_name, address, lng, lat, isdel
+    from repair_station
+  </select>
+</mapper>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huashu.huashuManager.mapper.DriverMapper">
+  <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.Driver">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="plate_no" jdbcType="VARCHAR" property="plateNo" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="drive_type" jdbcType="VARCHAR" property="driveType" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="birth" jdbcType="DATE" property="birth" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="on_job" jdbcType="INTEGER" property="onJob" />
+    <result column="isdel" jdbcType="INTEGER" property="isdel" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from driver
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.huashu.huashuManager.model.Driver">
+    insert into driver (id, name, phone, 
+      sex, plate_no, company, 
+      drive_type, address, birth, 
+      nation, on_job, isdel
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{plateNo,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, 
+      #{driveType,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{birth,jdbcType=DATE}, 
+      #{nation,jdbcType=VARCHAR}, #{onJob,jdbcType=INTEGER}, #{isdel,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.Driver">
+    update driver
+    set name = #{name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      plate_no = #{plateNo,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      drive_type = #{driveType,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      birth = #{birth,jdbcType=DATE},
+      nation = #{nation,jdbcType=VARCHAR},
+      on_job = #{onJob,jdbcType=INTEGER},
+      isdel = #{isdel,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, phone, sex, plate_no, company, drive_type, address, birth, nation, 
+    on_job, isdel
+    from driver
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, phone, sex, plate_no, company, drive_type, address, birth, nation, 
+    on_job, isdel
+    from driver
+  </select>
+</mapper>
