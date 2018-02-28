@@ -4,11 +4,11 @@ import com.huashu.huashuManager.model.Customers;
 import java.util.List;
 
 public interface CustomersMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
 
     int insert(Customers record);
 
-    Customers selectByPrimaryKey(Integer id);
+    Customers selectByPrimaryKey(String id);
 
     List<Customers> selectAll();
 

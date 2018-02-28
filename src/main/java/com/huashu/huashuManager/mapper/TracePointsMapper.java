@@ -4,11 +4,11 @@ import com.huashu.huashuManager.model.TracePoints;
 import java.util.List;
 
 public interface TracePointsMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
 
     int insert(TracePoints record);
 
-    TracePoints selectByPrimaryKey(Integer id);
+    TracePoints selectByPrimaryKey(String id);
 
     List<TracePoints> selectAll();
 

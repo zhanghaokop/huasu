@@ -2,8 +2,8 @@ package com.huashu.huashuManager.model;
 
 import java.util.Date;
 
-public class Insurance {
-    private Integer id;
+public class InsuranceInfo {
+    private String id;
 
     private String plateNo;
 
@@ -33,16 +33,16 @@ public class Insurance {
 
     private Integer total;
 
-    private String album;
+    private String deltag;
 
-    private Integer isdel;
+    private String companyid;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getPlateNo() {
@@ -157,19 +157,19 @@ public class Insurance {
         this.total = total;
     }
 
-    public String getAlbum() {
-        return album;
+    public String getDeltag() {
+        return deltag;
     }
 
-    public void setAlbum(String album) {
-        this.album = album == null ? null : album.trim();
+    public void setDeltag(String deltag) {
+        this.deltag = deltag == null ? null : deltag.trim();
     }
 
-    public Integer getIsdel() {
-        return isdel;
+    public String getCompanyid() {
+        return companyid;
     }
 
-    public void setIsdel(Integer isdel) {
-        this.isdel = isdel;
+    public void setCompanyid(String companyid) {
+        this.companyid = companyid == null ? null : companyid.trim();
     }
 }

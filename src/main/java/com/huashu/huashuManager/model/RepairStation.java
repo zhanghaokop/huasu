@@ -1,7 +1,7 @@
 package com.huashu.huashuManager.model;
 
 public class RepairStation {
-    private Integer id;
+    private String id;
 
     private String stationName;
 
@@ -11,14 +11,14 @@ public class RepairStation {
 
     private String lat;
 
-    private Integer isdel;
+    private String deltag;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getStationName() {
@@ -53,11 +53,11 @@ public class RepairStation {
         this.lat = lat == null ? null : lat.trim();
     }
 
-    public Integer getIsdel() {
-        return isdel;
+    public String getDeltag() {
+        return deltag;
     }
 
-    public void setIsdel(Integer isdel) {
-        this.isdel = isdel;
+    public void setDeltag(String deltag) {
+        this.deltag = deltag == null ? null : deltag.trim();
     }
 }

@@ -2,8 +2,8 @@ package com.huashu.huashuManager.model;
 
 import java.util.Date;
 
-public class RepairNo {
-    private Integer id;
+public class RepairInfo {
+    private String id;
 
     private String repairNo;
 
@@ -47,12 +47,12 @@ public class RepairNo {
 
     private String album;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getRepairNo() {

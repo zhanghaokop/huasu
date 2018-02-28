@@ -1,6 +1,9 @@
 package com.huashu.huashuManager.auth;
 
+import com.huashu.huashuManager.auth.ticket.model.Ticket;
+import com.huashu.huashuManager.auth.ticket.repository.TicketRepository;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 
 import javax.servlet.*;
@@ -15,6 +18,9 @@ import java.io.IOException;
  */
 @WebFilter(urlPatterns = "/*")
 public class AuthenticationFilter implements Filter {
+
+    @Autowired
+    private TicketRepository ticketRepository;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -41,10 +47,12 @@ public class AuthenticationFilter implements Filter {
 
         String token = request.getHeader("token");
 
-        if (StringUtils.isNoneBlank(token)) {
+        if (StringUtils.isNotBlank(token)) {
             //校验token
-            HttpSession session = request.getSession();
-            if (session != null && session.getAttribute(token) != null) {
+
+            Ticket ticket = ticketRepository.getTicket(token);
+            if(ticket != null){
+                SessionStateHolder.set(ticket.getUser());
                 chain.doFilter(request, response);
                 return;
             }

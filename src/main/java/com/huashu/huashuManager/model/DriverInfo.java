@@ -2,8 +2,8 @@ package com.huashu.huashuManager.model;
 
 import java.util.Date;
 
-public class Driver {
-    private Integer id;
+public class DriverInfo {
+    private String id;
 
     private String name;
 
@@ -25,14 +25,16 @@ public class Driver {
 
     private Integer onJob;
 
-    private Integer isdel;
+    private String deltag;
 
-    public Integer getId() {
+    private String companyid;
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getName() {
@@ -115,11 +117,19 @@ public class Driver {
         this.onJob = onJob;
     }
 
-    public Integer getIsdel() {
-        return isdel;
+    public String getDeltag() {
+        return deltag;
     }
 
-    public void setIsdel(Integer isdel) {
-        this.isdel = isdel;
+    public void setDeltag(String deltag) {
+        this.deltag = deltag == null ? null : deltag.trim();
+    }
+
+    public String getCompanyid() {
+        return companyid;
+    }
+
+    public void setCompanyid(String companyid) {
+        this.companyid = companyid == null ? null : companyid.trim();
     }
 }

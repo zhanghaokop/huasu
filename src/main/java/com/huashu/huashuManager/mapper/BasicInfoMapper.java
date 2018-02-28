@@ -4,11 +4,11 @@ import com.huashu.huashuManager.model.BasicInfo;
 import java.util.List;
 
 public interface BasicInfoMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
 
     int insert(BasicInfo record);
 
-    BasicInfo selectByPrimaryKey(Integer id);
+    BasicInfo selectByPrimaryKey(String id);
 
     List<BasicInfo> selectAll();
 

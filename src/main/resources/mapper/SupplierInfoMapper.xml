@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huashu.huashuManager.mapper.SupplierInfoMapper">
+  <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.SupplierInfo">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="person" jdbcType="VARCHAR" property="person" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="rem" jdbcType="VARCHAR" property="rem" />
+    <result column="deltag" jdbcType="VARCHAR" property="deltag" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="tax" jdbcType="VARCHAR" property="tax" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="handle" jdbcType="VARCHAR" property="handle" />
+    <result column="album" jdbcType="LONGVARBINARY" property="album" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from supplier_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.huashu.huashuManager.model.SupplierInfo">
+    insert into supplier_info (id, name, address, 
+      person, phone, rem, 
+      deltag, tel, tax, email, 
+      position, handle, album
+      )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{person,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{rem,jdbcType=VARCHAR}, 
+      #{deltag,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{tax,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{position,jdbcType=VARCHAR}, #{handle,jdbcType=VARCHAR}, #{album,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.SupplierInfo">
+    update supplier_info
+    set name = #{name,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      person = #{person,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      rem = #{rem,jdbcType=VARCHAR},
+      deltag = #{deltag,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      tax = #{tax,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      handle = #{handle,jdbcType=VARCHAR},
+      album = #{album,jdbcType=LONGVARBINARY}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select id, name, address, person, phone, rem, deltag, tel, tax, email, position, 
+    handle, album
+    from supplier_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, address, person, phone, rem, deltag, tel, tax, email, position, 
+    handle, album
+    from supplier_info
+  </select>
+</mapper>

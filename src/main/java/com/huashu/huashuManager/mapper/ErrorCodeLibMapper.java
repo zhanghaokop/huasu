@@ -4,11 +4,11 @@ import com.huashu.huashuManager.model.ErrorCodeLib;
 import java.util.List;
 
 public interface ErrorCodeLibMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
 
     int insert(ErrorCodeLib record);
 
-    ErrorCodeLib selectByPrimaryKey(Integer id);
+    ErrorCodeLib selectByPrimaryKey(String id);
 
     List<ErrorCodeLib> selectAll();
 

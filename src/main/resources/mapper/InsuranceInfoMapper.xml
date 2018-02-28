@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.huashu.huashuManager.mapper.InsuranceMapper">
-  <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.Insurance">
-    <id column="id" jdbcType="INTEGER" property="id" />
+<mapper namespace="com.huashu.huashuManager.mapper.InsuranceInfoMapper">
+  <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.InsuranceInfo">
+    <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="plate_no" jdbcType="VARCHAR" property="plateNo" />
     <result column="insurance_no" jdbcType="VARCHAR" property="insuranceNo" />
     <result column="insurance_company" jdbcType="VARCHAR" property="insuranceCompany" />
@@ -17,29 +17,29 @@
     <result column="busi_ins_start" jdbcType="DATE" property="busiInsStart" />
     <result column="busi_ins_end" jdbcType="DATE" property="busiInsEnd" />
     <result column="total" jdbcType="INTEGER" property="total" />
-    <result column="album" jdbcType="VARCHAR" property="album" />
-    <result column="isdel" jdbcType="INTEGER" property="isdel" />
+    <result column="deltag" jdbcType="VARCHAR" property="deltag" />
+    <result column="companyId" jdbcType="VARCHAR" property="companyid" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from insurance
-    where id = #{id,jdbcType=INTEGER}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from insurance_info
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.huashu.huashuManager.model.Insurance">
-    insert into insurance (id, plate_no, insurance_no, 
+  <insert id="insert" parameterType="com.huashu.huashuManager.model.InsuranceInfo">
+    insert into insurance_info (id, plate_no, insurance_no, 
       insurance_company, insurance_person, insurance_person_tel, 
       comp_ins_no, comp_ins_money, comp_ins_start, 
       comp_ins_end, busi_ins_no, busi_ins_money, 
       busi_ins_start, busi_ins_end, total, 
-      album, isdel)
-    values (#{id,jdbcType=INTEGER}, #{plateNo,jdbcType=VARCHAR}, #{insuranceNo,jdbcType=VARCHAR}, 
+      deltag, companyId)
+    values (#{id,jdbcType=VARCHAR}, #{plateNo,jdbcType=VARCHAR}, #{insuranceNo,jdbcType=VARCHAR}, 
       #{insuranceCompany,jdbcType=VARCHAR}, #{insurancePerson,jdbcType=VARCHAR}, #{insurancePersonTel,jdbcType=VARCHAR}, 
       #{compInsNo,jdbcType=VARCHAR}, #{compInsMoney,jdbcType=INTEGER}, #{compInsStart,jdbcType=DATE}, 
       #{compInsEnd,jdbcType=DATE}, #{busiInsNo,jdbcType=VARCHAR}, #{busiInsMoney,jdbcType=INTEGER}, 
       #{busiInsStart,jdbcType=DATE}, #{busiInsEnd,jdbcType=DATE}, #{total,jdbcType=INTEGER}, 
-      #{album,jdbcType=VARCHAR}, #{isdel,jdbcType=INTEGER})
+      #{deltag,jdbcType=VARCHAR}, #{companyid,jdbcType=VARCHAR})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.Insurance">
-    update insurance
+  <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.InsuranceInfo">
+    update insurance_info
     set plate_no = #{plateNo,jdbcType=VARCHAR},
       insurance_no = #{insuranceNo,jdbcType=VARCHAR},
       insurance_company = #{insuranceCompany,jdbcType=VARCHAR},
@@ -54,21 +54,21 @@
       busi_ins_start = #{busiInsStart,jdbcType=DATE},
       busi_ins_end = #{busiInsEnd,jdbcType=DATE},
       total = #{total,jdbcType=INTEGER},
-      album = #{album,jdbcType=VARCHAR},
-      isdel = #{isdel,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+      deltag = #{deltag,jdbcType=VARCHAR},
+      companyId = #{companyid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select id, plate_no, insurance_no, insurance_company, insurance_person, insurance_person_tel, 
     comp_ins_no, comp_ins_money, comp_ins_start, comp_ins_end, busi_ins_no, busi_ins_money, 
-    busi_ins_start, busi_ins_end, total, album, isdel
-    from insurance
-    where id = #{id,jdbcType=INTEGER}
+    busi_ins_start, busi_ins_end, total, deltag, companyId
+    from insurance_info
+    where id = #{id,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, plate_no, insurance_no, insurance_company, insurance_person, insurance_person_tel, 
     comp_ins_no, comp_ins_money, comp_ins_start, comp_ins_end, busi_ins_no, busi_ins_money, 
-    busi_ins_start, busi_ins_end, total, album, isdel
-    from insurance
+    busi_ins_start, busi_ins_end, total, deltag, companyId
+    from insurance_info
   </select>
 </mapper>

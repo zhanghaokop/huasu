@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huashu.huashuManager.mapper.RoleMenuMapper">
+  <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.RoleMenu">
+    <result column="menuId" jdbcType="VARCHAR" property="menuid" />
+    <result column="roleId" jdbcType="VARCHAR" property="roleid" />
+  </resultMap>
+  <insert id="insert" parameterType="com.huashu.huashuManager.model.RoleMenu">
+    insert into role_menu (menuId, roleId)
+    values (#{menuid,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select menuId, roleId
+    from role_menu
+  </select>
+</mapper>

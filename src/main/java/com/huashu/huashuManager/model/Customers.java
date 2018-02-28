@@ -1,13 +1,11 @@
 package com.huashu.huashuManager.model;
 
 public class Customers {
-    private Integer id;
+    private String id;
 
     private String company;
 
     private String userId;
-
-    private String pwd;
 
     private String abb;
 
@@ -39,14 +37,14 @@ public class Customers {
 
     private String rem;
 
-    private Integer isdel;
+    private String deltag;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getCompany() {
@@ -63,14 +61,6 @@ public class Customers {
 
     public void setUserId(String userId) {
         this.userId = userId == null ? null : userId.trim();
-    }
-
-    public String getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd == null ? null : pwd.trim();
     }
 
     public String getAbb() {
@@ -193,11 +183,11 @@ public class Customers {
         this.rem = rem == null ? null : rem.trim();
     }
 
-    public Integer getIsdel() {
-        return isdel;
+    public String getDeltag() {
+        return deltag;
     }
 
-    public void setIsdel(Integer isdel) {
-        this.isdel = isdel;
+    public void setDeltag(String deltag) {
+        this.deltag = deltag == null ? null : deltag.trim();
     }
 }

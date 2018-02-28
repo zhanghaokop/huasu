@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.huashu.huashuManager.mapper.UsersMessageMapper">
-  <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.UsersMessage">
-    <id column="id" jdbcType="INTEGER" property="id" />
+<mapper namespace="com.huashu.huashuManager.mapper.MemberWeixinMapper">
+  <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.MemberWeixin">
+    <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="sender" jdbcType="VARCHAR" property="sender" />
@@ -17,24 +17,24 @@
     <result column="mark" jdbcType="INTEGER" property="mark" />
     <result column="open_id" jdbcType="VARCHAR" property="openId" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from users_message
-    where id = #{id,jdbcType=INTEGER}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from member_weixin
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.huashu.huashuManager.model.UsersMessage">
-    insert into users_message (id, name, phone, 
+  <insert id="insert" parameterType="com.huashu.huashuManager.model.MemberWeixin">
+    insert into member_weixin (id, name, phone, 
       sender, post_time, type, 
       title, message, url, 
       model, is_read, read_time, 
       mark, open_id)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{sender,jdbcType=VARCHAR}, #{postTime,jdbcType=TIMESTAMP}, #{type,jdbcType=VARCHAR}, 
       #{title,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
       #{model,jdbcType=VARCHAR}, #{isRead,jdbcType=INTEGER}, #{readTime,jdbcType=TIMESTAMP}, 
       #{mark,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.UsersMessage">
-    update users_message
+  <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.MemberWeixin">
+    update member_weixin
     set name = #{name,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       sender = #{sender,jdbcType=VARCHAR},
@@ -48,17 +48,17 @@
       read_time = #{readTime,jdbcType=TIMESTAMP},
       mark = #{mark,jdbcType=INTEGER},
       open_id = #{openId,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select id, name, phone, sender, post_time, type, title, message, url, model, is_read, 
     read_time, mark, open_id
-    from users_message
-    where id = #{id,jdbcType=INTEGER}
+    from member_weixin
+    where id = #{id,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, name, phone, sender, post_time, type, title, message, url, model, is_read, 
     read_time, mark, open_id
-    from users_message
+    from member_weixin
   </select>
 </mapper>

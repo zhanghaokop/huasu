@@ -2,8 +2,8 @@ package com.huashu.huashuManager.model;
 
 import java.util.Date;
 
-public class Users {
-    private Integer id;
+public class Member {
+    private String id;
 
     private String name;
 
@@ -29,12 +29,12 @@ public class Users {
 
     private Integer score;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getName() {

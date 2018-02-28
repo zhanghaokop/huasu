@@ -1,14 +1,16 @@
 server.port: 8080
 
+huasu:
+  ip: 118.31.40.61
+
 spring:
   datasource:
-    url: jdbc:MySQL://118.31.40.61:3306/huasu?useUnicode=true&characterEncoding=utf8&autoReconnect=true
+    url: jdbc:MySQL://${huasu.ip}:3306/huasuManager?useUnicode=true&characterEncoding=utf8&autoReconnect=true
     username: root
     password: huasu2017
     driver-class-name: com.mysql.jdbc.Driver
-  http:
-    encoding:
-      force: true
+  http.encoding.force: true
+#  redis.password: 123456
 
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml

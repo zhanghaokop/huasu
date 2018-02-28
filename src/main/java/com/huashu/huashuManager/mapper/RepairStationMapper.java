@@ -4,11 +4,11 @@ import com.huashu.huashuManager.model.RepairStation;
 import java.util.List;
 
 public interface RepairStationMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
 
     int insert(RepairStation record);
 
-    RepairStation selectByPrimaryKey(Integer id);
+    RepairStation selectByPrimaryKey(String id);
 
     List<RepairStation> selectAll();
 

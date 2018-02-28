@@ -1,7 +1,10 @@
 package com.huashu.huashuManager.model;
 
-public class Admin {
-    private Integer id;
+import java.io.Serializable;
+
+public class User implements Serializable {
+    private static final long serialVersionUID = -3104728452437086161L;
+    private String id;
 
     private String name;
 
@@ -9,12 +12,14 @@ public class Admin {
 
     private String level;
 
-    public Integer getId() {
+    private String roleid;
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getName() {
@@ -39,5 +44,13 @@ public class Admin {
 
     public void setLevel(String level) {
         this.level = level == null ? null : level.trim();
+    }
+
+    public String getRoleid() {
+        return roleid;
+    }
+
+    public void setRoleid(String roleid) {
+        this.roleid = roleid == null ? null : roleid.trim();
     }
 }

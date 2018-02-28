@@ -1,7 +1,7 @@
 package com.huashu.huashuManager.model;
 
-public class Supplier {
-    private Integer id;
+public class SupplierInfo {
+    private String id;
 
     private String name;
 
@@ -13,7 +13,7 @@ public class Supplier {
 
     private String rem;
 
-    private Integer isdel;
+    private String deltag;
 
     private String tel;
 
@@ -25,14 +25,14 @@ public class Supplier {
 
     private String handle;
 
-    private String album;
+    private byte[] album;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getName() {
@@ -75,12 +75,12 @@ public class Supplier {
         this.rem = rem == null ? null : rem.trim();
     }
 
-    public Integer getIsdel() {
-        return isdel;
+    public String getDeltag() {
+        return deltag;
     }
 
-    public void setIsdel(Integer isdel) {
-        this.isdel = isdel;
+    public void setDeltag(String deltag) {
+        this.deltag = deltag == null ? null : deltag.trim();
     }
 
     public String getTel() {
@@ -123,11 +123,11 @@ public class Supplier {
         this.handle = handle == null ? null : handle.trim();
     }
 
-    public String getAlbum() {
+    public byte[] getAlbum() {
         return album;
     }
 
-    public void setAlbum(String album) {
-        this.album = album == null ? null : album.trim();
+    public void setAlbum(byte[] album) {
+        this.album = album;
     }
 }

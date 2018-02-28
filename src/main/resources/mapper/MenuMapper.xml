@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huashu.huashuManager.mapper.MenuMapper">
+  <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.Menu">
+    <id column="MENUID" jdbcType="VARCHAR" property="menuid" />
+    <result column="URL" jdbcType="VARCHAR" property="url" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="PARENTID" jdbcType="VARCHAR" property="parentid" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from menu
+    where MENUID = #{menuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.huashu.huashuManager.model.Menu">
+    insert into menu (MENUID, URL, NAME, 
+      PARENTID)
+    values (#{menuid,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{parentid,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.Menu">
+    update menu
+    set URL = #{url,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      PARENTID = #{parentid,jdbcType=VARCHAR}
+    where MENUID = #{menuid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select MENUID, URL, NAME, PARENTID
+    from menu
+    where MENUID = #{menuid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select MENUID, URL, NAME, PARENTID
+    from menu
+  </select>
+</mapper>

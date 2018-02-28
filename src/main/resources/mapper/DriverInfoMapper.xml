@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.huashu.huashuManager.mapper.DriverMapper">
-  <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.Driver">
-    <id column="id" jdbcType="INTEGER" property="id" />
+<mapper namespace="com.huashu.huashuManager.mapper.DriverInfoMapper">
+  <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.DriverInfo">
+    <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="sex" jdbcType="VARCHAR" property="sex" />
@@ -13,26 +13,27 @@
     <result column="birth" jdbcType="DATE" property="birth" />
     <result column="nation" jdbcType="VARCHAR" property="nation" />
     <result column="on_job" jdbcType="INTEGER" property="onJob" />
-    <result column="isdel" jdbcType="INTEGER" property="isdel" />
+    <result column="deltag" jdbcType="VARCHAR" property="deltag" />
+    <result column="companyId" jdbcType="VARCHAR" property="companyid" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from driver
-    where id = #{id,jdbcType=INTEGER}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from driver_info
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.huashu.huashuManager.model.Driver">
-    insert into driver (id, name, phone, 
+  <insert id="insert" parameterType="com.huashu.huashuManager.model.DriverInfo">
+    insert into driver_info (id, name, phone, 
       sex, plate_no, company, 
       drive_type, address, birth, 
-      nation, on_job, isdel
-      )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      nation, on_job, deltag, 
+      companyId)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{sex,jdbcType=VARCHAR}, #{plateNo,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, 
       #{driveType,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{birth,jdbcType=DATE}, 
-      #{nation,jdbcType=VARCHAR}, #{onJob,jdbcType=INTEGER}, #{isdel,jdbcType=INTEGER}
-      )
+      #{nation,jdbcType=VARCHAR}, #{onJob,jdbcType=INTEGER}, #{deltag,jdbcType=VARCHAR}, 
+      #{companyid,jdbcType=VARCHAR})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.Driver">
-    update driver
+  <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.DriverInfo">
+    update driver_info
     set name = #{name,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
@@ -43,18 +44,19 @@
       birth = #{birth,jdbcType=DATE},
       nation = #{nation,jdbcType=VARCHAR},
       on_job = #{onJob,jdbcType=INTEGER},
-      isdel = #{isdel,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+      deltag = #{deltag,jdbcType=VARCHAR},
+      companyId = #{companyid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select id, name, phone, sex, plate_no, company, drive_type, address, birth, nation, 
-    on_job, isdel
-    from driver
-    where id = #{id,jdbcType=INTEGER}
+    on_job, deltag, companyId
+    from driver_info
+    where id = #{id,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, name, phone, sex, plate_no, company, drive_type, address, birth, nation, 
-    on_job, isdel
-    from driver
+    on_job, deltag, companyId
+    from driver_info
   </select>
 </mapper>

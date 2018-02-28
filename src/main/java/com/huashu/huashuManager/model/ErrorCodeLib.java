@@ -1,7 +1,7 @@
 package com.huashu.huashuManager.model;
 
 public class ErrorCodeLib {
-    private Integer id;
+    private String id;
 
     private String album;
 
@@ -11,18 +11,18 @@ public class ErrorCodeLib {
 
     private String type;
 
-    private Integer isdel;
+    private String deltag;
 
     private String analysis;
 
     private String plan;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getAlbum() {
@@ -57,12 +57,12 @@ public class ErrorCodeLib {
         this.type = type == null ? null : type.trim();
     }
 
-    public Integer getIsdel() {
-        return isdel;
+    public String getDeltag() {
+        return deltag;
     }
 
-    public void setIsdel(Integer isdel) {
-        this.isdel = isdel;
+    public void setDeltag(String deltag) {
+        this.deltag = deltag == null ? null : deltag.trim();
     }
 
     public String getAnalysis() {

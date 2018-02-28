@@ -3,11 +3,9 @@ package com.huashu.huashuManager.model;
 import java.util.Date;
 
 public class BasicInfo {
-    private Integer id;
+    private String id;
 
     private String customer;
-
-    private String company;
 
     private String factory;
 
@@ -35,16 +33,18 @@ public class BasicInfo {
 
     private Date repairCheckDate;
 
-    private Integer isdel;
+    private String deltag;
 
     private String imei;
 
-    public Integer getId() {
+    private String companyid;
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
     public String getCustomer() {
@@ -53,14 +53,6 @@ public class BasicInfo {
 
     public void setCustomer(String customer) {
         this.customer = customer == null ? null : customer.trim();
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company == null ? null : company.trim();
     }
 
     public String getFactory() {
@@ -167,12 +159,12 @@ public class BasicInfo {
         this.repairCheckDate = repairCheckDate;
     }
 
-    public Integer getIsdel() {
-        return isdel;
+    public String getDeltag() {
+        return deltag;
     }
 
-    public void setIsdel(Integer isdel) {
-        this.isdel = isdel;
+    public void setDeltag(String deltag) {
+        this.deltag = deltag == null ? null : deltag.trim();
     }
 
     public String getImei() {
@@ -181,5 +173,13 @@ public class BasicInfo {
 
     public void setImei(String imei) {
         this.imei = imei == null ? null : imei.trim();
+    }
+
+    public String getCompanyid() {
+        return companyid;
+    }
+
+    public void setCompanyid(String companyid) {
+        this.companyid = companyid == null ? null : companyid.trim();
     }
 }
