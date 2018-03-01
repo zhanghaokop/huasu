@@ -7,4 +7,6 @@ public interface RoleMenuMapper {
     int insert(RoleMenu record);
 
     List<RoleMenu> selectAll();
+
+    void deleteRoleMenu(String roleId);
 }

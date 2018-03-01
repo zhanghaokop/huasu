@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.huashu.huashuManager.mapper.UserMapper">
-  <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.User">
-    <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="level" jdbcType="VARCHAR" property="level" />
-    <result column="roleId" jdbcType="VARCHAR" property="roleid" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.User">
+        <id column="t_id" jdbcType="VARCHAR" property="id"/>
+        <result column="t_name" jdbcType="VARCHAR" property="name"/>
+        <result column="t_password" jdbcType="VARCHAR" property="password"/>
+        <result column="t_level" jdbcType="VARCHAR" property="level"/>
+        <association property="role" javaType="com.huashu.huashuManager.model.Role">
+            <result column="r_Id" jdbcType="VARCHAR" property="id"/>
+            <result column="r_name" jdbcType="VARCHAR" property="name"/>
+            <collection property="menus" ofType="com.huashu.huashuManager.model.Menu">
+                <result column="m_menuid" jdbcType="VARCHAR" property="menuid"/>
+                <result column="m_url" jdbcType="VARCHAR" property="url"/>
+                <result column="m_name" jdbcType="VARCHAR" property="name"/>
+                <result column="m_parentid" jdbcType="VARCHAR" property="parentid"/>
+            </collection>
+        </association>
+    </resultMap>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from user
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.huashu.huashuManager.model.User">
+    <insert id="insert" parameterType="com.huashu.huashuManager.model.User">
     insert into user (id, name, password, 
       level, roleId)
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{level,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.User">
+    <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.User">
     update user
     set name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
@@ -26,23 +37,50 @@
       roleId = #{roleid,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select id, name, password, level, roleId
     from user
     where id = #{id,jdbcType=VARCHAR}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap">
+
+    <select id="selectDetail" parameterType="com.huashu.huashuManager.model.User" resultMap="BaseResultMap">
+   SELECT
+	t.id as t_id,
+	t. NAME as t_name,
+	t. PASSWORD as t_password,
+	t. LEVEL as t_level,
+	m.menuId as m_menuId,
+	m.url as m_url,
+	m. NAME as m_menuName,
+	m.parentid as m_parentid,
+    r.id as r_id,
+    r.name as r_name
+    FROM
+        USER t
+    LEFT JOIN role_menu k ON t.roleId = k.roleId
+    LEFT JOIN menu m ON m.menuId = k.menuId
+        LEFT JOIN role r on t.roleId=r.id
+    where 1=1
+        <if test="name != null and name != ''">
+            and t.name = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="id != null and id != ''">
+            and t.id = #{id,jdbcType=VARCHAR}
+        </if>
+
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
     select id, name, password, level, roleId
     from user
   </select>
-  <select id="select" parameterType="com.huashu.huashuManager.model.User" resultMap="BaseResultMap">
-  select id, name, password, level, roleId
-  from user where 1=1
-    <if test="name != null and name != ''">
-      and name = #{name,jdbcType=VARCHAR}
-    </if>
-    <if test="password != null and password != ''">
-      and password = #{password,jdbcType=VARCHAR}
-    </if>
-  </select>
+    <select id="select" parameterType="com.huashu.huashuManager.model.User" resultType="com.huashu.huashuManager.model.User">
+        select id , name, password, level, roleId
+        from user where 1=1
+        <if test="name != null and name != ''">
+            and name = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="password != null and password != ''">
+            and password = #{password,jdbcType=VARCHAR}
+        </if>
+    </select>
 </mapper>

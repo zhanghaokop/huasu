@@ -4,9 +4,20 @@ import java.io.Serializable;
 
 public class User implements Serializable {
     private static final long serialVersionUID = -3104728452437086161L;
+
+    private Role role;
+
     private String id;
 
     private String name;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     private String password;
 

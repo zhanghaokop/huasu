@@ -13,4 +13,8 @@
     select menuId, roleId
     from role_menu
   </select>
+  <delete id="deleteRoleMenu" parameterType="String">
+
+    delete from role_menu where roleId=#{roleId,jdbcType=VARCHAR}
+  </delete>
 </mapper>

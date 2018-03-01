@@ -10,7 +10,7 @@ public interface MenuMapper {
 
     Menu selectByPrimaryKey(String menuid);
 
-    List<Menu> selectAll();
+    List<Menu> selectAll(Menu menu);
 
     int updateByPrimaryKey(Menu record);
 }

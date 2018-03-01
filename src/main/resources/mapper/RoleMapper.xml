@@ -1,30 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.huashu.huashuManager.mapper.RoleMapper">
-  <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.Role">
-    <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.Role">
+        <id column="t_id" jdbcType="VARCHAR" property="id"/>
+        <result column="t_name" jdbcType="VARCHAR" property="name"/>
+        <collection property="menus" ofType="com.huashu.huashuManager.model.Menu">
+            <result column="m_menuid" jdbcType="VARCHAR" property="menuid"/>
+            <result column="m_url" jdbcType="VARCHAR" property="url"/>
+            <result column="m_name" jdbcType="VARCHAR" property="name"/>
+            <result column="m_parentid" jdbcType="VARCHAR" property="parentid"/>
+        </collection>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from role
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.huashu.huashuManager.model.Role">
+    <insert id="insert" parameterType="com.huashu.huashuManager.model.Role">
     insert into role (id, name)
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.Role">
+    <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.Role">
     update role
     set name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select id, name
-    from role
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select t.id as t_id , t.name as t_name
+    from role t
     where id = #{id,jdbcType=VARCHAR}
   </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, name
-    from role
+
+    <select id="selectAll" resultMap="BaseResultMap">
+    select t.id as t_id , t.name as t_name
+    from role t
   </select>
+
+    <select id="selectRoleDetail" parameterType="com.huashu.huashuManager.model.Role" resultMap="BaseResultMap">
+        select t.id as t_id , t.name as t_name,
+        m.menuid as m_menuid,m.url as m_url,m.name as m_name,m.parentid as m_parentid
+        from role t
+        left join  role_menu r on t.id= r.roleId
+        left join menu m on r.menuid=m.menuid
+        where 1=1
+        <if test="id != null and id != ''">
+            and t.id = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null and name != ''">
+            and t.name = #{name,jdbcType=VARCHAR}
+        </if>
+    </select>
 </mapper>
