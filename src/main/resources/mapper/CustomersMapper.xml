@@ -70,9 +70,41 @@
     from customers
     where id = #{id,jdbcType=VARCHAR}
   </select>
+
+
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, company, user_id, abb, cn_abb, legal_person, we_chat, province, town, 
+    select id, company, user_id, abb, cn_abb, legal_person, we_chat, province, town,
     bank_name, bank_account, tel, tax_id, level, total_sale, last_sale, album, rem, deltag
     from customers
   </select>
+
+
+  <select id="selectAllCompanyAndId" resultMap="BaseResultMap">
+    select DISTINCT company,id from customers
+  </select>
+
+  <select id="selectList" resultMap="BaseResultMap" parameterType="com.huashu.huashuManager.model.Customers">
+    select id, company, user_id, abb, cn_abb, legal_person, we_chat, province, town,
+    bank_name, bank_account, tel, tax_id, level, total_sale, last_sale, album, rem, deltag
+    from customers WHERE  1=1
+    <if test="company != null and company !=''">
+      and company LIKE CONCAT(CONCAT('%',#{company,jdbcType=VARCHAR}),'%')
+    </if>
+    <if test="abb != null and abb !=''">
+      and abb = #{abb,jdbcType=VARCHAR}
+    </if>
+    <if test="cnAbb != null and cnAbb !=''">
+      and cn_abb = #{cnAbb,jdbcType=VARCHAR}
+    </if>
+    <if test="province != null and province !=''">
+      and province = #{province,jdbcType=VARCHAR}
+    </if>
+    <if test="town != null and town !=''">
+      and town = #{town,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+
+
+
 </mapper>

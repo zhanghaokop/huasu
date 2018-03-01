@@ -5,10 +5,7 @@ import com.huashu.huashuManager.auth.ticket.model.Ticket;
 import com.huashu.huashuManager.common.bo.ResponseEntity;
 import com.huashu.huashuManager.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 登录控制器
@@ -32,4 +29,13 @@ public class LoginController {
         }
     }
     //登出
+    @GetMapping("logout")
+    public ResponseEntity<Boolean> logout(@RequestHeader("token") String ticketId){
+
+        if(this.authService.logout(ticketId)){
+            return new ResponseEntity.Builder<Boolean>().setData(true).setCode(200).build();
+        }
+        return new ResponseEntity.Builder<Boolean>().setCode(200).setData(false).build();
+
+    }
 }

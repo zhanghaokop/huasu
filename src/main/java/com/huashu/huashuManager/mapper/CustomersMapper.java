@@ -10,7 +10,15 @@ public interface CustomersMapper {
 
     Customers selectByPrimaryKey(String id);
 
+//    Customers selectCustomer(Customers customers);
+
     List<Customers> selectAll();
 
+    List<Customers> selectAllCompanyAndId();
+
+
+    List<Customers> selectList(Customers customer);
+
     int updateByPrimaryKey(Customers record);
+
 }

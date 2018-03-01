@@ -1,42 +1,100 @@
 package com.huashu.huashuManager.model;
 
+/**
+ * 客户
+ */
 public class Customers {
+
+    /**
+     * 主键ID,公司ID
+     */
     private String id;
 
+    /**
+     * 客户公司名称
+     */
     private String company;
 
     private String userId;
 
+    /**
+     * 站点名称
+     */
     private String abb;
 
+    /**
+     * 中文站点名称
+     */
     private String cnAbb;
 
+    /**
+     * 法人对象
+     */
     private String legalPerson;
 
+    /**
+     * 微信号
+     */
     private String weChat;
 
+    /**
+     * 省份
+     */
     private String province;
 
+    /**
+     * 城镇
+     */
     private String town;
 
+    /**
+     * 开户行
+     */
     private String bankName;
 
+    /**
+     * 开户行账号
+     */
     private String bankAccount;
 
+    /**
+     * 电话
+     */
     private String tel;
 
+    /**
+     * 手机
+     */
     private String taxId;
 
+    /**
+     * 等级
+     */
     private String level;
 
+    /**
+     * 总销售额
+     */
     private Integer totalSale;
 
+    /**
+     * 上年销售额
+     */
     private Integer lastSale;
 
+    /**
+     *
+     */
     private String album;
 
+    /**
+     * 备注
+     */
     private String rem;
 
+    /**
+     * 是否删除
+     */
     private String deltag;
 
     public String getId() {

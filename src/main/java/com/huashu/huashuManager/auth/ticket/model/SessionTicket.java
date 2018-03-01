@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 public class SessionTicket implements Ticket, Serializable {
 
+    private static final long serialVersionUID = 6395160158283625058L;
     private String ticketId;
 
     private User user;

@@ -1,11 +1,23 @@
 package com.huashu.huashuManager.common.bo;
 
-public class ResponseEntity<T> {
+import java.io.Serializable;
 
+public class ResponseEntity<T> implements Serializable {
+
+    private static final long serialVersionUID = -2245460634203751588L;
+    /**
+     * 200表示操作成功
+     */
     private int code;
 
+    /**
+     * 返回数据包
+     */
     private T data;
 
+    /**
+     * 异常信息
+     */
     private String msg;
 
     public ResponseEntity(Builder<T> builder) {

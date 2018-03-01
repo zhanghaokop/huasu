@@ -61,7 +61,7 @@ public class AuthenticationFilter implements Filter {
         //登录
         response.setStatus(401);
         response.setContentType("application/json;charset=UTF-8;");
-        response.getWriter().write("{\"code\":401,msg:\"用户未登录\",data:{}}");
+        response.getWriter().write("{\"code\":401,\"msg\":\"用户未登录\",\"data\":{}}");
 
     }
 

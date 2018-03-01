@@ -8,4 +8,6 @@ public interface AuthService {
     User getUser(User user);
 
     Ticket validate(User user);
+
+    boolean logout(String ticketId);
 }

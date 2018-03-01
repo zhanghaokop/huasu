@@ -38,4 +38,9 @@ public class AuthServiceImpl implements AuthService {
 
         return null;
     }
+
+    @Override
+    public boolean logout(String ticketId) {
+        return ticketRepository.deleteTicket(ticketId);
+    }
 }
