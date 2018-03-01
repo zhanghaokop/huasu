@@ -10,6 +10,6 @@ public class HelloController {
 
     @GetMapping
     public String hello(){
-        return "hello haushu";
+        throw new IllegalArgumentException("发生异常了");
     }
 }
