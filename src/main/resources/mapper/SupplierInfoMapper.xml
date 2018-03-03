@@ -59,4 +59,20 @@
     handle, album
     from supplier_info
   </select>
+
+  <select id="pageSelect" resultMap="BaseResultMap" parameterType="com.huashu.huashuManager.model.SupplierInfo">
+    select id, name, address, person, phone, rem, deltag, tel, tax, email, position,
+    handle, album
+    from supplier_info where 1=1
+    <if test="name != null and name != ''">
+      and name LIKE CONCAT(CONCAT('%',#{name,jdbcType=VARCHAR}),'%')
+    </if>
+    <if test="address != null and address != ''">
+      and address LIKE CONCAT(CONCAT('%',#{address,jdbcType=VARCHAR}),'%')
+    </if>
+    <if test="phone != null and phone != ''">
+      and phone LIKE CONCAT(CONCAT('%',#{phone,jdbcType=VARCHAR}),'%')
+    </if>
+  </select>
+
 </mapper>

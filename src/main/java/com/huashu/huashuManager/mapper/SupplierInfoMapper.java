@@ -12,5 +12,10 @@ public interface SupplierInfoMapper {
 
     List<SupplierInfo> selectAll();
 
+    //分页 模糊匹配 条件查询
+    List<SupplierInfo> pageSelect(SupplierInfo record);
+
+
+
     int updateByPrimaryKey(SupplierInfo record);
 }

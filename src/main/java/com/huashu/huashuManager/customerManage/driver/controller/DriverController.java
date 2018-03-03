@@ -1,6 +1,5 @@
 package com.huashu.huashuManager.customerManage.driver.controller;
 
-import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.bo.ResponseEntity;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.customerManage.driver.service.DriverService;
@@ -23,7 +22,7 @@ public class DriverController {
      * @return
      */
     @GetMapping("list")
-    public ResponseEntity<List<DriverInfo>> pageSelect(DriverInfo driverInfo, PageEntity pageEntity){
+    public ResponseEntity<List<DriverInfo>> pageSelect(DriverInfo driverInfo){
         return new ResponseEntity.Builder<List<DriverInfo>>().setData(driverService.pageListDrivers(driverInfo)).setCode(200).build();
     }
 

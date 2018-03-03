@@ -11,6 +11,8 @@ public interface MemberMapper {
     Member selectByPrimaryKey(String id);
 
     List<Member> selectAll();
+    //模糊分页条件查询
+    List<Member> pageSelect(Member record);
 
     int updateByPrimaryKey(Member record);
 }

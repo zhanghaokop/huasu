@@ -59,4 +59,24 @@
     submit_time, level, score
     from member
   </select>
+
+
+  <select id="pageSelect" resultMap="BaseResultMap">
+    select id, name, phone, sex, driving_type, birth, company, address, album, open_id,
+    submit_time, level, score
+    from member WHERE 1=1
+    <if test="name != null and name != ''">
+      and name LIKE CONCAT(CONCAT('%',#{name,jdbcType=VARCHAR}),'%')
+    </if>
+    <if test="phone != null and phone != ''">
+      and phone LIKE CONCAT(CONCAT('%',#{phone,jdbcType=VARCHAR}),'%')
+    </if>
+    <if test="company != null and company != ''">
+      and company LIKE CONCAT(CONCAT('%',#{company,jdbcType=VARCHAR}),'%')
+    </if>
+    <if test="sex != null and sex != ''">
+      AND sex = #{sex,jdbcType=VARCHAR}
+    </if>
+  </select>
+
 </mapper>

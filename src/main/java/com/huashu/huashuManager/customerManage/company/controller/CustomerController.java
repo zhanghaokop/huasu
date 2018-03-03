@@ -31,12 +31,12 @@ public class CustomerController {
      */
     @GetMapping("/list")
     public ResponseEntity<List<Customers>> list(Customers customers){
-        return new ResponseEntity.Builder<List<Customers>>().setData(customerService.pageListCustomers(customers)).setCode(200).build();
+        return new ResponseEntity.Builder<List<Customers>>().setData(customerService.pageListCustomers(customers)).build();
     }
 
     @GetMapping("/listCompany")
     public ResponseEntity<List<Customers>> listAllCustomers(){
-        return new ResponseEntity.Builder<List<Customers>>().setData(customerService.listAllCompanyAndID()).setCode(200).build();
+        return new ResponseEntity.Builder<List<Customers>>().setData(customerService.listAllCompanyAndID()).build();
     }
     /**
      * 新增客户
@@ -48,7 +48,7 @@ public class CustomerController {
         String id = UUIDUtils.getUUID();
         customers.setId(id);
         boolean flag = customerService.addCustomer(customers) > 0;
-        return new ResponseEntity.Builder<Boolean>().setCode(200).setData(flag).build();
+        return new ResponseEntity.Builder<Boolean>().setData(flag).build();
     }
 
     /**
@@ -58,7 +58,7 @@ public class CustomerController {
      */
     @GetMapping("/delete/{customerId}")
     public ResponseEntity<Boolean> deleteCustomer(@PathVariable String customerId){
-        return new ResponseEntity.Builder<Boolean>().setData(customerService.deleteCustomer(customerId) > 0).setCode(200).build();
+        return new ResponseEntity.Builder<Boolean>().setData(customerService.deleteCustomer(customerId) > 0).build();
     }
 
     /**
@@ -68,6 +68,6 @@ public class CustomerController {
      */
     @PostMapping("/update")
     public ResponseEntity<Boolean> update(@RequestBody Customers customers){
-        return new ResponseEntity.Builder<Boolean>().setData(customerService.updateCustomer(customers) > 0).setCode(200).build();
+        return new ResponseEntity.Builder<Boolean>().setData(customerService.updateCustomer(customers) > 0).build();
     }
 }
