@@ -13,4 +13,6 @@ public interface BasicInfoMapper {
     List<BasicInfo> selectAll();
 
     int updateByPrimaryKey(BasicInfo record);
+
+    List<BasicInfo> pageListBasic(BasicInfo basicInfo);
 }

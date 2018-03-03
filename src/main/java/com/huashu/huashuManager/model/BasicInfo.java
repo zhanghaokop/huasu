@@ -1,8 +1,11 @@
 package com.huashu.huashuManager.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class BasicInfo {
+
+    private List<InsuranceInfo> insuranceInfos;
     /**
      * 主键id
      */
@@ -24,62 +27,62 @@ public class BasicInfo {
     private String plateNo;
 
     /**
-     *
+     * 车架号
      */
     private String vin;
 
     /**
-     *
+     * 发动机号
      */
     private String engineNo;
 
     /**
-     *
+     * 车辆类型
      */
     private String vehicle;
 
     /**
-     *
+     * 使用性质
      */
     private String useCharacter;
 
     /**
-     *
+     * 所属人
      */
     private String owner;
 
     /**
-     *
+     * 住址
      */
     private String address;
 
     /**
-     *
+     * 品牌型号
      */
     private String model;
 
     /**
-     *
+     * 动力类型
      */
     private String powerType;
 
     /**
-     *
+     * 注册日期
      */
     private Date regDate;
 
     /**
-     *
+     * 发证日期
      */
     private Date issueDate;
 
     /**
-     *
+     * 年检到期日
      */
     private Date repairCheckDate;
 
     /**
-     *
+     * 软删
      */
     private String deltag;
 
@@ -89,7 +92,7 @@ public class BasicInfo {
     private String imei;
 
     /**
-     *
+     * 公司id
      */
     private String companyid;
 
@@ -235,5 +238,37 @@ public class BasicInfo {
 
     public void setCompanyid(String companyid) {
         this.companyid = companyid == null ? null : companyid.trim();
+    }
+
+    public List<InsuranceInfo> getInsuranceInfos() {
+        return insuranceInfos;
+    }
+
+    public void setInsuranceInfos(List<InsuranceInfo> insuranceInfos) {
+        this.insuranceInfos = insuranceInfos;
+    }
+    @Override
+    public String toString() {
+        return "BasicInfo{" +
+                "insuranceInfos=" + insuranceInfos +
+                ", id='" + id + '\'' +
+                ", customer='" + customer + '\'' +
+                ", factory='" + factory + '\'' +
+                ", plateNo='" + plateNo + '\'' +
+                ", vin='" + vin + '\'' +
+                ", engineNo='" + engineNo + '\'' +
+                ", vehicle='" + vehicle + '\'' +
+                ", useCharacter='" + useCharacter + '\'' +
+                ", owner='" + owner + '\'' +
+                ", address='" + address + '\'' +
+                ", model='" + model + '\'' +
+                ", powerType='" + powerType + '\'' +
+                ", regDate=" + regDate +
+                ", issueDate=" + issueDate +
+                ", repairCheckDate=" + repairCheckDate +
+                ", deltag='" + deltag + '\'' +
+                ", imei='" + imei + '\'' +
+                ", companyid='" + companyid + '\'' +
+                '}';
     }
 }

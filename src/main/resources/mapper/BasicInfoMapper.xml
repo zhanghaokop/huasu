@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.huashu.huashuManager.mapper.BasicInfoMapper">
   <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.BasicInfo">
-    <id column="id" jdbcType="VARCHAR" property="id" />
+    <id column="t.id" jdbcType="VARCHAR" property="id" />
     <result column="customer" jdbcType="VARCHAR" property="customer" />
     <result column="factory" jdbcType="VARCHAR" property="factory" />
     <result column="plate_no" jdbcType="VARCHAR" property="plateNo" />
@@ -20,6 +20,12 @@
     <result column="deltag" jdbcType="VARCHAR" property="deltag" />
     <result column="IMEI" jdbcType="VARCHAR" property="imei" />
     <result column="companyId" jdbcType="VARCHAR" property="companyid" />
+    <collection property="insuranceInfos" ofType="com.huashu.huashuManager.model.InsuranceInfo">
+      <result column="comp_ins_start" jdbcType="VARCHAR" property="comp_ins_start"/>
+      <result column="comp_ins_end" jdbcType="VARCHAR" property="comp_ins_end"/>
+      <result column="busi_ins_start" jdbcType="VARCHAR" property="busi_ins_start"/>
+      <result column="busi_ins_end" jdbcType="VARCHAR" property="busi_ins_end"/>
+    </collection>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from basic_info
@@ -63,10 +69,11 @@
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select id, customer, factory, plate_no, vin, engine_no, vehicle, use_character, owner, 
-    address, model, power_type, reg_date, issue_date, repair_check_date, deltag, IMEI, 
-    companyId
-    from basic_info
+     select t.id, t.customer, t.factory, t.plate_no, t.vin, t.engine_no, t.vehicle, t.use_character, t.owner,
+    t.address, t.model, t.power_type,t.reg_date, t.issue_date, t.repair_check_date, t.deltag, t.IMEI,
+    t.companyId , k.comp_ins_start,k.comp_ins_end,k.busi_ins_start,k.busi_ins_end
+    from basic_info t
+    LEFT JOIN insurance_info k ON t.plate_no = k.plate_no
     where id = #{id,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
@@ -74,5 +81,23 @@
     address, model, power_type, reg_date, issue_date, repair_check_date, deltag, IMEI, 
     companyId
     from basic_info
+  </select>
+
+  <select id="pageListBasic" parameterType="com.huashu.huashuManager.model.BasicInfo" resultMap="BaseResultMap">
+    select t.id, t.customer, t.factory, t.plate_no, t.vin, t.engine_no, t.vehicle, t.use_character, t.owner,
+    t.address, t.model, t.power_type,t.reg_date, t.issue_date, t.repair_check_date, t.deltag, t.IMEI,
+    t.companyId , k.comp_ins_start,k.comp_ins_end,k.busi_ins_start,k.busi_ins_end
+    from basic_info t
+    LEFT JOIN insurance_info k ON t.plate_no = k.plate_no
+    where 1=1
+    <if test="plate_no!=null and plate_no!=''">
+      and plate_no=#{plate_no,jdbcType=VARCHAR}
+    </if>
+    <if test="companyId!=null and companyId!=''">
+      and companyId=#{companyId,jdbcType=VARCHAR}
+    </if>
+    <if test="customer!=null and customer!=''">
+      and customer=#{customer,jdbcType=VARCHAR}
+    </if>
   </select>
 </mapper>

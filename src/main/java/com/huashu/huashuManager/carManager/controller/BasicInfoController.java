@@ -1,0 +1,58 @@
+package com.huashu.huashuManager.carManager.controller;
+
+import com.huashu.huashuManager.carManager.service.BasicService;
+import com.huashu.huashuManager.common.bo.ResponseEntity;
+import com.huashu.huashuManager.model.BasicInfo;
+import com.huashu.huashuManager.model.DriverInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+/**
+ * 系统名称: U-OBS-web
+ * 系统版本：V5.0.2.0
+ * 模块名称:
+ * 类  名  称: BasicInfoController.java
+ * 功能说明：
+ * 开发人员: kky
+ * 开发时间: 2018/3/3 16:01
+ * 审核人员:
+ * 相关文档:
+ * 修改记录: 修改日期 修改人员 修改说明
+ */
+@RestController
+@RequestMapping("car")
+public class BasicInfoController {
+
+    @Autowired
+    private BasicService basicService;
+
+    @PostMapping("getCarByPage")
+    public ResponseEntity<List<BasicInfo>> getCarByPage(@RequestBody BasicInfo basicInfo){
+        return new ResponseEntity.Builder<List<BasicInfo>>().setData(basicService.pageListBasic(basicInfo)).build();
+    }
+
+    @GetMapping("getCar")
+    public ResponseEntity<BasicInfo> getCar(@PathVariable String basicInfoId){
+        return new ResponseEntity.Builder<BasicInfo>().setData(basicService.selectByPrimaryKey(basicInfoId)).build();
+    }
+
+    @GetMapping("deleteCar")
+    public  ResponseEntity<String> deleteCar (@PathVariable String basicInfoId){
+        basicService.deleteByPrimaryKey(basicInfoId);
+        return new ResponseEntity.Builder<String>().build();
+    }
+
+    @PostMapping("insertBasicInfo")
+    public  ResponseEntity<String> insertBasicInfo (@RequestBody BasicInfo basicInfo){
+        basicService.insert(basicInfo);
+        return new ResponseEntity.Builder<String>().build();
+    }
+
+    @PostMapping("updateBasicInfo")
+    public ResponseEntity<String> updateBasicInfo(@RequestBody BasicInfo basicInfo){
+        basicService.updateByPrimaryKey(basicInfo);
+        return new ResponseEntity.Builder<String>().build();
+    }
+}
