@@ -10,6 +10,10 @@ public interface DriverInfoMapper {
 
     DriverInfo selectByPrimaryKey(String id);
 
+    List<DriverInfo> selectDriver(DriverInfo record);
+
+    List<DriverInfo> pageSelect(DriverInfo record);
+
     List<DriverInfo> selectAll();
 
     int updateByPrimaryKey(DriverInfo record);

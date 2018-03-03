@@ -2,31 +2,73 @@ package com.huashu.huashuManager.model;
 
 import java.util.Date;
 
+/**
+ * 驾驶员信息实体类
+ */
 public class DriverInfo {
+    /**
+     * 驾驶员ID，主键
+     */
     private String id;
 
+    /**
+     * 驾驶员姓名
+     */
     private String name;
 
+    /**
+     * 电话
+     */
     private String phone;
 
+    /**
+     * 性别
+     */
     private String sex;
 
+    /**
+     * 车牌号  //TODO 关联
+     */
     private String plateNo;
 
+    /**
+     * 客户公司名字
+     */
     private String company;
 
+    /**
+     * 驾照类型
+     */
     private String driveType;
 
+    /**
+     * 常住地址
+     */
     private String address;
 
+    /**
+     * 生日
+     */
     private Date birth;
 
+    /**
+     * 名族
+     */
     private String nation;
 
+    /**
+     * 是否在职
+     */
     private Integer onJob;
 
+    /**
+     * 是否删除
+     */
     private String deltag;
 
+    /**
+     * 所属关联客户公司Id
+     */
     private String companyid;
 
     public String getId() {

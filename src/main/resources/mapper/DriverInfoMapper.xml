@@ -14,7 +14,7 @@
     <result column="nation" jdbcType="VARCHAR" property="nation" />
     <result column="on_job" jdbcType="INTEGER" property="onJob" />
     <result column="deltag" jdbcType="VARCHAR" property="deltag" />
-    <result column="companyId" jdbcType="VARCHAR" property="companyid" />
+    <result column="companyid" jdbcType="VARCHAR" property="companyid" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from driver_info
@@ -25,7 +25,7 @@
       sex, plate_no, company, 
       drive_type, address, birth, 
       nation, on_job, deltag, 
-      companyId)
+      companyid)
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{sex,jdbcType=VARCHAR}, #{plateNo,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, 
       #{driveType,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{birth,jdbcType=DATE}, 
@@ -45,18 +45,57 @@
       nation = #{nation,jdbcType=VARCHAR},
       on_job = #{onJob,jdbcType=INTEGER},
       deltag = #{deltag,jdbcType=VARCHAR},
-      companyId = #{companyid,jdbcType=VARCHAR}
+      companyid = #{companyid,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select id, name, phone, sex, plate_no, company, drive_type, address, birth, nation, 
-    on_job, deltag, companyId
+    on_job, deltag, companyid
     from driver_info
     where id = #{id,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, name, phone, sex, plate_no, company, drive_type, address, birth, nation, 
-    on_job, deltag, companyId
+    on_job, deltag, companyid
     from driver_info
   </select>
+  <select id="pageSelect" resultMap="BaseResultMap" parameterType="com.huashu.huashuManager.model.DriverInfo">
+    select id, name, phone, sex, plate_no, company, drive_type, address, birth, nation,
+    on_job, deltag, companyid
+    from driver_info WHERE 1=1
+    <if test="name != null and name !=''">
+      and name = #{name,jdbcType=VARCHAR}
+    </if>
+    <if test="phone != null and phone !=''">
+      and phone = #{phone,jdbcType=VARCHAR}
+    </if>
+    <if test="plateNo != null and plateNo !=''">
+      and plateNo = #{plateNo,jdbcType=VARCHAR}
+    </if>
+    <if test="companyid!=null and companyid !=''">
+      and companyid = #{companyid,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+  <select id="selectDriver" resultMap="BaseResultMap" parameterType="com.huashu.huashuManager.model.DriverInfo">
+    select id, name, phone, sex, plate_no, company, drive_type, address, birth, nation,
+    on_job, deltag, companyid
+    from driver_info WHERE 1=1
+    <if test="name != null and name !=''">
+      and name LIKE CONCAT(CONCAT('%',#{name,jdbcType=VARCHAR}),'%')
+    </if>
+    <if test="phone != null and phone !=''">
+      and phone LIKE CONCAT(CONCAT('%',#{phone,jdbcType=VARCHAR}),'%')
+    </if>
+    <if test="plateNo != null and plateNo !=''">
+      and plateNo LIKE CONCAT(CONCAT('%',#{plateNo,jdbcType=VARCHAR}),'%')
+    </if>
+    <if test="company!=null and company !=''">
+      and company LIKE CONCAT(CONCAT('%',#{company,jdbcType=VARCHAR}),'%')
+    </if>
+    <if test="companyid!=null and companyid !=''">
+      and companyid = #{companyid,jdbcType=VARCHAR}
+    </if>
+  </select>
+
 </mapper>

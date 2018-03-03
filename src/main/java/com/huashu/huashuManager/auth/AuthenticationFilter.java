@@ -2,6 +2,7 @@ package com.huashu.huashuManager.auth;
 
 import com.huashu.huashuManager.auth.ticket.model.Ticket;
 import com.huashu.huashuManager.auth.ticket.repository.TicketRepository;
+import com.huashu.huashuManager.common.bo.PageEntity;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
@@ -52,7 +53,13 @@ public class AuthenticationFilter implements Filter {
 
             Ticket ticket = ticketRepository.getTicket(token);
             if(ticket != null){
-                SessionStateHolder.set(ticket.getUser());
+
+                SessionState state = new SessionState();
+                state.setUser(ticket.getUser());
+
+                addPageInfoIfExist(state, request);
+
+                SessionStateHolder.set(state);
                 chain.doFilter(request, response);
                 return;
             }
@@ -62,6 +69,20 @@ public class AuthenticationFilter implements Filter {
         response.setStatus(401);
         response.setContentType("application/json;charset=UTF-8;");
         response.getWriter().write("{\"code\":401,\"msg\":\"用户未登录\",\"data\":{}}");
+
+    }
+
+    private void addPageInfoIfExist(SessionState state, HttpServletRequest request){
+        String pageSize = request.getParameter("pageSize");
+        String pageIndex = request.getParameter("pageIndex");
+
+        if (StringUtils.isNotBlank(pageSize) && StringUtils.isNotBlank(pageIndex)) {
+            PageEntity page = new PageEntity();
+            page.setPageIndex(Integer.parseInt(pageIndex));
+            page.setPageSize(Integer.parseInt(pageSize));
+            state.addAttr("pageEntity", page);
+        }
+
 
     }
 

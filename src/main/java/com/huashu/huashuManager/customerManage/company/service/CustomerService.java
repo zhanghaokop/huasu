@@ -1,4 +1,4 @@
-package com.huashu.huashuManager.customer.service;
+package com.huashu.huashuManager.customerManage.company.service;
 
 import com.huashu.huashuManager.model.Customers;
 
@@ -28,7 +28,7 @@ public interface CustomerService {
      * @param customer
      * @return
      */
-    List<Customers> listCustomers(Customers customer);
+    List<Customers> pageListCustomers(Customers customer);
 
     List<Customers> listAllCompanyAndID();
 

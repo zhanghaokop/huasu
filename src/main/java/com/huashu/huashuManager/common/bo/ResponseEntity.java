@@ -54,7 +54,7 @@ public class ResponseEntity<T> implements Serializable {
     }
 
     public static class Builder<T> {
-        private int code;
+        private int code = 200;
 
         private T data;
 

@@ -1,4 +1,4 @@
-package com.huashu.huashuManager.customer.service;
+package com.huashu.huashuManager.customerManage.company.service;
 
 import com.huashu.huashuManager.mapper.CustomersMapper;
 import com.huashu.huashuManager.model.Customers;
@@ -26,7 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Customers> listCustomers(Customers customer) {
+    public List<Customers> pageListCustomers(Customers customer) {
         return mapper.selectList(customer);
     }
 

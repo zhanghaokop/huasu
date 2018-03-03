@@ -1,9 +1,8 @@
-package com.huashu.huashuManager.customer.controller;
+package com.huashu.huashuManager.customerManage.company.controller;
 
-import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.bo.ResponseEntity;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
-import com.huashu.huashuManager.customer.service.CustomerService;
+import com.huashu.huashuManager.customerManage.company.service.CustomerService;
 import com.huashu.huashuManager.model.Customers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,15 +19,19 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+    @GetMapping("/{customerId}")
+    public ResponseEntity<Customers> getById(@PathVariable String customerId){
+        return new ResponseEntity.Builder<Customers>().setData(customerService.getCustomers(customerId)).build();
+    }
+
     /**
      * 分页批量查询客户
      * @param customers
-     * @param pageEntity
      * @return
      */
     @GetMapping("/list")
-    public ResponseEntity<List<Customers>> list(Customers customers, PageEntity pageEntity){
-        return new ResponseEntity.Builder<List<Customers>>().setData(customerService.listCustomers(customers)).setCode(200).build();
+    public ResponseEntity<List<Customers>> list(Customers customers){
+        return new ResponseEntity.Builder<List<Customers>>().setData(customerService.pageListCustomers(customers)).setCode(200).build();
     }
 
     @GetMapping("/listCompany")
