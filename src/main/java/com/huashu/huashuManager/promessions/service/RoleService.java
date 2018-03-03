@@ -18,4 +18,6 @@ public interface RoleService {
     int updateByPrimaryKey(Role record);
 
     List<Role> selectRoleDetail(Role role);
+
+    List<Role> pageListRole(Role role);
 }

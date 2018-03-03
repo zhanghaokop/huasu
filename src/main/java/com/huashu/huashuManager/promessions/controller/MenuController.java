@@ -24,6 +24,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("menu")
+//@Api(value = "UserInfo", description = "菜单资源信息 ")
 public class MenuController {
 
     @Autowired
@@ -35,7 +36,18 @@ public class MenuController {
      * @param menu
      * @return
      */
-    @GetMapping("getMenu")
+    @PostMapping("getMenu")
+    public ResponseEntity<List<Menu>> getMenu(@RequestBody Menu menu){
+        return new ResponseEntity.Builder<List<Menu>>()
+                .setCode(200).setData(menuService.getMenuByPage(menu)).build();
+    }
+
+    /**
+     * 获取资源分页
+     * @param menu
+     * @return
+     */
+    @PostMapping("getMenuByPage")
     public ResponseEntity<List<Menu>> getMenuByPage(@RequestBody Menu menu){
         return new ResponseEntity.Builder<List<Menu>>()
                 .setCode(200).setData(menuService.getMenuByPage(menu)).build();

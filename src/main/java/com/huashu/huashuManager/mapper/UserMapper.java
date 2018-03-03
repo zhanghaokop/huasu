@@ -18,5 +18,7 @@ public interface UserMapper {
 
     List<User> selectAll();
 
+    List<User> pageListUser(User user);
+
     int updateByPrimaryKey(User record);
 }

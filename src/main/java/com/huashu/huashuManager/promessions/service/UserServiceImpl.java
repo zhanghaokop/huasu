@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.promessions.service;
 
+import com.huashu.huashuManager.common.UtilConstants;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.mapper.UserMapper;
 import com.huashu.huashuManager.model.User;
@@ -22,6 +23,7 @@ import java.util.List;
  */
 @Service
 public class UserServiceImpl implements UserService {
+
 
     @Resource
     private UserMapper usermapper;
@@ -61,5 +63,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public User selectDetail(User user) {
         return usermapper.selectDetail(user);
+    }
+
+    @Override
+    public List<User> pageListUser(User user) {
+        return usermapper.pageListUser(user);
+    }
+
+    @Override
+    public void insertDefaultUser(String name) {
+        User user = new User();
+        user.setName(name);
+        user.setRoleid(UtilConstants.UserConstants.DEFAULT_FOLRID);
+        user.setPassword(UtilConstants.UserConstants.PASSWORD);
+        this.insert(user);
     }
 }

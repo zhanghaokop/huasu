@@ -7,14 +7,12 @@ public class Menu {
 
     private String name;
 
-    private String parentid;
-
     public String getMenuid() {
         return menuid;
     }
 
     public void setMenuid(String menuid) {
-        this.menuid = menuid == null ? null : menuid.trim();
+        this.menuid = menuid;
     }
 
     public String getUrl() {
@@ -22,7 +20,7 @@ public class Menu {
     }
 
     public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
+        this.url = url;
     }
 
     public String getName() {
@@ -30,7 +28,7 @@ public class Menu {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public String getParentid() {
@@ -38,6 +36,10 @@ public class Menu {
     }
 
     public void setParentid(String parentid) {
-        this.parentid = parentid == null ? null : parentid.trim();
+        this.parentid = parentid;
     }
+
+    private String parentid;
+
+
 }

@@ -7,6 +7,8 @@ import java.util.List;
 public interface MenuService {
     List<Menu> getMenuByPage(Menu menu);
 
+    List<Menu> pageListMenu(Menu menu);
+
     void updateMenu(Menu menu);
 
     void deleteMenu(String id);

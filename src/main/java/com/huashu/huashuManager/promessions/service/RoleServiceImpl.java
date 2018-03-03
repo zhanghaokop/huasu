@@ -9,6 +9,7 @@ import com.huashu.huashuManager.model.RoleMenu;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -44,16 +45,16 @@ public class RoleServiceImpl implements RoleService {
         return 0;
     }
 
-
+    @Transactional
     @Override
     public int insert(Role record) {
         String roleId=UUIDUtils.getUUID();
         record.setId(roleId);
         roleMapper.insert(record);
         if(!CollectionUtils.isEmpty(record.getMenus())){
-            RoleMenu roleMenu = null;
+            RoleMenu roleMenu = new RoleMenu();
             for(Menu menu : record.getMenus()){
-                roleMenu.setMenuid(roleId);
+                roleMenu.setRoleid(roleId);
                 roleMenu.setMenuid(menu.getMenuid());
                 roleMenuMapper.insert(roleMenu);
             }
@@ -76,13 +77,34 @@ public class RoleServiceImpl implements RoleService {
         return roleMapper.selectAll();
     }
 
+    /**
+     * 修改角色（包括他的权限）
+     * @param record
+     * @return
+     */
+    @Transactional
     @Override
     public int updateByPrimaryKey(Role record) {
-        return roleMapper.updateByPrimaryKey(record);
+        roleMapper.updateByPrimaryKey(record);
+        if(record.getMenus()!=null){
+            roleMenuMapper.deleteRoleMenu(record.getId());
+            RoleMenu roleMenu = new RoleMenu();
+            for(Menu menu : record.getMenus()){
+                roleMenu.setMenuid(menu.getMenuid());
+                roleMenu.setRoleid(record.getId());
+                roleMenuMapper.insert(roleMenu);
+            }
+        }
+        return 0;
     }
 
     @Override
     public List<Role> selectRoleDetail(Role role) {
+        return roleMapper.selectRoleDetail(role);
+    }
+
+    @Override
+    public List<Role> pageListRole(Role role) {
         return roleMapper.selectRoleDetail(role);
     }
 }

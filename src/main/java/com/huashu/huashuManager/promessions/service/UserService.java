@@ -19,4 +19,8 @@ public interface UserService {
     int updateByPrimaryKey(User record);
 
     User selectDetail (User user);
+
+    List<User> pageListUser(User user);
+
+    void insertDefaultUser(String name);
 }

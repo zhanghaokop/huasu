@@ -32,11 +32,15 @@
   <select id="selectAll" parameterType="com.huashu.huashuManager.model.Menu" resultMap="BaseResultMap">
     select MENUID, URL, NAME, PARENTID
     from menu where 1=1
-    <if test="menuId != null and menuId != ''">
-      and menuId=#{menuId}
+    <if test="menuid != null and menuid != ''">
+      and menuid = #{menuid,jdbcType=VARCHAR}
     </if>
-    <if test="menuId != null and menuId != ''">
-      and name =#{name}
-    </if>>
+    <if test="name != null and name != ''">
+      and name = #{name,jdbcType=VARCHAR}
+    </if>
+    <if test="url != null and url != ''">
+      and url = #{url,jdbcType=VARCHAR}
+    </if>
+
   </select>
 </mapper>

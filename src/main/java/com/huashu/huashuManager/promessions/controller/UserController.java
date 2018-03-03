@@ -30,7 +30,7 @@ public class UserController {
     private UserService userService;
 
     /**
-     * 获取用户信息
+     * 获取用户信息详情
      * @param user
      * @return
      */
@@ -38,6 +38,17 @@ public class UserController {
     public ResponseEntity<User> getUser(@RequestBody User user){
         return new ResponseEntity.Builder<User>()
                 .setCode(200).setData(userService.selectDetail(user)).build();
+    }
+
+    /**
+     * 分户分页查询
+     * @param user
+     * @return
+     */
+    @PostMapping("getUserByPage")
+    public ResponseEntity<List<User>> getUserByPage(@RequestBody User user){
+        return new ResponseEntity.Builder<List<User>>()
+                .setCode(200).setData(userService.pageListUser(user)).build();
     }
 
     /**

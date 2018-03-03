@@ -3,40 +3,94 @@ package com.huashu.huashuManager.model;
 import java.util.Date;
 
 public class BasicInfo {
+    /**
+     * 主键id
+     */
     private String id;
 
+    /**
+     * 客户名字所属公司
+     */
     private String customer;
 
+    /**
+     * 厂家
+     */
     private String factory;
 
+    /**
+     * 车牌号
+     */
     private String plateNo;
 
+    /**
+     *
+     */
     private String vin;
 
+    /**
+     *
+     */
     private String engineNo;
 
+    /**
+     *
+     */
     private String vehicle;
 
+    /**
+     *
+     */
     private String useCharacter;
 
+    /**
+     *
+     */
     private String owner;
 
+    /**
+     *
+     */
     private String address;
 
+    /**
+     *
+     */
     private String model;
 
+    /**
+     *
+     */
     private String powerType;
 
+    /**
+     *
+     */
     private Date regDate;
 
+    /**
+     *
+     */
     private Date issueDate;
 
+    /**
+     *
+     */
     private Date repairCheckDate;
 
+    /**
+     *
+     */
     private String deltag;
 
+    /**
+     *
+     */
     private String imei;
 
+    /**
+     *
+     */
     private String companyid;
 
     public String getId() {

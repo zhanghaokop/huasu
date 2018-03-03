@@ -18,6 +18,14 @@
         </association>
     </resultMap>
 
+    <sql id="userFactor">
+        <if test="name != null and name != ''">
+            and t.name = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="id != null and id != ''">
+            and t.id = #{id,jdbcType=VARCHAR}
+        </if>
+    </sql>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from user
@@ -42,7 +50,26 @@
     from user
     where id = #{id,jdbcType=VARCHAR}
   </select>
-
+    <select id="pageListUser" parameterType="com.huashu.huashuManager.model.User" resultMap="BaseResultMap">
+        SELECT
+        t.id as t_id,
+        t. NAME as t_name,
+        t. PASSWORD as t_password,
+        t. LEVEL as t_level,
+        m.menuId as m_menuId,
+        m.url as m_url,
+        m. NAME as m_menuName,
+        m.parentid as m_parentid,
+        r.id as r_id,
+        r.name as r_name
+        FROM
+        USER t
+        LEFT JOIN role_menu k ON t.roleId = k.roleId
+        LEFT JOIN menu m ON m.menuId = k.menuId
+        LEFT JOIN role r on t.roleId=r.id
+        where 1=1
+        <include refid="userFactor"></include>
+    </select>
     <select id="selectDetail" parameterType="com.huashu.huashuManager.model.User" resultMap="BaseResultMap">
    SELECT
 	t.id as t_id,
@@ -61,13 +88,7 @@
     LEFT JOIN menu m ON m.menuId = k.menuId
         LEFT JOIN role r on t.roleId=r.id
     where 1=1
-        <if test="name != null and name != ''">
-            and t.name = #{name,jdbcType=VARCHAR}
-        </if>
-        <if test="id != null and id != ''">
-            and t.id = #{id,jdbcType=VARCHAR}
-        </if>
-
+        <include refid="userFactor"></include>
   </select>
     <select id="selectAll" resultMap="BaseResultMap">
     select id, name, password, level, roleId

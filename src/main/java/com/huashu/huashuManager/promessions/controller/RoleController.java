@@ -46,6 +46,7 @@ public class RoleController {
                 .setCode(200).setData("success").build();
     }
 
+
     /**
      * 修改角色
      * @param role
@@ -79,6 +80,17 @@ public class RoleController {
      */
     @RequestMapping("selectRole")
     public ResponseEntity<List<Role>> selectRole(@RequestBody Role role){
+        return  new ResponseEntity.Builder<List<Role>>()
+                .setCode(200).setData(roleService.selectRoleDetail(role)).build();
+    }
+
+    /**
+     * 查看角色分页包含页面资源
+     * @param role
+     * @return
+     */
+    @RequestMapping("selectRoleByPage")
+    public ResponseEntity<List<Role>> selectRoleByPage(@RequestBody Role role){
         return  new ResponseEntity.Builder<List<Role>>()
                 .setCode(200).setData(roleService.selectRoleDetail(role)).build();
     }

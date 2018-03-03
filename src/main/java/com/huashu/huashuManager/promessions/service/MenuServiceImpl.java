@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.promessions.service;
 
+import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.mapper.MenuMapper;
 import com.huashu.huashuManager.model.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 系统名称: U-OBS-web
@@ -32,6 +34,11 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
+    public List<Menu> pageListMenu(Menu menu) {
+        return menuMapper.selectAll(menu);
+    }
+
+    @Override
     public void updateMenu(Menu menu) {
         menuMapper.updateByPrimaryKey(menu);
     }
@@ -43,6 +50,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public void insertMenu(Menu menu) {
+        menu.setMenuid(UUIDUtils.getUUID());
         menuMapper.insert(menu);
     }
 }
