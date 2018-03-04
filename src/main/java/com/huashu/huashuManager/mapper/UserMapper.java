@@ -16,7 +16,7 @@ public interface UserMapper {
 
     User select(User user);
 
-    List<User> selectAll();
+    List<User> selectAll(User user);
 
     List<User> pageListUser(User user);
 

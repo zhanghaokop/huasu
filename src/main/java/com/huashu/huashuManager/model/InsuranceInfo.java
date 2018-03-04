@@ -1,7 +1,5 @@
 package com.huashu.huashuManager.model;
 
-import java.util.Date;
-
 public class InsuranceInfo {
     private String id;
 
@@ -19,17 +17,17 @@ public class InsuranceInfo {
 
     private Integer compInsMoney;
 
-    private Date compInsStart;
+    private String compInsStart;
 
-    private Date compInsEnd;
+    private String compInsEnd;
 
     private String busiInsNo;
 
     private Integer busiInsMoney;
 
-    private Date busiInsStart;
+    private String busiInsStart;
 
-    private Date busiInsEnd;
+    private String busiInsEnd;
 
     private Integer total;
 
@@ -101,21 +99,7 @@ public class InsuranceInfo {
         this.compInsMoney = compInsMoney;
     }
 
-    public Date getCompInsStart() {
-        return compInsStart;
-    }
 
-    public void setCompInsStart(Date compInsStart) {
-        this.compInsStart = compInsStart;
-    }
-
-    public Date getCompInsEnd() {
-        return compInsEnd;
-    }
-
-    public void setCompInsEnd(Date compInsEnd) {
-        this.compInsEnd = compInsEnd;
-    }
 
     public String getBusiInsNo() {
         return busiInsNo;
@@ -133,19 +117,35 @@ public class InsuranceInfo {
         this.busiInsMoney = busiInsMoney;
     }
 
-    public Date getBusiInsStart() {
+    public String getCompInsStart() {
+        return compInsStart;
+    }
+
+    public void setCompInsStart(String compInsStart) {
+        this.compInsStart = compInsStart;
+    }
+
+    public String getCompInsEnd() {
+        return compInsEnd;
+    }
+
+    public void setCompInsEnd(String compInsEnd) {
+        this.compInsEnd = compInsEnd;
+    }
+
+    public String getBusiInsStart() {
         return busiInsStart;
     }
 
-    public void setBusiInsStart(Date busiInsStart) {
+    public void setBusiInsStart(String busiInsStart) {
         this.busiInsStart = busiInsStart;
     }
 
-    public Date getBusiInsEnd() {
+    public String getBusiInsEnd() {
         return busiInsEnd;
     }
 
-    public void setBusiInsEnd(Date busiInsEnd) {
+    public void setBusiInsEnd(String busiInsEnd) {
         this.busiInsEnd = busiInsEnd;
     }
 

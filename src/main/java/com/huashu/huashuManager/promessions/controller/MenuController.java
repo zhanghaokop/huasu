@@ -39,7 +39,7 @@ public class MenuController {
     @PostMapping("getMenu")
     public ResponseEntity<List<Menu>> getMenu(@RequestBody Menu menu){
         return new ResponseEntity.Builder<List<Menu>>()
-                .setCode(200).setData(menuService.getMenuByPage(menu)).build();
+                .setCode(200).setData(menuService.getMenuList(menu)).build();
     }
 
     /**
@@ -50,7 +50,7 @@ public class MenuController {
     @PostMapping("getMenuByPage")
     public ResponseEntity<List<Menu>> getMenuByPage(@RequestBody Menu menu){
         return new ResponseEntity.Builder<List<Menu>>()
-                .setCode(200).setData(menuService.getMenuByPage(menu)).build();
+                .setCode(200).setData(menuService.pageListMenu(menu)).build();
     }
 
     /**

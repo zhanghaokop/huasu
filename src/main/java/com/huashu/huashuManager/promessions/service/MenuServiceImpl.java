@@ -5,6 +5,7 @@ import com.huashu.huashuManager.mapper.MenuMapper;
 import com.huashu.huashuManager.model.Menu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -28,26 +29,50 @@ public class MenuServiceImpl implements MenuService {
     @Resource
     private MenuMapper menuMapper;
 
+    /**
+     * 获取页面资源list
+     * @param menu
+     * @return
+     */
     @Override
-    public List<Menu> getMenuByPage(Menu menu) {
+    public List<Menu> getMenuList(Menu menu) {
         return menuMapper.selectAll(menu);
     }
 
+    /**
+     * 分页获取页面资源
+     * @param menu
+     * @return
+     */
     @Override
     public List<Menu> pageListMenu(Menu menu) {
         return menuMapper.selectAll(menu);
     }
 
+    /**
+     * 更新页面资源
+     * @param menu
+     */
     @Override
     public void updateMenu(Menu menu) {
+//        if(StringUtils.isEmpty(menu.getMenuid());
+//            throws new Exception("更新页面资源时id为空");
         menuMapper.updateByPrimaryKey(menu);
     }
 
+    /**
+     * 删除页面资源
+     * @param id
+     */
     @Override
     public void deleteMenu(String id) {
         menuMapper.deleteByPrimaryKey(id);
     }
 
+    /**
+     * 新增页面资源
+     * @param menu
+     */
     @Override
     public void insertMenu(Menu menu) {
         menu.setMenuid(UUIDUtils.getUUID());

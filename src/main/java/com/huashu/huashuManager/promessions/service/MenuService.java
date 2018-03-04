@@ -5,7 +5,7 @@ import com.huashu.huashuManager.model.Menu;
 import java.util.List;
 
 public interface MenuService {
-    List<Menu> getMenuByPage(Menu menu);
+    List<Menu> getMenuList(Menu menu);
 
     List<Menu> pageListMenu(Menu menu);
 

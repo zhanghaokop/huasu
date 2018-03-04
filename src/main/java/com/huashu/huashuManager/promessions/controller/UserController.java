@@ -40,8 +40,13 @@ public class UserController {
                 .setCode(200).setData(userService.selectDetail(user)).build();
     }
 
+    @PostMapping("getUserList")
+    public ResponseEntity<List<User>> getUserList(@RequestBody User user){
+        return new ResponseEntity.Builder<List<User>>().setData(userService.selectAll(user)).build();
+    }
+
     /**
-     * 分户分页查询
+     * 用户分页查询
      * @param user
      * @return
      */
@@ -75,6 +80,11 @@ public class UserController {
                 .setCode(200).setData("success").build();
     }
 
+    /**
+     * 新增用户
+     * @param user
+     * @return
+     */
     @PostMapping("insertUser")
     public ResponseEntity<String> insertUser(@RequestBody User user){
 

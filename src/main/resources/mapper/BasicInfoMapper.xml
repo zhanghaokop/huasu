@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.huashu.huashuManager.mapper.BasicInfoMapper">
   <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.BasicInfo">
-    <id column="t.id" jdbcType="VARCHAR" property="id" />
+    <result column="id" jdbcType="VARCHAR" property="id" />
     <result column="customer" jdbcType="VARCHAR" property="customer" />
     <result column="factory" jdbcType="VARCHAR" property="factory" />
     <result column="plate_no" jdbcType="VARCHAR" property="plateNo" />
@@ -14,17 +14,17 @@
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="model" jdbcType="VARCHAR" property="model" />
     <result column="power_type" jdbcType="VARCHAR" property="powerType" />
-    <result column="reg_date" jdbcType="DATE" property="regDate" />
-    <result column="issue_date" jdbcType="DATE" property="issueDate" />
+    <result column="reg_date" jdbcType="VARCHAR" property="regDate" />
+    <result column="issue_date" jdbcType="VARCHAR" property="issueDate" />
     <result column="repair_check_date" jdbcType="DATE" property="repairCheckDate" />
     <result column="deltag" jdbcType="VARCHAR" property="deltag" />
     <result column="IMEI" jdbcType="VARCHAR" property="imei" />
     <result column="companyId" jdbcType="VARCHAR" property="companyid" />
     <collection property="insuranceInfos" ofType="com.huashu.huashuManager.model.InsuranceInfo">
-      <result column="comp_ins_start" jdbcType="VARCHAR" property="comp_ins_start"/>
-      <result column="comp_ins_end" jdbcType="VARCHAR" property="comp_ins_end"/>
-      <result column="busi_ins_start" jdbcType="VARCHAR" property="busi_ins_start"/>
-      <result column="busi_ins_end" jdbcType="VARCHAR" property="busi_ins_end"/>
+      <result column="comp_ins_start" jdbcType="VARCHAR" property="compInsStart"/>
+      <result column="comp_ins_end" jdbcType="VARCHAR" property="compInsEnd"/>
+      <result column="busi_ins_start" jdbcType="VARCHAR" property="busiInsStart"/>
+      <result column="busi_ins_end" jdbcType="VARCHAR" property="busiInsEnd"/>
     </collection>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
@@ -74,7 +74,7 @@
     t.companyId , k.comp_ins_start,k.comp_ins_end,k.busi_ins_start,k.busi_ins_end
     from basic_info t
     LEFT JOIN insurance_info k ON t.plate_no = k.plate_no
-    where id = #{id,jdbcType=VARCHAR}
+    where t.id = #{id,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, customer, factory, plate_no, vin, engine_no, vehicle, use_character, owner, 
@@ -90,14 +90,17 @@
     from basic_info t
     LEFT JOIN insurance_info k ON t.plate_no = k.plate_no
     where 1=1
-    <if test="plate_no!=null and plate_no!=''">
-      and plate_no=#{plate_no,jdbcType=VARCHAR}
+    <if test="plateNo!=null and plateNo!=''">
+      and plateNo=#{plateNo,jdbcType=VARCHAR}
     </if>
-    <if test="companyId!=null and companyId!=''">
-      and companyId=#{companyId,jdbcType=VARCHAR}
+    <if test="companyid!=null and companyId!=''">
+      and companyid=#{companyid,jdbcType=VARCHAR}
     </if>
     <if test="customer!=null and customer!=''">
       and customer=#{customer,jdbcType=VARCHAR}
+    </if>
+    <if test="customer!=null and customer!=''">
+      and customer LIKE "%"#{customer,jdbcType=VARCHAR}"%"
     </if>
   </select>
 </mapper>

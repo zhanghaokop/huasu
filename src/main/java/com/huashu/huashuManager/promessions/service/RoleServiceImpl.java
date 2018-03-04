@@ -45,6 +45,11 @@ public class RoleServiceImpl implements RoleService {
         return 0;
     }
 
+    /**
+     * 新增角色
+     * @param record
+     * @return
+     */
     @Transactional
     @Override
     public int insert(Role record) {

@@ -28,28 +28,53 @@ public class BasicInfoController {
     @Autowired
     private BasicService basicService;
 
+    /**
+     * 分页获取汽车基本信息
+     * @param basicInfo
+     * @return
+     */
     @PostMapping("getCarByPage")
     public ResponseEntity<List<BasicInfo>> getCarByPage(@RequestBody BasicInfo basicInfo){
         return new ResponseEntity.Builder<List<BasicInfo>>().setData(basicService.pageListBasic(basicInfo)).build();
     }
 
-    @GetMapping("getCar")
-    public ResponseEntity<BasicInfo> getCar(@PathVariable String basicInfoId){
+    /**
+     * 获取车辆详情
+     * @param basicInfoId
+     * @return
+     */
+    @GetMapping("getCar/{basicInfoId}")
+        public ResponseEntity<BasicInfo> getCar(@PathVariable String basicInfoId){
         return new ResponseEntity.Builder<BasicInfo>().setData(basicService.selectByPrimaryKey(basicInfoId)).build();
     }
 
-    @GetMapping("deleteCar")
+    /**
+     * 删除车辆信息
+     * @param basicInfoId
+     * @return
+     */
+    @GetMapping("deleteCar/{basicInfoId}")
     public  ResponseEntity<String> deleteCar (@PathVariable String basicInfoId){
         basicService.deleteByPrimaryKey(basicInfoId);
         return new ResponseEntity.Builder<String>().build();
     }
 
+    /**
+     * 新增车辆信息
+     * @param basicInfo
+     * @return
+     */
     @PostMapping("insertBasicInfo")
     public  ResponseEntity<String> insertBasicInfo (@RequestBody BasicInfo basicInfo){
         basicService.insert(basicInfo);
         return new ResponseEntity.Builder<String>().build();
     }
 
+    /**
+     * 更新车辆信息
+     * @param basicInfo
+     * @return
+     */
     @PostMapping("updateBasicInfo")
     public ResponseEntity<String> updateBasicInfo(@RequestBody BasicInfo basicInfo){
         basicService.updateByPrimaryKey(basicInfo);

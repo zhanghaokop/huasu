@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.carManager.service;
 
+import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.mapper.BasicInfoMapper;
 import com.huashu.huashuManager.model.BasicInfo;
 import org.springframework.stereotype.Service;
@@ -33,6 +34,7 @@ public class BasicServiceImpl implements BasicService{
 
     @Override
     public void insert(BasicInfo record) {
+        record.setId(UUIDUtils.getUUID());
         basicInfoMapper.insert(record);
     }
 

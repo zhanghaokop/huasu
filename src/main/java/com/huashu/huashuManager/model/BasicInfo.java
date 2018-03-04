@@ -74,12 +74,12 @@ public class BasicInfo {
     /**
      * 发证日期
      */
-    private Date issueDate;
+    private String issueDate;
 
     /**
      * 年检到期日
      */
-    private Date repairCheckDate;
+    private String repairCheckDate;
 
     /**
      * 软删
@@ -200,19 +200,19 @@ public class BasicInfo {
         this.regDate = regDate;
     }
 
-    public Date getIssueDate() {
+    public String getIssueDate() {
         return issueDate;
     }
 
-    public void setIssueDate(Date issueDate) {
+    public void setIssueDate(String issueDate) {
         this.issueDate = issueDate;
     }
 
-    public Date getRepairCheckDate() {
+    public String getRepairCheckDate() {
         return repairCheckDate;
     }
 
-    public void setRepairCheckDate(Date repairCheckDate) {
+    public void setRepairCheckDate(String repairCheckDate) {
         this.repairCheckDate = repairCheckDate;
     }
 

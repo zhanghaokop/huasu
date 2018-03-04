@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.huashu.huashuManager.mapper.InsuranceInfoMapper">
   <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.InsuranceInfo">
-    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="id" jdbcType="VARCHAR" property="id" />
     <result column="plate_no" jdbcType="VARCHAR" property="plateNo" />
     <result column="insurance_no" jdbcType="VARCHAR" property="insuranceNo" />
     <result column="insurance_company" jdbcType="VARCHAR" property="insuranceCompany" />
@@ -10,16 +10,25 @@
     <result column="insurance_person_tel" jdbcType="VARCHAR" property="insurancePersonTel" />
     <result column="comp_ins_no" jdbcType="VARCHAR" property="compInsNo" />
     <result column="comp_ins_money" jdbcType="INTEGER" property="compInsMoney" />
-    <result column="comp_ins_start" jdbcType="DATE" property="compInsStart" />
-    <result column="comp_ins_end" jdbcType="DATE" property="compInsEnd" />
+    <result column="comp_ins_start" jdbcType="VARCHAR" property="compInsStart" />
+    <result column="comp_ins_end" jdbcType="VARCHAR" property="compInsEnd" />
     <result column="busi_ins_no" jdbcType="VARCHAR" property="busiInsNo" />
     <result column="busi_ins_money" jdbcType="INTEGER" property="busiInsMoney" />
-    <result column="busi_ins_start" jdbcType="DATE" property="busiInsStart" />
-    <result column="busi_ins_end" jdbcType="DATE" property="busiInsEnd" />
+    <result column="busi_ins_start" jdbcType="VARCHAR" property="busiInsStart" />
+    <result column="busi_ins_end" jdbcType="VARCHAR" property="busiInsEnd" />
     <result column="total" jdbcType="INTEGER" property="total" />
     <result column="deltag" jdbcType="VARCHAR" property="deltag" />
     <result column="companyId" jdbcType="VARCHAR" property="companyid" />
   </resultMap>
+
+  <sql id="insInfoFactor">
+    <if test="id!=null and id!=''">
+      and id=#{id,jdbcType=VARCHAR}
+    </if>
+    <if test="plateNo!=null and plateNo!=''">
+      and plateNo=#{plateNo,jdbcType=VARCHAR}
+    </if>
+  </sql>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from insurance_info
     where id = #{id,jdbcType=VARCHAR}
@@ -47,12 +56,12 @@
       insurance_person_tel = #{insurancePersonTel,jdbcType=VARCHAR},
       comp_ins_no = #{compInsNo,jdbcType=VARCHAR},
       comp_ins_money = #{compInsMoney,jdbcType=INTEGER},
-      comp_ins_start = #{compInsStart,jdbcType=DATE},
-      comp_ins_end = #{compInsEnd,jdbcType=DATE},
+      comp_ins_start = #{compInsStart,jdbcType=VARCHAR},
+      comp_ins_end = #{compInsEnd,jdbcType=VARCHAR},
       busi_ins_no = #{busiInsNo,jdbcType=VARCHAR},
       busi_ins_money = #{busiInsMoney,jdbcType=INTEGER},
-      busi_ins_start = #{busiInsStart,jdbcType=DATE},
-      busi_ins_end = #{busiInsEnd,jdbcType=DATE},
+      busi_ins_start = #{busiInsStart,jdbcType=VARCHAR},
+      busi_ins_end = #{busiInsEnd,jdbcType=VARCHAR},
       total = #{total,jdbcType=INTEGER},
       deltag = #{deltag,jdbcType=VARCHAR},
       companyId = #{companyid,jdbcType=VARCHAR}
@@ -70,5 +79,7 @@
     comp_ins_no, comp_ins_money, comp_ins_start, comp_ins_end, busi_ins_no, busi_ins_money, 
     busi_ins_start, busi_ins_end, total, deltag, companyId
     from insurance_info
+    where 1=1
+    <include refid="insInfoFactor" ></include>
   </select>
 </mapper>

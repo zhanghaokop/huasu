@@ -10,7 +10,7 @@ public interface InsuranceInfoMapper {
 
     InsuranceInfo selectByPrimaryKey(String id);
 
-    List<InsuranceInfo> selectAll();
+    List<InsuranceInfo> selectAll(InsuranceInfo insuranceInfo);
 
     int updateByPrimaryKey(InsuranceInfo record);
 }
