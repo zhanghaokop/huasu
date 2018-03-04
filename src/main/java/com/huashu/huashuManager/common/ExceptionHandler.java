@@ -34,7 +34,7 @@ public class ExceptionHandler implements HandlerExceptionResolver {
 
     @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-
+        ex.printStackTrace();
         ModelAndView mav = new ModelAndView(jsonErrorView);
         String err = ex.getMessage();
         if (StringUtils.isBlank(err)) {

@@ -2,6 +2,9 @@ package com.huashu.huashuManager.auth;
 
 import com.huashu.huashuManager.model.User;
 
+/**
+ * 用户登录状态保持
+ */
 public class SessionStateHolder {
 
     private static ThreadLocal<SessionState> holder = new ThreadLocal<>();
@@ -17,5 +20,13 @@ public class SessionStateHolder {
     public static User getUser(){
         SessionState state = get();
         return state == null ? null : state.getUser();
+    }
+
+    public static void clear(){
+        SessionState older = get();
+        if (older != null) {
+            older.clearAttr();
+        }
+        holder.remove();
     }
 }

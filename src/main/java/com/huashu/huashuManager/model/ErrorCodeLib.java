@@ -1,20 +1,48 @@
 package com.huashu.huashuManager.model;
 
+/**
+ * 故障代码实体类
+ */
 public class ErrorCodeLib {
+
+    /**
+     * 故障代码主键ID
+     */
     private String id;
 
+    /**
+     * 图标编码
+     */
     private String album;
 
+    /**
+     * 故障编码
+     */
     private String code;
 
+    /**
+     * 错误代码（具体错误信息）
+     */
     private String errorCode;
 
+    /**
+     * 适用车型
+     */
     private String type;
 
+    /**
+     * 是否删除
+     */
     private String deltag;
 
+    /**
+     * 故障分析
+     */
     private String analysis;
 
+    /**
+     * 解决方案
+     */
     private String plan;
 
     public String getId() {

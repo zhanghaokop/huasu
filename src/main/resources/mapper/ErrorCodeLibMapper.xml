@@ -43,4 +43,25 @@
     select id, album, code, error_code, type, deltag, analysis, plan
     from error_code_lib
   </select>
+
+
+  <select id="pageSelect" resultMap="BaseResultMap" parameterType="com.huashu.huashuManager.model.ErrorCodeLib">
+    select id, album, code, error_code, type, deltag, analysis, plan
+    from error_code_lib where 1=1
+    <if test="code != null and code != ''">
+        and code like CONCAT(CONCAT('%',#{code,jdbcType=VARCHAR}),'%')
+    </if>
+    <if test="errorCode != null and errorCode != ''">
+      and error_code like CONCAT(CONCAT('%',#{errorCode,jdbcType=VARCHAR}),'%')
+    </if>
+    <if test="type != null and type != ''">
+      and type like CONCAT(CONCAT('%',#{type,jdbcType=VARCHAR}),'%')
+    </if>
+    <if test="analysis != null and analysis != ''">
+      and analysis like CONCAT(CONCAT('%',#{analysis,jdbcType=VARCHAR}),'%')
+    </if>
+    <if test="plan != null and plan != ''">
+      and plan like CONCAT(CONCAT('%',#{plan,jdbcType=VARCHAR}),'%')
+    </if>
+  </select>
 </mapper>

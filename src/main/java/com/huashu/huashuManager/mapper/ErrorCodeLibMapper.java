@@ -12,5 +12,7 @@ public interface ErrorCodeLibMapper {
 
     List<ErrorCodeLib> selectAll();
 
+    List<ErrorCodeLib> pageSelect(ErrorCodeLib errorCode);
+
     int updateByPrimaryKey(ErrorCodeLib record);
 }

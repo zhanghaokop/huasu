@@ -2,31 +2,71 @@ package com.huashu.huashuManager.model;
 
 import java.util.Date;
 
+/**
+ * 会员信息实体类
+ */
 public class Member {
+    /**
+     * 会员主键ID
+     */
     private String id;
 
+    /**
+     * 会员名称
+     */
     private String name;
 
+    /**
+     * 电话号码
+     */
     private String phone;
 
+    /**
+     * 性别
+     */
     private String sex;
 
+    /**
+     * 驾照类型
+     */
     private String drivingType;
 
+    /**
+     * 生日
+     */
     private Date birth;
 
+    /**
+     * 会员所属公司名称
+     */
     private String company;
 
+    /**
+     * 常住地址
+     */
     private String address;
+
 
     private String album;
 
+    /**
+     * 微信openId？
+     */
     private String openId;
 
+    /**
+     * 提交时间
+     */
     private Date submitTime;
 
+    /**
+     * 权限等级
+     */
     private String level;
 
+    /**
+     * 积分
+     */
     private Integer score;
 
     public String getId() {

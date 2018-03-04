@@ -85,4 +85,14 @@
     repair_end_time, star, evaluate, finish_time, finished, album
     from repair_info
   </select>
+
+  <select id="pageSelect" resultMap="BaseResultMap" parameterType="com.huashu.huashuManager.model.RepairInfo">
+    select id, repair_no, open_id, plate_no, sub_company, error_code, description, submit_time,
+    status, lng, lat, isdel, assignStation, actualStation, repair_start_time, repair_solution,
+    repair_end_time, star, evaluate, finish_time, finished, album
+    from repair_info WHERE 1=1
+    <if test="plateNo != null and plateNo != ''">
+      and plate_no like CONCAT(CONCAT("%",#{plateNo,jdbcType=VARCHAR}),"%")
+    </if>
+  </select>
 </mapper>

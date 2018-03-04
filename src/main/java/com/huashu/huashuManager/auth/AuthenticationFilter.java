@@ -8,20 +8,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 /**
  * 登录权限校验过滤器
  */
-@WebFilter(urlPatterns = "/*")
 public class AuthenticationFilter implements Filter {
 
     @Autowired
     private TicketRepository ticketRepository;
+
+    private Pattern ignorePath = Pattern.compile("auth/login|swagger|v2/api-docs");
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -41,12 +41,16 @@ public class AuthenticationFilter implements Filter {
 
         String uri = request.getRequestURI();
 
-        if (uri.contains("auth/login")) {
+        if (shouldSkip(request, uri)) {
             chain.doFilter(request, response);
             return;
         }
 
         String token = request.getHeader("token");
+
+        if (StringUtils.isBlank(token)) {
+            token = request.getParameter("token");
+        }
 
         if (StringUtils.isNotBlank(token)) {
             //校验token
@@ -60,8 +64,12 @@ public class AuthenticationFilter implements Filter {
                 addPageInfoIfExist(state, request);
 
                 SessionStateHolder.set(state);
-                chain.doFilter(request, response);
-                return;
+                try {
+                    chain.doFilter(request, response);
+                    return;
+                } finally {
+                    SessionStateHolder.clear();
+                }
             }
         }
 
@@ -70,6 +78,10 @@ public class AuthenticationFilter implements Filter {
         response.setContentType("application/json;charset=UTF-8;");
         response.getWriter().write("{\"code\":401,\"msg\":\"用户未登录\",\"data\":{}}");
 
+    }
+
+    private boolean shouldSkip(HttpServletRequest request, String uri){
+        return ignorePath.matcher(uri).find();
     }
 
     private void addPageInfoIfExist(SessionState state, HttpServletRequest request){
@@ -82,8 +94,6 @@ public class AuthenticationFilter implements Filter {
             page.setPageSize(Integer.parseInt(pageSize));
             state.addAttr("pageEntity", page);
         }
-
-
     }
 
     @Override

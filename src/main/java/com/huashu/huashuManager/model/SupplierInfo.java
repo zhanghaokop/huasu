@@ -1,28 +1,65 @@
 package com.huashu.huashuManager.model;
 
+/**
+ * 供应商实体类
+ */
 public class SupplierInfo {
+
+    /**
+     * 供应商主键Id
+     */
     private String id;
 
+    /**
+     * 供应商名称
+     */
     private String name;
 
+    /**
+     * 地址
+     */
     private String address;
 
+    /**
+     * 联系人
+     */
     private String person;
 
+    /**
+     * 联系电话-手机
+     */
     private String phone;
 
+    /**
+     * 备注
+     */
     private String rem;
 
+    /**
+     * 是否删除
+     */
     private String deltag;
 
+    /**
+     * 电话
+     */
     private String tel;
 
     private String tax;
 
+    /**
+     * 邮箱
+     */
     private String email;
 
+    /**
+     * 职位
+     */
     private String position;
 
+    /**
+     * 工作领域
+     */
     private String handle;
 
     private byte[] album;

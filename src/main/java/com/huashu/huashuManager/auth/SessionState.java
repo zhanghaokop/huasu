@@ -32,4 +32,8 @@ public class SessionState implements Serializable {
     public void addAttr(String key, Object value){
         attr.put(key, value);
     }
+
+    public void clearAttr(){
+        attr.clear();
+    }
 }

@@ -34,6 +34,10 @@ public class CustomerController {
         return new ResponseEntity.Builder<List<Customers>>().setData(customerService.pageListCustomers(customers)).build();
     }
 
+    /**
+     * 返回全部的公司客户集合 companyId ： companyName
+     * @return
+     */
     @GetMapping("/listCompany")
     public ResponseEntity<List<Customers>> listAllCustomers(){
         return new ResponseEntity.Builder<List<Customers>>().setData(customerService.listAllCompanyAndID()).build();
@@ -48,6 +52,8 @@ public class CustomerController {
         String id = UUIDUtils.getUUID();
         customers.setId(id);
         boolean flag = customerService.addCustomer(customers) > 0;
+
+        //TODO 新增成功后-> 同时生成公司客户的admin
         return new ResponseEntity.Builder<Boolean>().setData(flag).build();
     }
 

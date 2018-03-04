@@ -12,5 +12,7 @@ public interface RepairInfoMapper {
 
     List<RepairInfo> selectAll();
 
+    List<RepairInfo> pageSelect(RepairInfo record);
+
     int updateByPrimaryKey(RepairInfo record);
 }

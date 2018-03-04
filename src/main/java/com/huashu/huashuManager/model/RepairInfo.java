@@ -2,49 +2,118 @@ package com.huashu.huashuManager.model;
 
 import java.util.Date;
 
+/**
+ * 维修信息
+ */
 public class RepairInfo {
+
+    /**
+     * 维修信息主键Id
+     */
     private String id;
 
+    /**
+     * 维修单号
+     */
     private String repairNo;
 
+    /**
+     *
+     */
     private String openId;
 
+    /**
+     * 车牌号
+     */
     private String plateNo;
 
+    /**
+     * 提交公司名称
+     */
     private String subCompany;
 
+    /**
+     * 故障代码
+     */
     private String errorCode;
 
+    /**
+     * 故障描述
+     */
     private String description;
 
+    /**
+     * 提交时间
+     */
     private Date submitTime;
 
+    /**
+     * 状态
+     */
     private String status;
 
+    /**
+     * 坐标值
+     */
     private String lng;
 
+    /**
+     * 坐标值
+     */
     private String lat;
 
+    /**
+     * 是否删除
+     */
     private Integer isdel;
 
+    /**
+     * 指定维修点
+     */
     private String assignstation;
 
+    /**
+     * 实际维修点
+     */
     private String actualstation;
 
+    /**
+     * 开始维修时间
+     */
     private Date repairStartTime;
 
+    /**
+     * 维修结论
+     */
     private String repairSolution;
 
+    /**
+     * 维修结束时间
+     */
     private Date repairEndTime;
 
+    /**
+     * 星级
+     */
     private Integer star;
 
+    /**
+     * 评价
+     */
     private String evaluate;
 
+    /**
+     * 维修单完成时间
+     */
     private Date finishTime;
-
+    /**
+     * 是否完成
+     */
     private Integer finished;
 
+    /**
+     * 照片
+     */
     private String album;
 
     public String getId() {
