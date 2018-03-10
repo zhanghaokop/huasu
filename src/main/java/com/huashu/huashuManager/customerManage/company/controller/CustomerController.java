@@ -4,6 +4,7 @@ import com.huashu.huashuManager.common.bo.ResponseEntity;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.customerManage.company.service.CustomerService;
 import com.huashu.huashuManager.model.Customers;
+import com.huashu.huashuManager.promessions.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,8 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private UserService userService;
     @GetMapping("/{customerId}")
     public ResponseEntity<Customers> getById(@PathVariable String customerId){
         return new ResponseEntity.Builder<Customers>().setData(customerService.getCustomers(customerId)).build();
@@ -54,6 +57,7 @@ public class CustomerController {
         boolean flag = customerService.addCustomer(customers) > 0;
 
         //TODO 新增成功后-> 同时生成公司客户的admin
+        userService.insertDefaultUser(customers.getLegalPerson());
         return new ResponseEntity.Builder<Boolean>().setData(flag).build();
     }
 
