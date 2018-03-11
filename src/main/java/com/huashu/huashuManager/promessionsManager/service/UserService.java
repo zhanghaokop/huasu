@@ -1,4 +1,4 @@
-package com.huashu.huashuManager.promessions.service;
+package com.huashu.huashuManager.promessionsManager.service;
 
 import com.huashu.huashuManager.model.User;
 
@@ -22,5 +22,5 @@ public interface UserService {
 
     List<User> pageListUser(User user);
 
-    void insertDefaultUser(String name);
+    void insertDefaultUser(String name,String companyId);
 }

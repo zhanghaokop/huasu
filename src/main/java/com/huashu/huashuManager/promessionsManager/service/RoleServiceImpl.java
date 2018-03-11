@@ -1,4 +1,4 @@
-package com.huashu.huashuManager.promessions.service;
+package com.huashu.huashuManager.promessionsManager.service;
 
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.mapper.RoleMapper;
@@ -9,7 +9,6 @@ import com.huashu.huashuManager.model.RoleMenu;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;

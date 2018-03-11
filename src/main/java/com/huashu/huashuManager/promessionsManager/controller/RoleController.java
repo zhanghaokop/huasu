@@ -1,8 +1,8 @@
-package com.huashu.huashuManager.promessions.controller;
+package com.huashu.huashuManager.promessionsManager.controller;
 
 import com.huashu.huashuManager.common.bo.ResponseEntity;
 import com.huashu.huashuManager.model.Role;
-import com.huashu.huashuManager.promessions.service.RoleService;
+import com.huashu.huashuManager.promessionsManager.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,10 +1,8 @@
-package com.huashu.huashuManager.promessions.controller;
+package com.huashu.huashuManager.promessionsManager.controller;
 
 import com.huashu.huashuManager.common.bo.ResponseEntity;
-import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.model.User;
-import com.huashu.huashuManager.model.UserMenu;
-import com.huashu.huashuManager.promessions.service.UserService;
+import com.huashu.huashuManager.promessionsManager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

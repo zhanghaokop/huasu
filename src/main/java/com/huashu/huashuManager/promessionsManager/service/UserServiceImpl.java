@@ -1,4 +1,4 @@
-package com.huashu.huashuManager.promessions.service;
+package com.huashu.huashuManager.promessionsManager.service;
 
 import com.huashu.huashuManager.common.UtilConstants;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
@@ -71,11 +71,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void insertDefaultUser(String name) {
+    public void insertDefaultUser(String name,String companyId) {
         User user = new User();
         user.setName(name);
         user.setRoleid(UtilConstants.UserConstants.DEFAULT_FOLRID);
         user.setPassword(UtilConstants.UserConstants.PASSWORD);
+        user.setCompanyId(companyId);
+        //todo 初始role菜单
         this.insert(user);
     }
 }

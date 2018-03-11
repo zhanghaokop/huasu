@@ -1,15 +1,12 @@
-package com.huashu.huashuManager.promessions.service;
+package com.huashu.huashuManager.promessionsManager.service;
 
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.mapper.MenuMapper;
 import com.huashu.huashuManager.model.Menu;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * 系统名称: U-OBS-web

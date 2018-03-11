@@ -1,4 +1,4 @@
-package com.huashu.huashuManager.promessions.service;
+package com.huashu.huashuManager.promessionsManager.service;
 
 import com.huashu.huashuManager.model.Role;
 

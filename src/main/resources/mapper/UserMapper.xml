@@ -6,6 +6,7 @@
         <result column="t_name" jdbcType="VARCHAR" property="name"/>
         <result column="t_password" jdbcType="VARCHAR" property="password"/>
         <result column="t_level" jdbcType="VARCHAR" property="level"/>
+        <result column="t_companyId" jdbcType="VARCHAR" property="companyId"/>
         <association property="role" javaType="com.huashu.huashuManager.model.Role">
             <result column="r_Id" jdbcType="VARCHAR" property="id"/>
             <result column="r_name" jdbcType="VARCHAR" property="name"/>
@@ -25,6 +26,9 @@
         <if test="id != null and id != ''">
             and t.id = #{id,jdbcType=VARCHAR}
         </if>
+        <if test="companyId != null and companyId != ''">
+            and t.companyId = #{companyId,jdbcType=VARCHAR}
+        </if>
     </sql>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
@@ -33,9 +37,9 @@
   </delete>
     <insert id="insert" parameterType="com.huashu.huashuManager.model.User">
     insert into user (id, name, password, 
-      level, roleId)
+      level, roleId,companyId)
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{level,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR})
+      #{level,jdbcType=VARCHAR}, #{roleid,jdbcType=VARCHAR},#{companyId,jdbcType=VARCHAR})
   </insert>
     <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.User">
     update user
@@ -46,7 +50,7 @@
     where id = #{id,jdbcType=VARCHAR}
   </update>
     <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select id, name, password, level, roleId
+    select id, name, password, level, roleId,companyId
     from user
     where id = #{id,jdbcType=VARCHAR}
   </select>
@@ -56,6 +60,7 @@
         t. NAME as t_name,
         t. PASSWORD as t_password,
         t. LEVEL as t_level,
+        t.companyId as t_companyId,
         m.menuId as m_menuId,
         m.url as m_url,
         m. NAME as m_menuName,
@@ -76,6 +81,7 @@
 	t. NAME as t_name,
 	t. PASSWORD as t_password,
 	t. LEVEL as t_level,
+    t.companyId as t_companyId,
 	m.menuId as m_menuId,
 	m.url as m_url,
 	m. NAME as m_menuName,
@@ -96,6 +102,7 @@
         t. NAME as t_name,
         t. PASSWORD as t_password,
         t. LEVEL as t_level,
+        t.companyId as t_companyId,
         m.menuId as m_menuId,
         m.url as m_url,
         m. NAME as m_menuName,

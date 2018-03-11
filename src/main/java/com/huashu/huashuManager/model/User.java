@@ -25,6 +25,16 @@ public class User implements Serializable {
 
     private String roleid;
 
+    private String companyId;
+
+    public String getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
+    }
+
     public String getId() {
         return id;
     }
