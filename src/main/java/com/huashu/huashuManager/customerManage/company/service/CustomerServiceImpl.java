@@ -1,47 +1,52 @@
 package com.huashu.huashuManager.customerManage.company.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.huashu.huashuManager.common.aop.PageHelperAop;
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.mapper.CustomersMapper;
 import com.huashu.huashuManager.model.Customers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
 
-    @Autowired
-    private CustomersMapper mapper;
+    @Resource
+    private CustomersMapper customersMappermapper;
 
     @Override
     public int deleteCustomer(String customerId) {
-        return mapper.deleteByPrimaryKey(customerId);
+        return customersMappermapper.deleteByPrimaryKey(customerId);
     }
 
     @Override
     public int addCustomer(Customers customer) {
-        return mapper.insert(customer);
+        return customersMappermapper.insert(customer);
     }
 
     @Override
-    public List<Customers> pageListCustomers(Customers customer) {
-        return mapper.selectList(customer);
+    public Object pageListCustomers(Customers customer) {
+        return customersMappermapper.selectList(customer);
     }
 
     @Override
-    public List<Customers> listAllCompanyAndID() {
-        return mapper.selectAllCompanyAndId();
+    public Object listAllCompanyAndID() {
+         return customersMappermapper.selectAllCompanyAndId();
     }
 
     @Override
     public Customers getCustomers(String customerId) {
-        return mapper.selectByPrimaryKey(customerId);
+        return customersMappermapper.selectByPrimaryKey(customerId);
     }
 
     @Override
     public int updateCustomer(Customers customer) {
-        return mapper.updateByPrimaryKey(customer);
+        return customersMappermapper.updateByPrimaryKey(customer);
     }
 }

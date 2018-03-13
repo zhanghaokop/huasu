@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.customerManage.company.controller;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.bo.ResponseEntity;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.customerManage.company.service.CustomerService;
@@ -35,8 +36,8 @@ public class CustomerController {
      * @return
      */
     @GetMapping("/list")
-    public ResponseEntity<List<Customers>> list(Customers customers){
-        return new ResponseEntity.Builder<List<Customers>>().setData(customerService.pageListCustomers(customers)).build();
+    public ResponseEntity<Object> list(Customers customers){
+        return new ResponseEntity.Builder<Object>().setData(customerService.pageListCustomers(customers)).build();
     }
 
     /**
@@ -44,8 +45,8 @@ public class CustomerController {
      * @return
      */
     @GetMapping("/listCompany")
-    public ResponseEntity<List<Customers>> listAllCustomers(){
-        return new ResponseEntity.Builder<List<Customers>>().setData(customerService.listAllCompanyAndID()).build();
+    public ResponseEntity<Object> listAllCustomers(){
+        return new ResponseEntity.Builder<Object>().setData(customerService.listAllCompanyAndID()).build();
     }
     /**
      * 新增客户

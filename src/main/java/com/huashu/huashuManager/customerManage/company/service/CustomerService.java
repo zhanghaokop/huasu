@@ -28,9 +28,9 @@ public interface CustomerService {
      * @param customer
      * @return
      */
-    List<Customers> pageListCustomers(Customers customer);
+    Object pageListCustomers(Customers customer);
 
-    List<Customers> listAllCompanyAndID();
+    Object listAllCompanyAndID();
 
     Customers getCustomers(String customerId);
 

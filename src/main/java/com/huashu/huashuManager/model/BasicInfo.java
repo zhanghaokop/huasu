@@ -96,6 +96,18 @@ public class BasicInfo {
      */
     private String companyid;
 
+    /**
+     * 驾驶员名字
+     */
+    private String driverName;
+
+    public String getDriverName() {
+        return driverName;
+    }
+
+    public void setDriverName(String driverName) {
+        this.driverName = driverName;
+    }
     public String getId() {
         return id;
     }

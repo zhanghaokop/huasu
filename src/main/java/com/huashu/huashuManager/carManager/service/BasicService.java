@@ -16,5 +16,5 @@ public interface BasicService {
 
     void updateByPrimaryKey(BasicInfo record);
 
-    List<BasicInfo> pageListBasic(BasicInfo basicInfo);
+    Object pageListBasic(BasicInfo basicInfo);
 }

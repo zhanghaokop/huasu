@@ -26,7 +26,7 @@
       and id=#{id,jdbcType=VARCHAR}
     </if>
     <if test="plateNo!=null and plateNo!=''">
-      and plateNo=#{plateNo,jdbcType=VARCHAR}
+      and plate_no=#{plateNo,jdbcType=VARCHAR}
     </if>
   </sql>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">

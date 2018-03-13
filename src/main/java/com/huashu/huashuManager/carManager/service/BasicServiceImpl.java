@@ -54,7 +54,7 @@ public class BasicServiceImpl implements BasicService{
     }
 
     @Override
-    public List<BasicInfo> pageListBasic(BasicInfo basicInfo) {
+    public Object pageListBasic(BasicInfo basicInfo) {
         return basicInfoMapper.pageListBasic(basicInfo);
     }
 }

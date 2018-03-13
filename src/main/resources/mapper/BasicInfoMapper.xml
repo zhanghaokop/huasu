@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.huashu.huashuManager.model.BasicInfo">
     <result column="id" jdbcType="VARCHAR" property="id" />
     <result column="customer" jdbcType="VARCHAR" property="customer" />
+    <result column="driverName" jdbcType="VARCHAR" property="driverName" />
     <result column="factory" jdbcType="VARCHAR" property="factory" />
     <result column="plate_no" jdbcType="VARCHAR" property="plateNo" />
     <result column="vin" jdbcType="VARCHAR" property="vin" />
@@ -69,11 +70,13 @@
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-     select t.id, t.customer, t.factory, t.plate_no, t.vin, t.engine_no, t.vehicle, t.use_character, t.owner,
+       select t.id, p.company as customer, q.name as driverName,t.factory, t.plate_no, t.vin, t.engine_no, t.vehicle, t.use_character, t.owner,
     t.address, t.model, t.power_type,t.reg_date, t.issue_date, t.repair_check_date, t.deltag, t.IMEI,
     t.companyId , k.comp_ins_start,k.comp_ins_end,k.busi_ins_start,k.busi_ins_end
     from basic_info t
     LEFT JOIN insurance_info k ON t.plate_no = k.plate_no
+    LEFT JOIN customers p on t.companyId=p.id
+    LEFT JOIN driver_info q on q.plate_no=t.plate_no
     where t.id = #{id,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
@@ -84,23 +87,25 @@
   </select>
 
   <select id="pageListBasic" parameterType="com.huashu.huashuManager.model.BasicInfo" resultMap="BaseResultMap">
-    select t.id, t.customer, t.factory, t.plate_no, t.vin, t.engine_no, t.vehicle, t.use_character, t.owner,
+    select t.id, p.company as customer, q.name as driverName,t.factory, t.plate_no, t.vin, t.engine_no, t.vehicle, t.use_character, t.owner,
     t.address, t.model, t.power_type,t.reg_date, t.issue_date, t.repair_check_date, t.deltag, t.IMEI,
     t.companyId , k.comp_ins_start,k.comp_ins_end,k.busi_ins_start,k.busi_ins_end
     from basic_info t
     LEFT JOIN insurance_info k ON t.plate_no = k.plate_no
+    LEFT JOIN customers p on t.companyId=p.id
+    LEFT JOIN driver_info q on q.plate_no=t.plate_no
     where 1=1
     <if test="plateNo!=null and plateNo!=''">
-      and plateNo=#{plateNo,jdbcType=VARCHAR}
+      and t.plate_no=#{plateNo,jdbcType=VARCHAR}
     </if>
-    <if test="companyid!=null and companyId!=''">
-      and companyid=#{companyid,jdbcType=VARCHAR}
+    <if test="companyid!=null and companyid!=''">
+      and t.companyid=#{companyid,jdbcType=VARCHAR}
     </if>
+    <!--<if test="customer!=null and customer!=''">-->
+      <!--and p.customer=#{customer,jdbcType=VARCHAR}-->
+    <!--</if>-->
     <if test="customer!=null and customer!=''">
-      and customer=#{customer,jdbcType=VARCHAR}
-    </if>
-    <if test="customer!=null and customer!=''">
-      and customer LIKE "%"#{customer,jdbcType=VARCHAR}"%"
+      and p.customer LIKE "%"#{customer,jdbcType=VARCHAR}"%"
     </if>
   </select>
 </mapper>

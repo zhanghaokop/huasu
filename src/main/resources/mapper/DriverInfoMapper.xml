@@ -70,7 +70,7 @@
       and phone = #{phone,jdbcType=VARCHAR}
     </if>
     <if test="plateNo != null and plateNo !=''">
-      and plateNo = #{plateNo,jdbcType=VARCHAR}
+      and plate_no = #{plateNo,jdbcType=VARCHAR}
     </if>
     <if test="companyid!=null and companyid !=''">
       and companyid = #{companyid,jdbcType=VARCHAR}
@@ -88,7 +88,7 @@
       and phone LIKE CONCAT(CONCAT('%',#{phone,jdbcType=VARCHAR}),'%')
     </if>
     <if test="plateNo != null and plateNo !=''">
-      and plateNo LIKE CONCAT(CONCAT('%',#{plateNo,jdbcType=VARCHAR}),'%')
+      and plate_no LIKE CONCAT(CONCAT('%',#{plateNo,jdbcType=VARCHAR}),'%')
     </if>
     <if test="company!=null and company !=''">
       and company LIKE CONCAT(CONCAT('%',#{company,jdbcType=VARCHAR}),'%')
