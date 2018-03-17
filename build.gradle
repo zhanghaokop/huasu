@@ -27,6 +27,7 @@ dependencies {
 
 	compile 'jstl:jstl:1.2'
 	compile 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	providedCompile('javax.servlet:javax.servlet-api')
 
 	compile 'com.squareup.retrofit2:retrofit:2.3.0'
 	compile 'com.squareup.retrofit2:converter-gson:2.3.0'
