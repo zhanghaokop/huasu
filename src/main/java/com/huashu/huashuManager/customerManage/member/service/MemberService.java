@@ -38,6 +38,14 @@ public interface MemberService {
     List<Member> getAllMember(Member member);
 
     /**
+     * openId是否已经注册过了
+     *
+     * @param openId
+     * @return
+     */
+    boolean isRegister(String openId);
+
+    /**
      * 根据会员id获取会员
      * @param id
      * @return

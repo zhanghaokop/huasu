@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.customerManage.company.service;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.model.Customers;
 
 import java.util.List;
@@ -28,9 +29,9 @@ public interface CustomerService {
      * @param customer
      * @return
      */
-    Object pageListCustomers(Customers customer);
+    PageEntity<Customers> pageListCustomers(Customers customer);
 
-    Object listAllCompanyAndID();
+    List<Customers> listAllCompanyAndID();
 
     Customers getCustomers(String customerId);
 

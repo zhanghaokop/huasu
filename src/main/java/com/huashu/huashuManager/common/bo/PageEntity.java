@@ -21,7 +21,7 @@ public class PageEntity<T> {
 
     private Long count;
 
-    public Object getPageData() {
+    public List<T> getPageData() {
         return pageData;
     }
 
@@ -56,4 +56,7 @@ public class PageEntity<T> {
         this.pageSize = pageSize;
         return this;
     }
+
+
 }
+

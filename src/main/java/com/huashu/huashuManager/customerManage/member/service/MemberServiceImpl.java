@@ -37,6 +37,13 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public boolean isRegister(String openId) {
+        Member query = new Member();
+        query.setOpenId(openId);
+        return true;
+    }
+
+    @Override
     public Member getMemberById(String id) {
         return memberMapper.selectByPrimaryKey(id);
     }

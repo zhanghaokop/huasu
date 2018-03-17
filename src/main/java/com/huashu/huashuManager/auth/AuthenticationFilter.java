@@ -21,7 +21,7 @@ public class AuthenticationFilter implements Filter {
     @Autowired
     private TicketRepository ticketRepository;
 
-    private Pattern ignorePath = Pattern.compile("auth/login|swagger|v2/api-docs");
+    private Pattern ignorePath = Pattern.compile("auth/login|swagger|v2/api-docs|/wxgzh/");
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

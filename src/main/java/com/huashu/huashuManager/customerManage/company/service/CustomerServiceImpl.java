@@ -31,13 +31,15 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Object pageListCustomers(Customers customer) {
-        return customersMappermapper.selectList(customer);
+    public PageEntity<Customers> pageListCustomers(Customers customer) {
+        PageEntity<Customers> entity = new PageEntity<>();
+        entity.setPageData(customersMappermapper.selectList(customer));
+        return entity;
     }
 
     @Override
-    public Object listAllCompanyAndID() {
-         return customersMappermapper.selectAllCompanyAndId();
+    public List<Customers> listAllCompanyAndID() {
+        return customersMappermapper.selectAllCompanyAndId();
     }
 
     @Override

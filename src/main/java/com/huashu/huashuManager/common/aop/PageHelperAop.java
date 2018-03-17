@@ -55,10 +55,12 @@ public class PageHelperAop {
             page = new PageEntity();
         }
         PageHelper.startPage(page.getPageIndex(), page.getPageSize());
-         Object obj= pjp.proceed();
-        PageInfo<Object> pageinfo = new PageInfo<Object>((List<Object>) obj);
+
+        PageEntity<?> entity = (PageEntity<?>) pjp.proceed();
+
+        PageInfo<Object> pageinfo = new PageInfo<Object>((List<Object>) entity.getPageData());
         PageHelper.clearPage();
 
-        return  page.setCount(pageinfo.getTotal()).setPageData((List<Object>)obj);
+        return  page.setCount(pageinfo.getTotal()).setPageData(entity.getPageData());
     }
 }

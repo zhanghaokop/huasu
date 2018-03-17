@@ -9,10 +9,13 @@ public interface MemberMapper {
     int insert(Member record);
 
     Member selectByPrimaryKey(String id);
+    Member selectByOpenId(String openId);
 
     List<Member> selectAll();
     //模糊分页条件查询
     List<Member> pageSelect(Member record);
+
+
 
     int updateByPrimaryKey(Member record);
 }

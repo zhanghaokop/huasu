@@ -36,8 +36,8 @@ public class CustomerController {
      * @return
      */
     @GetMapping("/list")
-    public ResponseEntity<Object> list(Customers customers){
-        return new ResponseEntity.Builder<Object>().setData(customerService.pageListCustomers(customers)).build();
+    public ResponseEntity<PageEntity<Customers>> list(Customers customers){
+        return new ResponseEntity.Builder<PageEntity<Customers>>().setData(customerService.pageListCustomers(customers)).build();
     }
 
     /**
@@ -45,8 +45,8 @@ public class CustomerController {
      * @return
      */
     @GetMapping("/listCompany")
-    public ResponseEntity<Object> listAllCustomers(){
-        return new ResponseEntity.Builder<Object>().setData(customerService.listAllCompanyAndID()).build();
+    public ResponseEntity<List<Customers>> listAllCustomers(){
+        return new ResponseEntity.Builder<List<Customers>>().setData(customerService.listAllCompanyAndID()).build();
     }
     /**
      * 新增客户
