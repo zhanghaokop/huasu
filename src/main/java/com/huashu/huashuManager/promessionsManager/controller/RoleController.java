@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.promessionsManager.controller;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.bo.ResponseEntity;
 import com.huashu.huashuManager.model.Role;
 import com.huashu.huashuManager.promessionsManager.service.RoleService;
@@ -90,8 +91,8 @@ public class RoleController {
      * @return
      */
     @RequestMapping("selectRoleByPage")
-    public ResponseEntity<List<Role>> selectRoleByPage(@RequestBody Role role){
-        return  new ResponseEntity.Builder<List<Role>>()
-                .setCode(200).setData(roleService.selectRoleDetail(role)).build();
+    public ResponseEntity<PageEntity<Role>> selectRoleByPage(@RequestBody Role role){
+        return  new ResponseEntity.Builder<PageEntity<Role>>()
+                .setCode(200).setData(roleService.pageListRole(role)).build();
     }
 }

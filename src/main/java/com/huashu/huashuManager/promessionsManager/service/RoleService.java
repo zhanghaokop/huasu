@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.promessionsManager.service;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.model.Role;
 
 import java.util.List;
@@ -19,5 +20,5 @@ public interface RoleService {
 
     List<Role> selectRoleDetail(Role role);
 
-    List<Role> pageListRole(Role role);
+    PageEntity<Role> pageListRole(Role role);
 }

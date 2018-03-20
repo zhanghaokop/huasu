@@ -69,7 +69,7 @@ public class BasicInfo {
     /**
      * 注册日期
      */
-    private Date regDate;
+    private String regDate;
 
     /**
      * 发证日期
@@ -204,11 +204,11 @@ public class BasicInfo {
         this.powerType = powerType == null ? null : powerType.trim();
     }
 
-    public Date getRegDate() {
+    public String getRegDate() {
         return regDate;
     }
 
-    public void setRegDate(Date regDate) {
+    public void setRegDate(String regDate) {
         this.regDate = regDate;
     }
 

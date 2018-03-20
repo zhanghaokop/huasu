@@ -1,8 +1,10 @@
 package com.huashu.huashuManager.carManager.service;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.mapper.BasicInfoMapper;
 import com.huashu.huashuManager.model.BasicInfo;
+import com.huashu.huashuManager.model.Customers;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -54,7 +56,9 @@ public class BasicServiceImpl implements BasicService{
     }
 
     @Override
-    public Object pageListBasic(BasicInfo basicInfo) {
-        return basicInfoMapper.pageListBasic(basicInfo);
+    public PageEntity<BasicInfo> pageListBasic(BasicInfo basicInfo) {
+        PageEntity<BasicInfo> entity = new PageEntity<>();
+        entity.setPageData(basicInfoMapper.pageListBasic(basicInfo));
+        return entity;
     }
 }

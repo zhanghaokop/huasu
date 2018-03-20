@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.carManager.service;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.model.BasicInfo;
 
 import java.util.List;
@@ -16,5 +17,5 @@ public interface BasicService {
 
     void updateByPrimaryKey(BasicInfo record);
 
-    Object pageListBasic(BasicInfo basicInfo);
+    PageEntity<BasicInfo> pageListBasic(BasicInfo basicInfo);
 }

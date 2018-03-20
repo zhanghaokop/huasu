@@ -17,7 +17,7 @@
     <result column="power_type" jdbcType="VARCHAR" property="powerType" />
     <result column="reg_date" jdbcType="VARCHAR" property="regDate" />
     <result column="issue_date" jdbcType="VARCHAR" property="issueDate" />
-    <result column="repair_check_date" jdbcType="DATE" property="repairCheckDate" />
+    <result column="repair_check_date" jdbcType="VARCHAR" property="repairCheckDate" />
     <result column="deltag" jdbcType="VARCHAR" property="deltag" />
     <result column="IMEI" jdbcType="VARCHAR" property="imei" />
     <result column="companyId" jdbcType="VARCHAR" property="companyid" />

@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.customerManage.supplier.service;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.model.SupplierInfo;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public interface SupplierService {
      * @param supplierInfo
      * @return
      */
-    List<SupplierInfo> pageListSuppliers(SupplierInfo supplierInfo);
+    PageEntity<SupplierInfo> pageListSuppliers(SupplierInfo supplierInfo);
 
     /**
      * 获取供应商

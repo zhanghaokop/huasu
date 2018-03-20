@@ -1,6 +1,7 @@
 package com.huashu.huashuManager.carManager.controller;
 
 import com.huashu.huashuManager.carManager.service.InsuranceInfoService;
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.bo.ResponseEntity;
 import com.huashu.huashuManager.model.InsuranceInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,8 @@ public class InsuranceInfoController {
      * @return
      */
     @PostMapping("getInsInfoByPage")
-    public ResponseEntity<List<InsuranceInfo>> getCarByPage(@RequestBody InsuranceInfo insuranceInfo){
-        return new ResponseEntity.Builder<List<InsuranceInfo>>().setData(insuranceInfoService.pageListInsuranceInfo(insuranceInfo)).build();
+    public ResponseEntity<PageEntity<InsuranceInfo>> getInsInfoByPage(@RequestBody InsuranceInfo insuranceInfo){
+        return new ResponseEntity.Builder<PageEntity<InsuranceInfo>>().setData(insuranceInfoService.pageListInsuranceInfo(insuranceInfo)).build();
     }
 
     /**

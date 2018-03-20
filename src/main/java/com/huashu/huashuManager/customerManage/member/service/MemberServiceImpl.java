@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.customerManage.member.service;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.mapper.MemberMapper;
 import com.huashu.huashuManager.model.Member;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,10 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public List<Member> pageListMembers(Member member) {
-        return memberMapper.pageSelect(member);
+    public PageEntity<Member> pageListMembers(Member member) {
+        PageEntity<Member> page =new PageEntity<Member>();
+        page.setPageData(memberMapper.pageSelect(member));
+        return page;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.promessionsManager.controller;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.bo.ResponseEntity;
 import com.huashu.huashuManager.model.Menu;
 import com.huashu.huashuManager.promessionsManager.service.MenuService;
@@ -47,8 +48,8 @@ public class MenuController {
      * @return
      */
     @PostMapping("getMenuByPage")
-    public ResponseEntity<List<Menu>> getMenuByPage(@RequestBody Menu menu){
-        return new ResponseEntity.Builder<List<Menu>>()
+    public ResponseEntity<PageEntity<Menu>> getMenuByPage(@RequestBody Menu menu){
+        return new ResponseEntity.Builder<PageEntity<Menu>>()
                 .setCode(200).setData(menuService.pageListMenu(menu)).build();
     }
 

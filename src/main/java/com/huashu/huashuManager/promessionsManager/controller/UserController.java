@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.promessionsManager.controller;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.bo.ResponseEntity;
 import com.huashu.huashuManager.model.User;
 import com.huashu.huashuManager.promessionsManager.service.UserService;
@@ -49,8 +50,8 @@ public class UserController {
      * @return
      */
     @PostMapping("getUserByPage")
-    public ResponseEntity<List<User>> getUserByPage(@RequestBody User user){
-        return new ResponseEntity.Builder<List<User>>()
+    public ResponseEntity<PageEntity<User>> getUserByPage(@RequestBody User user){
+        return new ResponseEntity.Builder<PageEntity<User>>()
                 .setCode(200).setData(userService.pageListUser(user)).build();
     }
 

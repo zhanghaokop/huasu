@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.customerManage.driver.service;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.model.DriverInfo;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public interface DriverService {
      * @param driverInfo
      * @return
      */
-    List<DriverInfo> pageListDrivers(DriverInfo driverInfo);
+    PageEntity<DriverInfo> pageListDrivers(DriverInfo driverInfo);
 
     /**
      * 获取驾驶员

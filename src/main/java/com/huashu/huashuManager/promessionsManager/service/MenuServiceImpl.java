@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.promessionsManager.service;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.mapper.MenuMapper;
 import com.huashu.huashuManager.model.Menu;
@@ -42,8 +43,10 @@ public class MenuServiceImpl implements MenuService {
      * @return
      */
     @Override
-    public List<Menu> pageListMenu(Menu menu) {
-        return menuMapper.selectAll(menu);
+    public PageEntity<Menu> pageListMenu(Menu menu) {
+        PageEntity<Menu> page =new PageEntity<Menu>();
+        page.setPageData(menuMapper.selectAll(menu));
+        return page;
     }
 
     /**

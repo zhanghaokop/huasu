@@ -1,8 +1,10 @@
 package com.huashu.huashuManager.customerManage.member.controller;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.bo.ResponseEntity;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.customerManage.member.service.MemberService;
+import com.huashu.huashuManager.model.DriverInfo;
 import com.huashu.huashuManager.model.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +22,8 @@ public class MemberController {
     private MemberService memberService;
 
     @GetMapping("list")
-    public ResponseEntity<List<Member>> pageList(Member member){
-        return new ResponseEntity.Builder<List<Member>>().setData(memberService.pageListMembers(member)).build();
+    public ResponseEntity<PageEntity<Member>> pageList(Member member){
+        return new ResponseEntity.Builder<PageEntity<Member>>().setData(memberService.pageListMembers(member)).build();
     }
 
     @GetMapping("/{memberId}")

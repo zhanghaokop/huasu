@@ -1,6 +1,7 @@
 package com.huashu.huashuManager.promessionsManager.service;
 
 import com.huashu.huashuManager.common.UtilConstants;
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.mapper.UserMapper;
 import com.huashu.huashuManager.model.User;
@@ -66,8 +67,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> pageListUser(User user) {
-        return usermapper.pageListUser(user);
+    public PageEntity<User> pageListUser(User user) {
+        PageEntity<User> page =new PageEntity<User>();
+        page.setPageData(usermapper.pageListUser(user));
+        return page ;
     }
 
     @Override

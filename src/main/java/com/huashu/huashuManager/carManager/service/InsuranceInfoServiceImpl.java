@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.carManager.service;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.mapper.InsuranceInfoMapper;
 import com.huashu.huashuManager.model.InsuranceInfo;
@@ -47,8 +48,10 @@ public class InsuranceInfoServiceImpl implements InsuranceInfoService {
     }
 
     @Override
-    public List<InsuranceInfo> pageListInsuranceInfo(InsuranceInfo insuranceInfo) {
-        return insuranceInfoMapper.selectAll(insuranceInfo);
+    public PageEntity<InsuranceInfo> pageListInsuranceInfo(InsuranceInfo insuranceInfo) {
+        PageEntity<InsuranceInfo> page = new PageEntity<InsuranceInfo>();
+        page.setPageData(insuranceInfoMapper.selectAll(insuranceInfo));
+        return page;
     }
 
     @Override

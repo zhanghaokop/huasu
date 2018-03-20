@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.customerManage.member.service;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.model.Member;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public interface MemberService {
      * @param member
      * @return
      */
-    List<Member> pageListMembers(Member member);
+    PageEntity<Member> pageListMembers(Member member);
 
     /**
      * 获取会员

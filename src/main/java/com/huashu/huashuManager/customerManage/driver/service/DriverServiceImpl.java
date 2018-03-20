@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.customerManage.driver.service;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.mapper.DriverInfoMapper;
 import com.huashu.huashuManager.model.DriverInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,10 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public List<DriverInfo> pageListDrivers(DriverInfo driverInfo) {
-        return mapper.pageSelect(driverInfo);
+    public PageEntity<DriverInfo> pageListDrivers(DriverInfo driverInfo) {
+        PageEntity<DriverInfo> page = new PageEntity<DriverInfo>();
+        page.setPageData( mapper.pageSelect(driverInfo));
+        return page;
     }
 
     @Override

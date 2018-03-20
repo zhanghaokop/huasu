@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.promessionsManager.service;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.mapper.RoleMapper;
 import com.huashu.huashuManager.mapper.RoleMenuMapper;
@@ -108,7 +109,9 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public List<Role> pageListRole(Role role) {
-        return roleMapper.selectRoleDetail(role);
+    public PageEntity<Role> pageListRole(Role role) {
+        PageEntity<Role> page =new PageEntity<Role>();
+         page.setPageData(roleMapper.selectRoleDetail(role));
+        return page ;
     }
 }

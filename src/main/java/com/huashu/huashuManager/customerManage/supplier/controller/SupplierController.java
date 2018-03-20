@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.customerManage.supplier.controller;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.bo.ResponseEntity;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.customerManage.supplier.service.SupplierService;
@@ -25,8 +26,8 @@ public class SupplierController {
      * @return 查询结果结合
      */
     @GetMapping("/list")
-    public ResponseEntity<List<SupplierInfo>> pageListSupplier(SupplierInfo supplierInfo){
-        return new ResponseEntity.Builder<List<SupplierInfo>>().setData(supplierService.pageListSuppliers(supplierInfo)).build();
+    public ResponseEntity<PageEntity<SupplierInfo>> pageListSupplier(SupplierInfo supplierInfo){
+        return new ResponseEntity.Builder<PageEntity<SupplierInfo>>().setData(supplierService.pageListSuppliers(supplierInfo)).build();
     }
 
     /**

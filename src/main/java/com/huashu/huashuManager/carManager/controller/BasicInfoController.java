@@ -1,8 +1,11 @@
 package com.huashu.huashuManager.carManager.controller;
 
 import com.huashu.huashuManager.carManager.service.BasicService;
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.bo.ResponseEntity;
+import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.model.BasicInfo;
+import com.huashu.huashuManager.model.Customers;
 import com.huashu.huashuManager.model.DriverInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -34,8 +37,8 @@ public class BasicInfoController {
      * @return
      */
     @PostMapping("getCarByPage")
-    public ResponseEntity<Object> getCarByPage(@RequestBody BasicInfo basicInfo){
-        return new ResponseEntity.Builder<Object>().setData(basicService.pageListBasic(basicInfo)).build();
+    public ResponseEntity<PageEntity<BasicInfo>> getCarByPage(@RequestBody BasicInfo basicInfo){
+        return new ResponseEntity.Builder<PageEntity<BasicInfo>>().setData(basicService.pageListBasic(basicInfo)).build();
     }
 
     /**
