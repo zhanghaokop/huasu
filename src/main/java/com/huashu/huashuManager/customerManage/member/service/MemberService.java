@@ -2,6 +2,7 @@ package com.huashu.huashuManager.customerManage.member.service;
 
 import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.model.Member;
+import com.huashu.huashuManager.model.MemberWeixin;
 
 import java.util.List;
 
@@ -52,6 +53,7 @@ public interface MemberService {
      * @return
      */
     Member getMemberById(String id);
+    Member getMemberByOpenId(String openId);
 
     /**
      * 更新会员
@@ -59,4 +61,8 @@ public interface MemberService {
      * @return
      */
     int updateMember(Member member);
+
+    Integer getMessageCount(String openId);
+
+    PageEntity<MemberWeixin> pageSelectMessage(MemberWeixin memberWeixin);
 }

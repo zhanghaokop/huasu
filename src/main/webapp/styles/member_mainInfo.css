@@ -1,0 +1,171 @@
+body {
+    background: #efeeee;
+}
+#wrap {
+    position: relative;
+}
+.weui-media-box__title {
+    color: rgb(235,152,49);
+}
+.cd_portrait input{
+    width:4.375rem;
+    height:4.375rem;
+    opacity:0;
+    border: 0.0625rem solid #ddd;
+}
+.cd_portrait{
+    float:right;
+    width: 4.375rem;
+    height: 4.375rem;
+    border: 0.0625rem solid #e1e1e1;
+    position: relative;
+    border-radius: 0.3125rem;
+
+}
+.cd_portrait .cd_text1{
+    position: absolute;
+    width: 4.375rem;
+    top: 0.625rem;
+    color: #e1e1e1;
+    text-align: center;
+}
+.cd_portrait .cd_text2{
+    position: absolute;
+    width: 4.375rem;
+    top: 2.0625rem;
+    color: #e1e1e1;
+    text-align: center;
+}
+.cd_portrait img{
+    position: absolute;
+    top:0px;
+}
+ .cd_none{
+    display: none;
+}
+.cd_block{
+    display: block;
+}
+.gold{
+    color:#ffc107;
+}
+.silvery{
+    /*color:#92a2bc;*/
+    /*color: silver;*/
+    color: #B3B0B0;
+}
+.platinum{
+    /*color: #0AA7F5;*/
+    color: #00b8d4;
+}
+.diamond{
+    /*color: #06D2AE;*/
+    color:#00bf5a;
+}
+.weui-footer_fixed-bottom {
+    position: absolute;
+}
+.weui-cell__hd {
+    margin-right: 0.3125rem;
+}
+/*#wrap .click1,#wrap .click2 {
+    display: none;
+}*/
+#wrap .click3 {
+    top: 1.3125rem;
+}
+#wrap .weui-cell:before {
+    left: 0px;
+}
+#wrap .btn-big {
+    width: 75%;
+    margin-top: 1.875rem;
+    margin-bottom: 1.875rem;
+}
+#wrap .weui-btn:after {
+    border: none;
+}
+.footer {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 0px;
+    border-top:0.0625rem solid #e4e3e3;
+    border-bottom:0.0625rem solid #e4e3e3;
+    padding-top: 0.4375rem;
+    padding-bottom: 0.4375rem;
+}
+.weui-footer__link {
+    color: #4a5198;
+    font-size: 1.0625rem;
+}
+.weui-footer {
+    border-top:0.0625rem solid #e4e3e3;
+    padding-top: 0.3125rem;
+}
+.page__bd input,.page__bd select,.page__bd button {
+    width: 11.875rem;
+    height: 1.25rem;
+    background: #fff;
+    font-size: 1rem;
+    text-align: right;
+    border:none;
+    border-radius: 0.1875rem;
+    padding-right: 0.3125rem;
+}
+.cd_portrait_border {
+    border: 0.0625rem solid #1aad19;
+    box-shadow: 0px 0px 0.0625rem #1aad19;
+}
+.page__bd select,.page__bd button {
+    width: 12.375rem;
+}
+.page__bd select {
+    direction: rtl;
+    -webkit-appearance: none;
+}
+.edit {
+    display: none;
+}
+.btn-groups {
+    width: 90%; 
+    margin-top: 1.875rem; 
+    margin: auto;
+    text-align: center;
+}
+.btn-groups .weui-btn_mini {
+    width: 26%;
+    line-height: 2.555556;
+    margin-top: 1.875rem;
+}
+.edit_font {
+    color: #BDBDBD;
+}
+.click3 {
+    text-align: center;
+    position: static!important;
+}
+.input_album {
+    width:4.375rem!important;
+    height:4.375rem!important;
+    /*display:none;*/
+}
+#uploadPage {
+    z-index: 9;
+}
+.app .upload-mask {
+    top: -2.5rem;
+}
+.app .photo-canvas, .app .preview-box {
+    top: 43%;
+}
+.app .bar {
+    background: #000;
+}
+#showDatePicker {
+    text-shadow: none;
+    color: #999;
+    font-weight: inherit;
+    margin: 0px;
+    line-height: 0;
+}

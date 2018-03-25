@@ -1,11 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2018/3/19
-  Time: 18:59
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
   <head>
     <title>会员</title>
@@ -59,7 +53,7 @@
           <div class="weui-media-box weui-media-box_appmsg">
               <div class="weui-media-box__hd">
                   <c:choose>
-                      <c:when test="${Member.album}">
+                      <c:when test="${!empty Member.album}">
                           <img src="../img/member/${Member.album}" class="click3">
                        </c:when>
                         <c:otherwise>
@@ -74,14 +68,14 @@
           </div>
       </div>
       <div class="weui-cells" style="margin-top:20px">
-          <a class="weui-cell weui-cell_access" href="javascript:;" onclick="info();">
+          <a class="weui-cell weui-cell_access" href="/wxgzh/memberInfo">
               <div class="weui-cell__hd"><i class="iconfont icon-member2" style="color:#38AF13"></i></div>
               <div class="weui-cell__bd">
                   <p>个人信息</p>
               </div>
               <div class="weui-cell__ft"></div>
           </a>
-          <a class="weui-cell weui-cell_access" href="javascript:;" onclick="message();">
+          <a class="weui-cell weui-cell_access" href="/wxgzh/memberMessage">
               <div class="weui-cell__hd" style="margin-top: -4px;">
                   <i class="iconfont icon-i-w-message" style="color:#38AF13;position: relative;top: 0.125rem;"></i>
               </div>
@@ -99,15 +93,15 @@
           </a>
       </div>
   	<div class="weui-grids" style="margin-top:40px;">
-          <a href="javascript:;" class="weui-grid" onclick="repair();">
+          <a href="/wxgzh/repair" class="weui-grid">
               <div class="weui-grid__icon iconfont icon-repair"></div>
               <p class="weui-grid__label">报修服务</p>
           </a>
-          <a href="javascript:;" class="weui-grid" onclick="lib();">
+          <a href="/wxgzh/knowledgeList" class="weui-grid">
               <div class="weui-grid__icon iconfont icon-knowledge"></div>
               <p class="weui-grid__label">常见问题</p>
           </a>
-          <a href="javascript:;" class="weui-grid" onclick="myRepairHistory();">
+          <a href="/wxgzh/repairHistory" class="weui-grid">
               <div class="weui-grid__icon iconfont icon-tubiao03"></div>
               <p class="weui-grid__label">我的维修</p>
           </a>
@@ -129,28 +123,14 @@
       </p>
   </div>
   </body>
+  <script src="../js/jquery-1.11.1.min.js" type="text/javascript"></script>
+  <script src="../js/common.js" type="text/javascript"></script>
   <script>
-      function info(){
-          window.navigate("memberInfo.jsp"); //不行就调用controller
-      }
       function sign(){
           wxToast('暂未开放');
       }
-      function message(){
-          window.location.href = ROUTE('/member/message');
-      }
       function market(){
           wxToast('暂未开放');
-      }
-      function myRepairHistory(){
-          // wxToast('暂未开放');
-          window.location.href = ROUTE('/member/repairHistory');
-      }
-      function lib(){
-      	window.location.href = ROUTE('/member/knowledge');
-      }
-      function repair(){
-          window.location.href = ROUTE('/member/repair');
       }
       var needRefresh = sessionStorage.getItem("need-refresh");
       if(needRefresh){

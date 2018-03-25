@@ -1,6 +1,7 @@
 package com.huashu.huashuManager.config;
 
 import com.huashu.huashuManager.auth.AuthenticationFilter;
+import com.huashu.huashuManager.weixin.WeixinAuthenticateFilter;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;

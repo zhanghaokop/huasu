@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.afterSaleManager.repairInfo.service;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.mapper.RepairInfoMapper;
 import com.huashu.huashuManager.model.RepairInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,10 @@ public class RepairInfoServiceImpl implements RepairInfoService {
     }
 
     @Override
-    public List<RepairInfo> pageListRepairInfo(RepairInfo repairInfo) {
-        return mapper.pageSelect(repairInfo);
+    public PageEntity<RepairInfo> pageListRepairInfo(RepairInfo repairInfo) {
+        PageEntity<RepairInfo> entity = new PageEntity<>();
+        entity.setPageData(mapper.pageSelect(repairInfo));
+        return entity;
     }
 
     @Override

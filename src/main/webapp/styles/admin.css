@@ -1,0 +1,31 @@
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+.content {
+	padding: 0px;
+	min-height: 300px;
+}
+.content iframe {
+	width: 100%;
+	min-height: 300px;
+}
+.checked {
+	/*border-left: 4px solid #8989a6;
+	background: #d2d2dd;*/
+	background: #d2d2dd;
+}
+.dropdown-menu li {
+	padding: 6px;
+}
+.dropdown-menu li:hover{
+	background: #d2d2dd;
+}
+.icon-admin {
+	font-size: 21px;
+    position: relative;
+    left: -8px;
+    top: 1px;
+}
+.sidebar-nav {
+    overflow: auto;
+}

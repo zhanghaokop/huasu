@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.afterSaleManager.repairInfo.service;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.model.RepairInfo;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public interface RepairInfoService {
      * @param repairInfo
      * @return
      */
-    List<RepairInfo> pageListRepairInfo(RepairInfo repairInfo);
+    PageEntity<RepairInfo> pageListRepairInfo(RepairInfo repairInfo);
 
     /**
      * 根据维修信息id获取维修信息

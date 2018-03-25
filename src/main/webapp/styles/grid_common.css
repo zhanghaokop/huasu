@@ -1,0 +1,33 @@
+html,body {
+	margin: 0px;
+    height: 100%;
+}
+.search {
+    float: right;
+    width: 350px;
+}
+.k-i-zoom {
+    margin-left: -30px;
+    cursor: pointer;
+}
+#search {
+    padding-right: 33px;
+    display: inline-block; 
+    width: 280px;
+}
+.k-edit-field {
+	position: relative;
+	top: 6px;
+}
+.k-window-title {
+    font-size: 15px;
+}
+.dialog-upload,.dialog-delImg {
+    margin-left: 18px;
+    cursor: pointer;
+}
+.displayAlbum {
+    width:35px;
+    margin-right:5px;
+    cursor:pointer;
+}

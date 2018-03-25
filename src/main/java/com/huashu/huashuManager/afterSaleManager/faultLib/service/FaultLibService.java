@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.afterSaleManager.faultLib.service;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.model.ErrorCodeLib;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public interface FaultLibService {
      * @param errorCode
      * @return
      */
-    List<ErrorCodeLib> pageListErrorCodes(ErrorCodeLib errorCode);
+    PageEntity<ErrorCodeLib> pageListErrorCodes(ErrorCodeLib errorCode);
 
     List<ErrorCodeLib> selectAll();
 

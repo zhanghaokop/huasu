@@ -1,5 +1,7 @@
 package com.huashu.huashuManager.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 /**
@@ -45,6 +47,7 @@ public class RepairInfo {
     /**
      * 提交时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date submitTime;
 
     /**
@@ -80,6 +83,7 @@ public class RepairInfo {
     /**
      * 开始维修时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date repairStartTime;
 
     /**
@@ -90,6 +94,7 @@ public class RepairInfo {
     /**
      * 维修结束时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date repairEndTime;
 
     /**
@@ -105,6 +110,7 @@ public class RepairInfo {
     /**
      * 维修单完成时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date finishTime;
     /**
      * 是否完成

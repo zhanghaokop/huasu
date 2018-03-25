@@ -1,6 +1,7 @@
 package com.huashu.huashuManager.afterSaleManager.repairInfo.controller;
 
 import com.huashu.huashuManager.afterSaleManager.repairInfo.service.RepairInfoService;
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.bo.ResponseEntity;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.model.RepairInfo;
@@ -25,8 +26,8 @@ public class RepairInfoController {
      * @return
      */
     @GetMapping("list")
-    public ResponseEntity<List<RepairInfo>> pageList(RepairInfo repairInfo){
-        return new ResponseEntity.Builder<List<RepairInfo>>().setData(repairInfoService.pageListRepairInfo(repairInfo)).build();
+    public ResponseEntity<PageEntity<RepairInfo>> pageList(RepairInfo repairInfo){
+        return new ResponseEntity.Builder<PageEntity<RepairInfo>>().setData(repairInfoService.pageListRepairInfo(repairInfo)).build();
     }
 
     /**

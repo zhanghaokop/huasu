@@ -2,7 +2,9 @@ package com.huashu.huashuManager.customerManage.member.service;
 
 import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.mapper.MemberMapper;
+import com.huashu.huashuManager.mapper.MemberWeixinMapper;
 import com.huashu.huashuManager.model.Member;
+import com.huashu.huashuManager.model.MemberWeixin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +18,9 @@ public class MemberServiceImpl implements MemberService {
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     @Autowired
     private MemberMapper memberMapper;
+
+    @Autowired
+    private MemberWeixinMapper messageMapper;
 
     @Override
     public int deleteMember(String memberId) {
@@ -52,7 +57,24 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public Member getMemberByOpenId(String openId) {
+        return memberMapper.selectByOpenId(openId);
+    }
+
+    @Override
     public int updateMember(Member member) {
         return memberMapper.updateByPrimaryKey(member);
+    }
+
+    @Override
+    public Integer getMessageCount(String openId) {
+        return messageMapper.getNotReadAllCountByOpenId(openId);
+    }
+
+    @Override
+    public PageEntity<MemberWeixin> pageSelectMessage(MemberWeixin memberWeixin) {
+        PageEntity<MemberWeixin> entity = new PageEntity<>();
+        entity.setPageData(messageMapper.pageSelect(memberWeixin));
+        return entity;
     }
 }

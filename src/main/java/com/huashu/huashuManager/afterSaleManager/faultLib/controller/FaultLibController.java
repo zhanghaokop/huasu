@@ -1,6 +1,7 @@
 package com.huashu.huashuManager.afterSaleManager.faultLib.controller;
 
 import com.huashu.huashuManager.afterSaleManager.faultLib.service.FaultLibService;
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.bo.ResponseEntity;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.model.ErrorCodeLib;
@@ -25,8 +26,8 @@ public class FaultLibController {
      * @return
      */
     @GetMapping("list")
-    public ResponseEntity<List<ErrorCodeLib>> listFaults(ErrorCodeLib fault){
-        return new ResponseEntity.Builder<List<ErrorCodeLib>>().setData(faultLibService.pageListErrorCodes(fault)).build();
+    public ResponseEntity<PageEntity<ErrorCodeLib>> listFaults(ErrorCodeLib fault){
+        return new ResponseEntity.Builder<PageEntity<ErrorCodeLib>>().setData(faultLibService.pageListErrorCodes(fault)).build();
     }
 
     /**

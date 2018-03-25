@@ -21,7 +21,7 @@ public class AuthenticationFilter implements Filter {
     @Autowired
     private TicketRepository ticketRepository;
 
-    private Pattern ignorePath = Pattern.compile("auth/login|swagger|v2/api-docs|/wxgzh/|/WEB-INF/views/");
+    private Pattern ignorePath = Pattern.compile("auth/login|swagger|v2/api-docs|redirect\\.html|/file/render/|/wxgzh/|/WEB-INF/views/|\\.css|\\.js|\\.ico|\\.jpg|/img/");
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -88,12 +88,19 @@ public class AuthenticationFilter implements Filter {
         String pageSize = request.getParameter("pageSize");
         String pageIndex = request.getParameter("pageIndex");
 
-        if (StringUtils.isNotBlank(pageSize) && StringUtils.isNotBlank(pageIndex)) {
-            PageEntity page = new PageEntity();
-            page.setPageIndex(Integer.parseInt(pageIndex));
+        PageEntity page = new PageEntity();
+
+
+        if (StringUtils.isNotBlank(pageSize)) {
             page.setPageSize(Integer.parseInt(pageSize));
-            state.addAttr("pageEntity", page);
         }
+
+        if (StringUtils.isNotBlank(pageIndex)) {
+            page.setPageIndex(Integer.parseInt(pageIndex));
+        }
+
+        state.addAttr("pageEntity", page);
+
     }
 
     @Override

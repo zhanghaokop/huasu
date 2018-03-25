@@ -61,4 +61,18 @@
     read_time, mark, open_id
     from member_weixin
   </select>
+
+  <select id="getNotReadAllCountByOpenId" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select count(id) from member_weixin WHERE open_id = #{openId, jdbcType=VARCHAR} and is_read = 0
+  </select>
+
+  <select id="pageSelect" resultMap="BaseResultMap" parameterType="com.huashu.huashuManager.model.MemberWeixin">
+    select id, name, phone, sender, post_time, type, title, message, url, model, is_read,
+    read_time, mark, open_id
+    from member_weixin where 1 = 1
+    <if test="openId != null and openId != ''">
+      and open_id = #{openId,jdbcType=VARCHAR}
+    </if>
+  </select>
+
 </mapper>

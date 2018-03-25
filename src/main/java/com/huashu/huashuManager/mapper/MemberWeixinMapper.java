@@ -12,5 +12,9 @@ public interface MemberWeixinMapper {
 
     List<MemberWeixin> selectAll();
 
+    List<MemberWeixin> pageSelect(MemberWeixin record);
+
+    Integer getNotReadAllCountByOpenId(String openId);
+
     int updateByPrimaryKey(MemberWeixin record);
 }

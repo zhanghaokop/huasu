@@ -1,11 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2018/3/19
-  Time: 16:46
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
 <html>
 <head>
     <title>Title</title>
@@ -41,21 +36,13 @@
                 <div class="weui-cell__ft">
                     <div class="cd_portrait">
                         <c:choose>
-                            <c:when test="${Member.album}">
+                            <c:when test="${!empty Member.album}">
                                 <img src="../img/member/${Member.album}" class="click3">
                             </c:when>
                             <c:otherwise>
                                 <img src="../img/default_member2.jpg" class="click3">
                             </c:otherwise>
                         </c:choose>
-                        <%--<c:if test="${Member.album}">--%>
-                            <%--<img src="../img/member/<%= result.album %>" class="click3">--%>
-                        <%--</c:if>--%>
-                        <%--<% if(${Member.album}{ %>--%>
-                        <%--<img src="../img/member/<%= result.album %>" class="click3">--%>
-                        <%--<% }else{ %>--%>
-                        <%--<img src="../img/default_member2.jpg" class="click3">--%>
-                        <%--<% } %>--%>
                     </div>
                 </div>
             </div>
@@ -90,7 +77,7 @@
                     <p>准驾车型</p>
                 </div>
                 <div class="weui-cell__ft">
-                    <span class="text">${Member.driving_type}</span>
+                    <span class="text">${Member.drivingType}</span>
                 </div>
             </div>
             <div class="weui-cell">
@@ -98,7 +85,7 @@
                     <p>出生日期</p>
                 </div>
                 <div class="weui-cell__ft">
-                    <span class="text">${Member.birth}</span>
+                    <span class="text"><fmt:formatDate value="${Member.birth}" type="date"></fmt:formatDate></span>
                 </div>
             </div>
         </div>
@@ -122,16 +109,10 @@
         </div>
     </div>
     <div class="btn-groups">
-        <a href="javascript:;" class="weui-btn weui-btn_primary text btn-big" onclick="edit();">编辑</a>
+        <a href="/wxgzh/memberInfoEdit" class="weui-btn weui-btn_primary text btn-big">编辑</a>
     </div>
 </div>
 </body>
-<%--加入其他<%- include("../includes/scripts.ejs") %>--%>
-<script>
-    function edit(){
-        window.location.href = ROUTE('/member/info_edit');
-    }
-</script>
 <script src="../js/jquery-1.11.1.min.js" type="text/javascript"></script>
 <script src="../js/common.js" type="text/javascript"></script>
 </body>

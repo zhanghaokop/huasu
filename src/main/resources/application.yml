@@ -2,6 +2,10 @@ server.port: 8080
 
 huasu:
   ip: 118.31.40.61
+  weixin:
+    auth2:
+      appid: wx33fcd264b461fb30
+      secret: f22d4666bd441d09a744ce1b565adf7d
 
 spring:
   datasource:

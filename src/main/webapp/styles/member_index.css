@@ -1,0 +1,38 @@
+.weui-media-box_appmsg .weui-media-box__hd {
+    margin-right: .8em;
+    width: 3.75rem;
+    height: 3.75rem;
+    line-height: 3.75rem;
+}
+.weui-media-box__hd img {
+	width: 3.75rem;
+}
+.weui-media-box__title {
+	font-size: 1.0625rem;
+}
+.weui-media-box__desc {
+	font-size: 0.8125rem;
+}
+.cd_portrait img {
+	width: 4.375rem;
+}
+.weui-cell {
+    padding: 0.625rem 0.9375rem;
+}
+.iconfont {
+	font-size: 1rem;
+}
+.weui-cell__bd p {
+	font-size: 1rem;
+}
+.weui-cell_access .weui-cell__ft {
+    padding-right: 0.8125rem;
+    font-size: 1rem;
+}
+.weui-cell_access .weui-cell__ft:after {
+    height: 0.375rem;
+    width: 0.375rem;
+    border-width: 0.125rem 0.125rem 0 0;
+    margin-top: -0.25rem;
+    right: 0.125rem;
+}

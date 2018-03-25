@@ -54,6 +54,15 @@
     from member
     where id = #{id,jdbcType=VARCHAR}
   </select>
+
+  <select id="selectByOpenId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select id, name, phone, sex, driving_type, birth, company, address, album, open_id,
+    submit_time, level, score
+    from member
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </select>
+
+
   <select id="selectAll" resultMap="BaseResultMap">
     select id, name, phone, sex, driving_type, birth, company, address, album, open_id, 
     submit_time, level, score

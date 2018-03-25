@@ -1,6 +1,8 @@
 package com.huashu.huashuManager.afterSaleManager.faultLib.service;
 
+import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.mapper.ErrorCodeLibMapper;
+import com.huashu.huashuManager.model.Customers;
 import com.huashu.huashuManager.model.ErrorCodeLib;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +28,12 @@ public class FaultLibServiceImpl implements FaultLibService {
     }
 
     @Override
-    public List<ErrorCodeLib> pageListErrorCodes(ErrorCodeLib errorCode) {
-        return mapper.pageSelect(errorCode);
+    public PageEntity<ErrorCodeLib> pageListErrorCodes(ErrorCodeLib errorCode) {
+
+        PageEntity<ErrorCodeLib> entity = new PageEntity<>();
+        entity.setPageData(mapper.pageSelect(errorCode));
+
+        return entity;
     }
 
     @Override
