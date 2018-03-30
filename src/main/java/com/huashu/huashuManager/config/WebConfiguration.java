@@ -45,6 +45,15 @@ public class WebConfiguration {
         };
     }
 
+    @Bean
+    public FilterRegistrationBean registrationWxBean(WeixinAuthenticateFilter filter){
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+        filterRegistrationBean.setFilter(filter);
+        filterRegistrationBean.addUrlPatterns("/wxgzh");
+        return filterRegistrationBean;
+    }
+
+
     /**
      * 注册登录权限过滤器
      * @param filter
