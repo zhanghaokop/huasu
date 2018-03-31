@@ -1,6 +1,7 @@
 package com.huashu.huashuManager.customerManage.company.service;
 
 import com.huashu.huashuManager.common.bo.PageEntity;
+import com.huashu.huashuManager.model.BasicInfo;
 import com.huashu.huashuManager.model.Customers;
 
 import java.util.List;
@@ -41,4 +42,9 @@ public interface CustomerService {
      * @return
      */
     int updateCustomer(Customers customer);
+
+    List<BasicInfo> gitImeiCompany();
+
+    List<BasicInfo> gitCompanyCar (BasicInfo bac);
+
 }

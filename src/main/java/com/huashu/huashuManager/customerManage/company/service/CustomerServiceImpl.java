@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.huashu.huashuManager.common.aop.PageHelperAop;
 import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.mapper.CustomersMapper;
+import com.huashu.huashuManager.model.BasicInfo;
 import com.huashu.huashuManager.model.Customers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,5 +51,15 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public int updateCustomer(Customers customer) {
         return customersMappermapper.updateByPrimaryKey(customer);
+    }
+
+    @Override
+    public List<BasicInfo> gitImeiCompany() {
+        return customersMappermapper.gitImeiCompany();
+    }
+
+    @Override
+    public List<BasicInfo> gitCompanyCar(BasicInfo bac) {
+        return customersMappermapper.gitCompanyCar(bac);
     }
 }
