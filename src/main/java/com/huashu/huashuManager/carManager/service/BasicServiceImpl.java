@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.carManager.service;
 
+import com.huashu.huashuManager.auth.SessionStateHolder;
 import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.mapper.BasicInfoMapper;
@@ -58,6 +59,7 @@ public class BasicServiceImpl implements BasicService{
     @Override
     public PageEntity<BasicInfo> pageListBasic(BasicInfo basicInfo) {
         PageEntity<BasicInfo> entity = new PageEntity<>();
+        basicInfo.setCompanyid(SessionStateHolder.getUser().getCompanyId());
         entity.setPageData(basicInfoMapper.pageListBasic(basicInfo));
         return entity;
     }

@@ -1,5 +1,7 @@
 package com.huashu.huashuManager.carManager.service;
 
+import com.huashu.huashuManager.auth.SessionState;
+import com.huashu.huashuManager.auth.SessionStateHolder;
 import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.mapper.InsuranceInfoMapper;
@@ -50,6 +52,7 @@ public class InsuranceInfoServiceImpl implements InsuranceInfoService {
     @Override
     public PageEntity<InsuranceInfo> pageListInsuranceInfo(InsuranceInfo insuranceInfo) {
         PageEntity<InsuranceInfo> page = new PageEntity<InsuranceInfo>();
+        insuranceInfo.setCompanyid(SessionStateHolder.getUser().getCompanyId());
         page.setPageData(insuranceInfoMapper.selectAll(insuranceInfo));
         return page;
     }

@@ -118,7 +118,7 @@
         <include refid="userFactor"></include>
   </select>
     <select id="select" parameterType="com.huashu.huashuManager.model.User" resultType="com.huashu.huashuManager.model.User">
-        select id , name, password, level, roleId
+        select id , name, password, level, roleId,companyid
         from user where 1=1
         <if test="name != null and name != ''">
             and name = #{name,jdbcType=VARCHAR}
