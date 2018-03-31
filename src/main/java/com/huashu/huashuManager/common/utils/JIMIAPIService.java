@@ -43,7 +43,7 @@ public class JIMIAPIService {
     @Resource
     private CatTrackService catTrackService;
 
-    public  String  get() {
+    public  String  getToken() {
         Map<String,Object> map =new HashMap<String, Object>();
         map.put("method", UtilConstants.JIMIAPI.JIMIGETTOKENMETHOD);
         map.put("app_key",UtilConstants.JIMIAPI.JIMIAPPKEY);
@@ -73,15 +73,43 @@ public class JIMIAPIService {
     }
 
     public String getJIMITOKEN(){
-        String token =redisTemplate.opsForValue().get("JIMITOKEN");
-        if(!StringUtils.isEmpty(token)){
-            return token;
-        }
-        return get();
+//        String token =redisTemplate.opsForValue().get("JIMITOKEN");
+//        if(!StringUtils.isEmpty(token)){
+//            return token;
+//        }
+        return getToken();
     }
     public static void main(String[] args) {
-        System.out.print( LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-        new JIMIAPIService().getCarTrack("868120158646593");
+//        System.out.print( LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+////        new JIMIAPIService().getCarTrack("868120158646593");
+        new JIMIAPIService().getGps("868120158646593");
+    }
+
+    public JSONObject getGps(String imei){
+        Map<String,Object> map =new HashMap<>();
+        map.put("method","jimi.device.location.get");
+        map.put("timestamp",LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        map.put("app_key",UtilConstants.JIMIAPI.JIMIAPPKEY);
+        map.put("sign_method","md5");
+        map.put("v","1.0");
+        map.put("format","json");
+        map.put("access_token",getJIMITOKEN());
+        map.put("imeis",imei);
+        map.put("map_type","BAIDU");
+        try {
+            map.put("sign",JIMIAPI.signTopRequest(map,UtilConstants.JIMIAPI.JIMIAPPSECRET,"md5"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        StringBuffer strpara= new StringBuffer();
+        for (Map.Entry<String, Object> entry : map.entrySet()){
+            strpara.append(entry.getKey()+"="+entry.getValue()+"&");
+        }
+        System.out.print(strpara);
+        String result =  RestClientUtil.exchange(UtilConstants.JIMIAPI.JIMIURL,strpara.toString());
+        System.out.print(result);
+        JSONObject obj= JSON.parseObject(result);
+        return obj;
     }
 
     public void getCarTrack(String imei){
