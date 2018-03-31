@@ -36,8 +36,8 @@ public class BasicInfoController {
      * @param basicInfo
      * @return
      */
-    @PostMapping("getCarByPage")
-    public ResponseEntity<PageEntity<BasicInfo>> getCarByPage(@RequestBody BasicInfo basicInfo){
+    @GetMapping("getCarByPage")
+    public ResponseEntity<PageEntity<BasicInfo>> getCarByPage( BasicInfo basicInfo){
         return new ResponseEntity.Builder<PageEntity<BasicInfo>>().setData(basicService.pageListBasic(basicInfo)).build();
     }
 

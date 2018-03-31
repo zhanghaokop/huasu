@@ -5,10 +5,7 @@ import com.huashu.huashuManager.common.bo.ResponseEntity;
 import com.huashu.huashuManager.model.Role;
 import com.huashu.huashuManager.promessionsManager.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -79,8 +76,8 @@ public class RoleController {
      * @param role
      * @return
      */
-    @RequestMapping("selectRole")
-    public ResponseEntity<List<Role>> selectRole(@RequestBody Role role){
+    @GetMapping("selectRole")
+    public ResponseEntity<List<Role>> selectRole( Role role){
         return  new ResponseEntity.Builder<List<Role>>()
                 .setCode(200).setData(roleService.selectRoleDetail(role)).build();
     }
@@ -90,8 +87,8 @@ public class RoleController {
      * @param role
      * @return
      */
-    @RequestMapping("selectRoleByPage")
-    public ResponseEntity<PageEntity<Role>> selectRoleByPage(@RequestBody Role role){
+    @GetMapping("selectRoleByPage")
+    public ResponseEntity<PageEntity<Role>> selectRoleByPage( Role role){
         return  new ResponseEntity.Builder<PageEntity<Role>>()
                 .setCode(200).setData(roleService.pageListRole(role)).build();
     }

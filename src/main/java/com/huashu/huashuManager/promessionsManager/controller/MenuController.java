@@ -36,8 +36,8 @@ public class MenuController {
      * @param menu
      * @return
      */
-    @PostMapping("getMenu")
-    public ResponseEntity<List<Menu>> getMenu(@RequestBody Menu menu){
+    @GetMapping("getMenu")
+    public ResponseEntity<List<Menu>> getMenu(Menu menu){
         return new ResponseEntity.Builder<List<Menu>>()
                 .setCode(200).setData(menuService.getMenuList(menu)).build();
     }
@@ -47,8 +47,8 @@ public class MenuController {
      * @param menu
      * @return
      */
-    @PostMapping("getMenuByPage")
-    public ResponseEntity<PageEntity<Menu>> getMenuByPage(@RequestBody Menu menu){
+    @GetMapping("getMenuByPage")
+    public ResponseEntity<PageEntity<Menu>> getMenuByPage( Menu menu){
         return new ResponseEntity.Builder<PageEntity<Menu>>()
                 .setCode(200).setData(menuService.pageListMenu(menu)).build();
     }

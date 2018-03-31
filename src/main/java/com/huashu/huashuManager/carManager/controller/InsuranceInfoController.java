@@ -33,8 +33,8 @@ public class InsuranceInfoController {
      * @param insuranceInfo
      * @return
      */
-    @PostMapping("getInsInfoByPage")
-    public ResponseEntity<PageEntity<InsuranceInfo>> getInsInfoByPage(@RequestBody InsuranceInfo insuranceInfo){
+    @GetMapping("getInsInfoByPage")
+    public ResponseEntity<PageEntity<InsuranceInfo>> getInsInfoByPage(InsuranceInfo insuranceInfo){
         return new ResponseEntity.Builder<PageEntity<InsuranceInfo>>().setData(insuranceInfoService.pageListInsuranceInfo(insuranceInfo)).build();
     }
 

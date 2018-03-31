@@ -30,17 +30,19 @@ public class UserController {
 
     /**
      * 获取用户信息详情
-     * @param user
+     * @param id
      * @return
      */
-    @PostMapping("getUser")
-    public ResponseEntity<User> getUser(@RequestBody User user){
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUser(@PathVariable  String id){
+        User user = new User();
+        user.setId(id);
         return new ResponseEntity.Builder<User>()
                 .setCode(200).setData(userService.selectDetail(user)).build();
     }
 
-    @PostMapping("getUserList")
-    public ResponseEntity<List<User>> getUserList(@RequestBody User user){
+    @GetMapping ("getUserList")
+    public ResponseEntity<List<User>> getUserList( User user){
         return new ResponseEntity.Builder<List<User>>().setData(userService.selectAll(user)).build();
     }
 
@@ -49,8 +51,8 @@ public class UserController {
      * @param user
      * @return
      */
-    @PostMapping("getUserByPage")
-    public ResponseEntity<PageEntity<User>> getUserByPage(@RequestBody User user){
+    @GetMapping("getUserByPage")
+    public ResponseEntity<PageEntity<User>> getUserByPage( User user){
         return new ResponseEntity.Builder<PageEntity<User>>()
                 .setCode(200).setData(userService.pageListUser(user)).build();
     }
