@@ -11,6 +11,7 @@ public interface RepairStationMapper {
     RepairStation selectByPrimaryKey(String id);
 
     List<RepairStation> selectAll();
+    List<RepairStation> pageSelect(RepairStation record);
 
     int updateByPrimaryKey(RepairStation record);
 }

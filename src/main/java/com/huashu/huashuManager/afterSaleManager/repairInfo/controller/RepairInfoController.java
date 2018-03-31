@@ -27,6 +27,7 @@ public class RepairInfoController {
      */
     @GetMapping("list")
     public ResponseEntity<PageEntity<RepairInfo>> pageList(RepairInfo repairInfo){
+
         return new ResponseEntity.Builder<PageEntity<RepairInfo>>().setData(repairInfoService.pageListRepairInfo(repairInfo)).build();
     }
 

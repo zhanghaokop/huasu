@@ -22,7 +22,7 @@ public class PageHelperAop {
     @Pointcut("execution(public * com.huashu.huashuManager..*.service.*.pageList*(..))")
     public void pageList(){}
 
-//    @Before("pageList()")
+//    @Before("pageListStation()")
 //    public void doBefore() throws Throwable {
 //        SessionState state = SessionStateHolder.get();
 //
@@ -38,7 +38,7 @@ public class PageHelperAop {
 //        PageHelper.startPage(page.getPageIndex(), page.getPageSize());
 //    }
 //
-//    @After("pageList()")
+//    @After("pageListStation()")
 //    public void doAfter(){
 //        PageHelper.clearPage();
 //    }

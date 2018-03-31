@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link href="../styles/weui.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../styles/responsive.css">
     <link rel="stylesheet" href="../styles/member_mainInfo.css">
