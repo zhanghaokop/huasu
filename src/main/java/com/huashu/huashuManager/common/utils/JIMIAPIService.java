@@ -132,7 +132,7 @@ public class JIMIAPIService {
                 trackList.add(carTracBean);
             }
             carTracBean.setTrackValue(carTrack.toString());
-            //catTrackService.insertCarMileage(carTracBean);
+            catTrackService.insertCarMileage(carTracBean);
             carTracBean.setTotalMile(getTotalMile(trackList));
             catTrackService.updateCarTotal(carTracBean);
         }else {
