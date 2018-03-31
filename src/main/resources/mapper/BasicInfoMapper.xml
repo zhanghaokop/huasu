@@ -96,7 +96,7 @@
     LEFT JOIN driver_info q on q.plate_no=t.plate_no
     where 1=1
     <if test="plateNo!=null and plateNo!=''">
-      and t.plate_no=#{plateNo,jdbcType=VARCHAR}
+      and t.plate_no LIKE  CONCAT(CONCAT('%',#{plateNo,jdbcType=VARCHAR}),'%')
     </if>
     <if test="companyid!=null and companyid!=''">
       and t.companyid=#{companyid,jdbcType=VARCHAR}
@@ -105,7 +105,7 @@
       <!--and p.customer=#{customer,jdbcType=VARCHAR}-->
     <!--</if>-->
     <if test="customer!=null and customer!=''">
-      and p.customer LIKE "%"#{customer,jdbcType=VARCHAR}"%"
+      and p.company LIKE CONCAT(CONCAT('%',#{customer,jdbcType=VARCHAR}),'%')
     </if>
   </select>
 </mapper>

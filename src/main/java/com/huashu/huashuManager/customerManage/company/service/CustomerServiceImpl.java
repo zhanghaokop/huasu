@@ -7,6 +7,8 @@ import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.mapper.CustomersMapper;
 import com.huashu.huashuManager.model.BasicInfo;
 import com.huashu.huashuManager.model.Customers;
+import com.huashu.huashuManager.model.DriverInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,6 +62,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<BasicInfo> gitCompanyCar(BasicInfo bac) {
+//        List<DriverInfo> aaa =customersMappermapper.getDriver();
+//        for(DriverInfo driverInfo :aaa){
+//            if(StringUtils.isEmpty(driverInfo.getCompanyid()))
+//                continue;
+//            customersMappermapper.updateDrivar(driverInfo);
+//        }
         return customersMappermapper.gitCompanyCar(bac);
     }
 }

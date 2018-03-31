@@ -2,6 +2,8 @@ package com.huashu.huashuManager.mapper;
 
 import com.huashu.huashuManager.model.BasicInfo;
 import com.huashu.huashuManager.model.Customers;
+import com.huashu.huashuManager.model.DriverInfo;
+
 import java.util.List;
 
 public interface CustomersMapper {
@@ -25,5 +27,8 @@ public interface CustomersMapper {
     List<BasicInfo> gitImeiCompany();
 
     List<BasicInfo> gitCompanyCar (BasicInfo bac);
+
+    List<DriverInfo> getDriver();
+    void updateDrivar(DriverInfo driverInfo);
 
 }

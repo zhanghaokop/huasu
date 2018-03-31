@@ -36,7 +36,7 @@
       and menuid = #{menuid,jdbcType=VARCHAR}
     </if>
     <if test="name != null and name != ''">
-      and name = #{name,jdbcType=VARCHAR}
+      and name CONCAT(CONCAT('%',#{name,jdbcType=VARCHAR}),'%')
     </if>
     <if test="url != null and url != ''">
       and url = #{url,jdbcType=VARCHAR}

@@ -42,8 +42,9 @@ public class CarController {
     }
 
     @GetMapping("{imei}")
-//    @ResponseBody
     public ResponseEntity<JSONObject> getGps(@PathVariable String imei){
         return new ResponseEntity.Builder<JSONObject>().setData(jimiapi.getGps(imei)).build();
     }
+
+
 }

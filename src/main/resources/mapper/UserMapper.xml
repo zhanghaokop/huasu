@@ -21,7 +21,7 @@
 
     <sql id="userFactor">
         <if test="name != null and name != ''">
-            and t.name = #{name,jdbcType=VARCHAR}
+            and t.name LIKE  CONCAT(CONCAT('%',#{name,jdbcType=VARCHAR}),'%')
         </if>
         <if test="id != null and id != ''">
             and t.id = #{id,jdbcType=VARCHAR}

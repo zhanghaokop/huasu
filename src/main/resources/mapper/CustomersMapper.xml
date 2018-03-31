@@ -112,4 +112,14 @@
   <select id="gitCompanyCar" parameterType="com.huashu.huashuManager.model.BasicInfo" resultType="com.huashu.huashuManager.model.BasicInfo">
       select t.company as customer, k.id,k.plate_No as plateNo,k.owner,k.address,k.model,k.power_type,k.imei from basic_info k left join customers t on k.companyId =t.id where k.companyid=#{companyid,jdbcType=VARCHAR} and k.imei is not null
   </select>
+
+  <select id="getDriver" resultType="com.huashu.huashuManager.model.DriverInfo">
+    select a.id,b.companyid from driver_info a left join basic_info b on  a.plate_no=b.plate_no
+
+  </select>
+
+  <update id="updateDrivar" parameterType="com.huashu.huashuManager.model.DriverInfo">
+    UPDATE driver_info set companyid = #{companyid}  where id=#{id};
+
+  </update>
 </mapper>
