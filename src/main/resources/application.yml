@@ -29,3 +29,4 @@ pagehelper:
   reasonable: true
 
 #logging.level.root: debug
+logging.level.com.huashu.huashuManager.mapper: debug

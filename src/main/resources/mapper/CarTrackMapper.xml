@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huashu.huashuManager.mapper.CarTrackMapper">
+<insert id="insertCarTrack" parameterType="com.huashu.huashuManager.model.CarTrack">
+  insert into mile VALUES (#{id,jdbcType=VARCHAR},#{lat,jdbcType=VARCHAR},#{lng,jdbcType=VARCHAR},#{gpsTime,jdbcType=VARCHAR},#{createTime,jdbcType=VARCHAR},#{imei,jdbcType=VARCHAR})
+</insert>
+  <insert id="insertCarMileage" parameterType="com.huashu.huashuManager.model.CarTrack">
+  insert into mile_detail VALUES (#{id,jdbcType=VARCHAR},#{createTime,jdbcType=VARCHAR},#{trackValue,jdbcType=VARCHAR},#{imei,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertCarTotalMile" parameterType="com.huashu.huashuManager.model.CarTrack">
+
+  </insert>
+
+  <update id="updateCarTotal" parameterType="com.huashu.huashuManager.model.CarTrack">
+    update mile_total set totalMIle = totalMIle+ #{totalMile} where imei=#{imei,jdbcType=VARCHAR}
+  </update>
+</mapper>

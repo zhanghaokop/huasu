@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.common.utils;
 
+import com.github.pagehelper.util.StringUtil;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -42,6 +43,17 @@ public class RestClientUtil {
         HttpEntity entity = new HttpEntity(bodyValTemplate, headers);
         System.out.println("=========调用接口结束，返回结果："+entity);
         ResponseEntity<String> result = restTemplate.exchange(url, HttpMethod.POST, entity,String.class);
+        return result.getBody();
+    }
+
+    public static String exchange(String url, String objParams) {
+        if (StringUtil.isEmpty(url) || StringUtil.isEmpty(objParams)) {
+            return "参数不能为空";
+        }
+        MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
+        headers.set("Content-Type","application/x-www-form-urlencoded; charset=UTF-8");
+        HttpEntity<String> entity = new HttpEntity<String>(objParams, headers);
+        ResponseEntity<String> result = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
         return result.getBody();
     }
 }

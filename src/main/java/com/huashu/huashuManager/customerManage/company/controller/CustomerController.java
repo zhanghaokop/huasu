@@ -2,6 +2,7 @@ package com.huashu.huashuManager.customerManage.company.controller;
 
 import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.bo.ResponseEntity;
+import com.huashu.huashuManager.common.utils.JIMIAPIService;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.customerManage.company.service.CustomerService;
 import com.huashu.huashuManager.model.Customers;
@@ -23,6 +24,8 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private JIMIAPIService api;
     @Resource
     private UserService userService;
     @GetMapping("/{customerId}")
@@ -46,6 +49,7 @@ public class CustomerController {
      */
     @GetMapping("/listCompany")
     public ResponseEntity<List<Customers>> listAllCustomers(){
+        api.getCarTrack("1895098932cda8b8c0a0f0b626ac12cf");
         return new ResponseEntity.Builder<List<Customers>>().setData(customerService.listAllCompanyAndID()).build();
     }
     /**

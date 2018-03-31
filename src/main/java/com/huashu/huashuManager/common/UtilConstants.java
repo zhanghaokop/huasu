@@ -22,4 +22,10 @@ public interface UtilConstants {
         public static final String TEMPLENTID_REPAIRSUB="4012125";
         public static final String TEMPLENTID_REPAIRFINSH="4082100";
     }
+    public static class JIMIAPI {
+        public static final String JIMIAPPKEY="8FB345B8693CCD003FCB7F5C57CB51A4";
+        public static final String JIMIAPPSECRET="e8103d4c19634d6899a66d7b16321c99";
+        public static final String JIMIGETTOKENMETHOD="jimi.oauth.token.get";
+        public static final String JIMIURL="http://open.aichezaixian.com/route/rest";
+    }
 }
