@@ -32,7 +32,7 @@ public class WeixinController {
     /**
      * 重定向到微信主页
      */
-    public static final String WX_MAIN_REDIRECT = "redirect:https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAxNDAzMzk3MA==&scene=124#wechat_redirect";
+    public static final String WX_MAIN_REDIRECT = "redirect:main";
 
     /**
      * 微信服务

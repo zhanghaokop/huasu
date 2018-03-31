@@ -49,7 +49,7 @@ public class WebConfiguration {
     public FilterRegistrationBean registrationWxBean(WeixinAuthenticateFilter filter){
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
         filterRegistrationBean.setFilter(filter);
-        filterRegistrationBean.addUrlPatterns("/wxgzh/*","/redirect.html");
+        filterRegistrationBean.addUrlPatterns("/wxgzh/*");
         return filterRegistrationBean;
     }
 
