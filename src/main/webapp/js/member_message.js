@@ -7,7 +7,7 @@ var page = function(){
 }
 var p = page();
 $(document).ready(function(){
-    $.get("/wxgzh/msgList", function(res){
+    $.get("msgList", function(res){
         render(res.pageData);
     })
 	var height = window.innerHeight;
@@ -34,7 +34,7 @@ function render(render_data){
 function getList(){
 	var page = p();
 	$.ajax({
-		url:"/wxgzh/msgList",
+		url:"msgList",
 		type:'get',
 		dataType:'json',
 		timeout:30000,

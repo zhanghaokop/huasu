@@ -25,6 +25,11 @@ public class RepairInfo {
     private String openId;
 
     /**
+     * 关联的微信会员信息
+     */
+    private Member member;
+
+    /**
      * 车牌号
      */
     private String plateNo;
@@ -296,5 +301,14 @@ public class RepairInfo {
 
     public void setAlbum(String album) {
         this.album = album == null ? null : album.trim();
+    }
+
+    public Member getMember() {
+        return member;
+    }
+
+    public RepairInfo setMember(Member member) {
+        this.member = member;
+        return this;
     }
 }

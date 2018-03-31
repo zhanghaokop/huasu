@@ -50,7 +50,7 @@ $(function(){
     });
 
     scrollPage = new ScrollPage({
-        url: '/wxgzh/pageKnowledgeList'
+        url: 'pageKnowledgeList'
     });
     scrollPage.page = 2;
     window.onscroll = function(){
@@ -66,11 +66,11 @@ $(function(){
 });
 function errInfo(obj){
     var id = $(obj).attr('data-id');
-    window.location.href = '/wxgzh/errorCode/'+id;
+    window.location.href = 'errorCode/'+id;
 }
 function search(val){
     scrollPage = new ScrollPage({
-        url: '/wxgzh/pageKnowledgeList',
+        url: 'pageKnowledgeList',
         keywords: val
     });
     scrollPage.page = 1;

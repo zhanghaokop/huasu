@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>${code.errorCode}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-    <link href="/styles/weui.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/styles/responsive.css">
+    <link href="../../styles/weui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../styles/responsive.css">
 </head>
 <body>
 <div class="weui-panel__hd">${code.errorCode}</div>

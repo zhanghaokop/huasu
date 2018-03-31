@@ -29,19 +29,40 @@ import java.util.List;
 @RequestMapping("wxgzh")
 public class WeixinController {
 
+    /**
+     * 重定向到微信主页
+     */
+    public static final String WX_MAIN_REDIRECT = "redirect:https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAxNDAzMzk3MA==&scene=124#wechat_redirect";
+
+    /**
+     * 微信服务
+     */
     @Autowired
     private MemberService memberService;
 
-
+    /**
+     * 错误代码库
+     */
     @Autowired
     private FaultLibService faultLibService;
 
+    /**
+     * 打开微信注册页面
+     * @param model
+     * @param openId
+     * @return
+     */
     @GetMapping("/register")
     public String regPage(Model model, String openId){
         model.addAttribute("openId", openId);
         return "register";
     }
 
+    /**
+     * 会员中心主页
+     * @param model
+     * @return
+     */
     @GetMapping("main")
     public String memberMain(Model model){
         String openId = (String) SessionStateHolder.get().getAttr("openId");
@@ -55,6 +76,11 @@ public class WeixinController {
         return "member_main";
     }
 
+    /**
+     * 错误代码库页面
+     * @param model
+     * @return
+     */
     @GetMapping("knowledgeList")
     public String knowledgeList(Model model){
         PageEntity<ErrorCodeLib> entity =  faultLibService.pageListErrorCodes(new ErrorCodeLib());
@@ -62,22 +88,38 @@ public class WeixinController {
         return "knowledgeList";
     }
 
+    /**
+     * 分页批量查询错误代码库信息
+     * @param errorCodeLib
+     * @return
+     */
     @GetMapping("pageKnowledgeList")
     public @ResponseBody ResponseEntity<PageEntity<ErrorCodeLib>> pageKnowledgeList(ErrorCodeLib errorCodeLib){
         PageEntity<ErrorCodeLib> entity =  faultLibService.pageListErrorCodes(errorCodeLib);
         return new ResponseEntity.Builder<PageEntity<ErrorCodeLib>>().setData(entity).build();
     }
 
+    /**
+     * 查看具体的错误代码
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("errorCode/{id}")
     public String errorCode(@PathVariable("id") String id, Model model){
         ErrorCodeLib errorCodeLib = this.faultLibService.getErrorCodeById(id);
         model.addAttribute("code", errorCodeLib);
         return "errorInfo";
-
     }
 
+    /**
+     * 提交注册表单,注册成功
+     * @param response
+     * @param member
+     * @return
+     */
     @PostMapping("/register")
-    public void register(HttpServletResponse response, Member member){
+    public String register(HttpServletResponse response, Member member){
 
         if (memberService.getMemberByOpenId(member.getOpenId()) != null) {
             //已经注册过了
@@ -94,14 +136,16 @@ public class WeixinController {
         wxToken.setMaxAge(15 * 24 * 60 * 60);
 
         response.addCookie(wxToken);
+
         //注册成功后跳转到具体的业务页面？
-        try {
-            response.sendRedirect("https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAxNDAzMzk3MA==&scene=124#wechat_redirect");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return WX_MAIN_REDIRECT;
     }
 
+    /**
+     * 提交编辑微信用户信息
+     * @param member
+     * @return
+     */
     @PostMapping("/edit")
     public String updateMember(Member member){
         String openId = (String) SessionStateHolder.get().getAttr("openId");
@@ -113,10 +157,15 @@ public class WeixinController {
 
         memberService.updateMember(member);
 
-        return "redirect:https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzAxNDAzMzk3MA==&scene=124#wechat_redirect";
+        return WX_MAIN_REDIRECT;
 
     }
 
+    /**
+     * 查看微信会员信息
+     * @param modelMap
+     * @return
+     */
     @GetMapping("/memberInfo")
     public String getMemberInfo(ModelMap modelMap){
 
@@ -128,6 +177,11 @@ public class WeixinController {
         return "memberInfo";
     }
 
+    /**
+     * 打开编辑页面
+     * @param modelMap
+     * @return
+     */
     @GetMapping("/memberInfoEdit")
     public String editMember(ModelMap modelMap){
         String openId = (String) SessionStateHolder.get().getAttr("openId");
@@ -137,11 +191,19 @@ public class WeixinController {
         return "memberEdit";
     }
 
+    /**
+     * 会员消息页面
+     * @return
+     */
     @GetMapping("memberMessage")
     public String memberMessagePage(){
         return "memberMessage";
     }
 
+    /**
+     * json获取消息列表
+     * @return
+     */
     @GetMapping("msgList")
     public @ResponseBody PageEntity<MemberWeixin> pageMessage(){
         String openId = (String) SessionStateHolder.get().getAttr("openId");
@@ -152,6 +214,10 @@ public class WeixinController {
         return memberService.pageSelectMessage(weixin);
     }
 
+    /**
+     * 保修页面
+     * @return
+     */
     @GetMapping("repair")
     public String repairIndex(){
         return "repair";
@@ -160,6 +226,11 @@ public class WeixinController {
     @Autowired
     private RepairInfoService repairInfoService;
 
+    /**
+     * 维修历史
+     * @param model
+     * @return
+     */
     @GetMapping("repairHistory")
     public String myRepair(Model model){
 
@@ -172,6 +243,11 @@ public class WeixinController {
         return "repairHistory";
     }
 
+    /**
+     * 发送验证码接口
+     * @param phone
+     * @return
+     */
     @GetMapping("sms/{phone}")
     public @ResponseBody int smsService(@PathVariable String phone){
         return SmsService.getCodeMessage(Arrays.asList(phone));

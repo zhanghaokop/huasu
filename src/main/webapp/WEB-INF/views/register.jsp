@@ -31,7 +31,7 @@
 </head>
 <body>
 
-<form action="/wxgzh/register" method="post">
+<form action="register" method="post">
     <div class="weui-cell">
         <div class="weui-cell__hd"><label class="weui-label">姓名：</label></div>
         <div class="weui-cell__bd">
@@ -117,7 +117,7 @@
     }
     function createCode() {
         $.ajax({
-            url:"/wxgzh/sms/" + phone,
+            url:"sms/" + phone,
             type:"get",
             success:function(res){
                 if(res === 416){

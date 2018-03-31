@@ -33,6 +33,8 @@ public class DriverServiceImpl implements DriverService {
         return page;
     }
 
+    //统一采用list
+    @Deprecated
     @Override
     public List<DriverInfo> getDriver(DriverInfo driverInfo) {
         return mapper.selectDriver(driverInfo);

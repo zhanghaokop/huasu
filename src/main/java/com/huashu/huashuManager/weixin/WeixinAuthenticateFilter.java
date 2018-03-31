@@ -46,15 +46,15 @@ public class WeixinAuthenticateFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
 
         try {
-            String redirectUrl = URLEncoder.encode("http://www.hsxnyqc.com/redirect.html","UTF-8");
+            String redirectUrl = URLEncoder.encode("http://www.hsxnyqc.com/huasu/wxgzh/redirect","UTF-8");
             wxRedirect = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + weiXinProperties.getAppid() + "&redirect_uri=" +
                     redirectUrl + "&response_type=code&scope=snsapi_base&state=";
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
-        routeMap.put("0","/wxgzh/main");
-        routeMap.put("1","/wxgzh/knowledgeList"); //常见问题
+        routeMap.put("0","main");
+        routeMap.put("1","knowledgeList"); //常见问题
 
     }
 
@@ -70,7 +70,7 @@ public class WeixinAuthenticateFilter implements Filter {
         String uri = request.getRequestURI();
 
         //微信重定向回来的
-        if (uri.equals("/redirect.html")) {
+        if (uri.contains("/redirect")) {
             //微信重定向回来的，校验code
             String code = request.getParameter("code");
 
@@ -81,11 +81,18 @@ public class WeixinAuthenticateFilter implements Filter {
                 Member member = memberService.getMemberByOpenId(openId);
                 if (member != null) {
                     //重定向到state指向的页面
+
+                    Cookie wxToken = new Cookie("wxToken", member.getOpenId());
+                    wxToken.setHttpOnly(true);
+                    wxToken.setMaxAge(15 * 24 * 60 * 60);
+
+                    response.addCookie(wxToken);
+
                     String state = request.getParameter("state");
                     response.sendRedirect(routeMap.get(state));
                 } else {
                     //重定向到注册页面
-                    response.sendRedirect("/wxgzh/register?openId=" + openId);
+                    response.sendRedirect("register?openId=" + openId);
                 }
             }
 

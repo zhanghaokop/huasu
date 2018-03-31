@@ -24,6 +24,7 @@
     <result column="finish_time" jdbcType="TIMESTAMP" property="finishTime" />
     <result column="finished" jdbcType="INTEGER" property="finished" />
     <result column="album" jdbcType="LONGVARCHAR" property="album" />
+    <association column="open_id" property="member" select="com.huashu.huashuManager.mapper.MemberMapper.selectByOpenId" javaType="com.huashu.huashuManager.model.Member"/>
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from repair_info

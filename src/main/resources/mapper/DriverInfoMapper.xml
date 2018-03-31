@@ -64,13 +64,16 @@
     on_job, deltag, companyid
     from driver_info WHERE 1=1
     <if test="name != null and name !=''">
-      and name = #{name,jdbcType=VARCHAR}
+      and name LIKE CONCAT(CONCAT('%',#{name,jdbcType=VARCHAR}),'%')
     </if>
     <if test="phone != null and phone !=''">
-      and phone = #{phone,jdbcType=VARCHAR}
+      and phone LIKE CONCAT(CONCAT('%',#{phone,jdbcType=VARCHAR}),'%')
     </if>
     <if test="plateNo != null and plateNo !=''">
-      and plate_no = #{plateNo,jdbcType=VARCHAR}
+      and plate_no LIKE CONCAT(CONCAT('%',#{plateNo,jdbcType=VARCHAR}),'%')
+    </if>
+    <if test="company!=null and company !=''">
+      and company LIKE CONCAT(CONCAT('%',#{company,jdbcType=VARCHAR}),'%')
     </if>
     <if test="companyid!=null and companyid !=''">
       and companyid = #{companyid,jdbcType=VARCHAR}

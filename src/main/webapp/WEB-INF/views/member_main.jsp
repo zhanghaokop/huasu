@@ -68,14 +68,14 @@
           </div>
       </div>
       <div class="weui-cells" style="margin-top:20px">
-          <a class="weui-cell weui-cell_access" href="/wxgzh/memberInfo">
+          <a class="weui-cell weui-cell_access" href="memberInfo">
               <div class="weui-cell__hd"><i class="iconfont icon-member2" style="color:#38AF13"></i></div>
               <div class="weui-cell__bd">
                   <p>个人信息</p>
               </div>
               <div class="weui-cell__ft"></div>
           </a>
-          <a class="weui-cell weui-cell_access" href="/wxgzh/memberMessage">
+          <a class="weui-cell weui-cell_access" href="memberMessage">
               <div class="weui-cell__hd" style="margin-top: -4px;">
                   <i class="iconfont icon-i-w-message" style="color:#38AF13;position: relative;top: 0.125rem;"></i>
               </div>
@@ -93,15 +93,15 @@
           </a>
       </div>
   	<div class="weui-grids" style="margin-top:40px;">
-          <a href="/wxgzh/repair" class="weui-grid">
+          <a href="repair" class="weui-grid">
               <div class="weui-grid__icon iconfont icon-repair"></div>
               <p class="weui-grid__label">报修服务</p>
           </a>
-          <a href="/wxgzh/knowledgeList" class="weui-grid">
+          <a href="knowledgeList" class="weui-grid">
               <div class="weui-grid__icon iconfont icon-knowledge"></div>
               <p class="weui-grid__label">常见问题</p>
           </a>
-          <a href="/wxgzh/repairHistory" class="weui-grid">
+          <a href="repairHistory" class="weui-grid">
               <div class="weui-grid__icon iconfont icon-tubiao03"></div>
               <p class="weui-grid__label">我的维修</p>
           </a>

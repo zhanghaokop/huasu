@@ -109,7 +109,7 @@
         </div>
     </div>
     <div class="btn-groups">
-        <a href="/wxgzh/memberInfoEdit" class="weui-btn weui-btn_primary text btn-big">编辑</a>
+        <a href="memberInfoEdit" class="weui-btn weui-btn_primary text btn-big">编辑</a>
     </div>
 </div>
 </body>

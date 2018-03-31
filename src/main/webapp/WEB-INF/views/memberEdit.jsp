@@ -27,7 +27,7 @@
 </head>
 <body>
 <div id="wrap">
-    <form action="/wxgzh/edit" method="post">
+    <form action="edit" method="post">
         <div class="page__bd">
             <div class="weui-cells" style="margin-top:10px">
                 <div class="weui-cell">
