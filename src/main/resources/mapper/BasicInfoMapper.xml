@@ -87,7 +87,11 @@
   </select>
 
   <select id="pageListBasic" parameterType="com.huashu.huashuManager.model.BasicInfo" resultMap="BaseResultMap">
-    select t.id, p.company as customer, q.name as driverName,t.factory, t.plate_no, t.vin, t.engine_no, t.vehicle, t.use_character, t.owner,
+    select t.id,
+    <if test="companyid==null or companyid==''">
+      p.company as customer,t.factory,
+    </if>
+    q.name as driverName,t.plate_no, t.vin, t.engine_no, t.vehicle, t.use_character, t.owner,
     t.address, t.model, t.power_type,t.reg_date, t.issue_date, t.repair_check_date, t.deltag, t.IMEI,
     t.companyId , k.comp_ins_start,k.comp_ins_end,k.busi_ins_start,k.busi_ins_end
     from basic_info t
