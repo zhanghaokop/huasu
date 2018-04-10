@@ -1,7 +1,14 @@
 package com.huashu.huashuManager.common;
 
+import com.huashu.huashuManager.carManager.service.BasicServiceImpl;
+import com.huashu.huashuManager.common.utils.JIMIAPI;
+import com.huashu.huashuManager.common.utils.JIMIAPIService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
+
+import java.util.List;
 
 /**
  * 系统名称: U-OBS-web
@@ -17,9 +24,19 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class CarTask {
-    @Scheduled(cron="0 0/1 * * * ?") //每分钟执行一次
+    @Autowired
+    private BasicServiceImpl basicService;
+    @Autowired
+    private JIMIAPIService jimiapiServicel;
+
+    @Scheduled(cron="0 0 0,6,12,18 * * ?") //每6小时执行一次
     public void statusCheck() {
-       System.out.print("aaaaaaaaa");
+        List<String> imeiList = basicService.getImeiLIst();
+        if(CollectionUtils.isEmpty(imeiList))
+            return;
+           for(String imei : imeiList){
+               jimiapiServicel.getCarTrack(imei);
+           }
     }
 
     @Scheduled(cron="0 0 23 * *")

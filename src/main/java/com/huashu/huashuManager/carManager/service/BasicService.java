@@ -18,4 +18,6 @@ public interface BasicService {
     void updateByPrimaryKey(BasicInfo record);
 
     PageEntity<BasicInfo> pageListBasic(BasicInfo basicInfo);
+
+    List<String> getImeiLIst ();
 }

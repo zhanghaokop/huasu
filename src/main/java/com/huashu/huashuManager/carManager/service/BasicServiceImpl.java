@@ -57,6 +57,11 @@ public class BasicServiceImpl implements BasicService{
     }
 
     @Override
+    public List<String> getImeiLIst() {
+       return basicInfoMapper.getImeiLIst();
+    }
+
+    @Override
     public PageEntity<BasicInfo> pageListBasic(BasicInfo basicInfo) {
         PageEntity<BasicInfo> entity = new PageEntity<>();
         basicInfo.setCompanyid(SessionStateHolder.getUser().getCompanyId());

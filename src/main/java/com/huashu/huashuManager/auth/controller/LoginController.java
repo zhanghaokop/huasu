@@ -4,8 +4,12 @@ import com.huashu.huashuManager.auth.service.AuthService;
 import com.huashu.huashuManager.auth.ticket.model.Ticket;
 import com.huashu.huashuManager.common.bo.ResponseEntity;
 import com.huashu.huashuManager.model.User;
+import com.huashu.huashuManager.promessionsManager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 登录控制器
@@ -16,6 +20,8 @@ public class LoginController {
 
     @Autowired
     private AuthService authService;
+    @Autowired
+    private UserService userService;
 
     //登录
     @PostMapping("login")
@@ -26,6 +32,21 @@ public class LoginController {
                     .setCode(200).setData(ticket.id()).build();
         } else {
             return new ResponseEntity.Builder<String>().setCode(401).setData("登录失败").build();
+        }
+    }
+
+    @PostMapping("login2")
+    public ResponseEntity<Map> login2(@RequestBody User user){
+        Ticket ticket = authService.validate(user);
+        HashMap<String,Object> map = new HashMap<>();
+        if (ticket != null) {
+            map.put("token",ticket.id());
+            map.put("userDetail",userService.selectDetail(ticket.getUser()));
+            return new ResponseEntity.Builder<Map>()
+                    .setCode(200).setData(map).build();
+        } else {
+            map.put("error","登录失败");
+            return new ResponseEntity.Builder<Map>().setCode(401).setData(map).build();
         }
     }
     //登出

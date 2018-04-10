@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.promessionsManager.service;
 
+import com.huashu.huashuManager.auth.SessionStateHolder;
 import com.huashu.huashuManager.common.UtilConstants;
 import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
@@ -53,6 +54,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> selectAll(User user) {
+        user.setCompanyId(SessionStateHolder.getUser().getCompanyId());
         return usermapper.selectAll(user);
     }
 

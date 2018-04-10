@@ -28,7 +28,6 @@ public class AuthServiceImpl implements AuthService {
     public Ticket validate(User user) {
 
         User query = getUser(user);
-
         if (query != null) {
             String generateId = "ticket-" + UUIDUtils.getUUID();
             Ticket ticket = new SessionTicket(generateId, query);

@@ -112,4 +112,7 @@
       and p.company LIKE CONCAT(CONCAT('%',#{customer,jdbcType=VARCHAR}),'%')
     </if>
   </select>
+  <select id="getImeiLIst" resultType="String">
+    SELECT imei from basic_info where imei is not null and imei !=''
+  </select>
 </mapper>

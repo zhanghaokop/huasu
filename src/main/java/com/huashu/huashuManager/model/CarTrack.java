@@ -22,6 +22,8 @@ public class CarTrack {
     private String createTime;
     private String imei;
     private int totalMile;
+    private String beginTime;
+    private String endTime;
     public String getId() {
         return id;
     }
@@ -84,5 +86,21 @@ public class CarTrack {
 
     public void setTotalMile(int totalMile) {
         this.totalMile = totalMile;
+    }
+
+    public String getBeginTime() {
+        return beginTime;
+    }
+
+    public void setBeginTime(String beginTime) {
+        this.beginTime = beginTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 }

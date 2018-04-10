@@ -14,4 +14,14 @@
   <update id="updateCarTotal" parameterType="com.huashu.huashuManager.model.CarTrack">
     update mile_total set totalMIle = totalMIle+ #{totalMile} where imei=#{imei,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectByTrackTime" parameterType="com.huashu.huashuManager.model.CarTrack" resultType="com.huashu.huashuManager.model.CarTrack">
+    select c.* from (SELECT trackvalue,DATE_FORMAT(createTime,'%Y-%m-%d') as createTime  from  mile_detail where imei=#{imei,jdbcType=VARCHAR})c where  c.createTime=#{createTime,jdbcType=VARCHAR}
+    <!--<if test="beginTime!=null and beginTime!=''">-->
+      <!--and createTime $gt #{beginTime}-->
+    <!--</if>-->
+    <!--<if test="endTime!=null and endTime!=''">-->
+      <!--and createTime $lt #{endTime}-->
+    <!--</if>-->
+  </select>
 </mapper>

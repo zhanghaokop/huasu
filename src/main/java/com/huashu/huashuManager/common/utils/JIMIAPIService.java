@@ -68,21 +68,27 @@ public class JIMIAPIService {
         JSONObject obj= JSON.parseObject(result);
         JSONObject tokenJson = JSON.parseObject(obj.get("result").toString());
         redisTemplate.opsForValue().set("JIMITOKEN",tokenJson.get("accessToken").toString());
-        redisTemplate.expire("",7200, TimeUnit.SECONDS);
+        redisTemplate.expire("JIMITOKEN",7200, TimeUnit.SECONDS);
         return tokenJson.get("accessToken").toString();
     }
 
     public String getJIMITOKEN(){
-//        String token =redisTemplate.opsForValue().get("JIMITOKEN");
-//        if(!StringUtils.isEmpty(token)){
-//            return token;
-//        }
+        String token =redisTemplate.opsForValue().get("JIMITOKEN");
+        if(!StringUtils.isEmpty(token)){
+           // return token; todo redis整合，有问题
+        }
         return getToken();
     }
     public static void main(String[] args) {
-//        System.out.print( LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        JIMIAPIService a =new JIMIAPIService();
+        CarTrack carTrack =new CarTrack();
+        carTrack.setImei("868120158646593");
+        carTrack.setBeginTime("2018-04-06 16:10:00");
+        carTrack.setEndTime("2018-04-07 18:10:00");
+        System.out.print(a.getCarTrackByTime(carTrack));
+
 ////        new JIMIAPIService().getCarTrack("868120158646593");
-        new JIMIAPIService().getGps("868120158646593");
+//             new JIMIAPIService().getGps("868120158646593");
     }
 
     public JSONObject getGps(String imei){
@@ -112,15 +118,51 @@ public class JIMIAPIService {
         return obj;
     }
 
+
+    public JSONObject getCarTrackByTime(CarTrack carTrack){
+        Map<String,Object> map =new HashMap<String, Object>();
+        map.put("access_token",getJIMITOKEN());
+//        map.put("access_token","1895098932cda8b8c0a0f0b626ac12cf");
+        map.put("imei",carTrack.getImei()); //todo imei
+        map.put("begin_time",carTrack.getBeginTime());
+//        map.put("begin_time","2018-03-30 16:10:00");
+        map.put("end_time",carTrack.getEndTime());
+//        map.put("end_time","2018-03-30 20:10:00");
+        map.put("map_type","BAIDU");
+        map.put("method","jimi.device.track.list");
+        map.put("timestamp",LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        map.put("app_key",UtilConstants.JIMIAPI.JIMIAPPKEY);
+        map.put("sign_method","md5");
+        map.put("v","1.0");
+        map.put("format","json");
+        try {
+            map.put("sign",JIMIAPI.signTopRequest(map,UtilConstants.JIMIAPI.JIMIAPPSECRET,"md5"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        StringBuffer strpara= new StringBuffer();
+        for (Map.Entry<String, Object> entry : map.entrySet()){
+            strpara.append(entry.getKey()+"="+entry.getValue()+"&");
+        }
+        String result =  RestClientUtil.exchange(UtilConstants.JIMIAPI.JIMIURL,strpara.toString());
+        System.out.print("CarTrack:"+result);
+        JSONObject obj= JSON.parseObject(result);
+        return obj;
+    }
+
+    /**
+     * 根据iemi定时获取形成
+     * @param imei
+     */
     public void getCarTrack(String imei){
         Map<String,Object> map =new HashMap<String, Object>();
         map.put("access_token",getJIMITOKEN());
 //        map.put("access_token","1895098932cda8b8c0a0f0b626ac12cf");
-        map.put("imei","868120158646593"); //todo imei
-//        map.put("begin_time",getBeforeHourTime(6));
-        map.put("begin_time","2018-03-30 16:10:00");
-//        map.put("end_time",LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-        map.put("end_time","2018-03-30 20:10:00");
+        map.put("imei",imei); //todo imei
+        map.put("begin_time",getBeforeHourTime(6));
+//        map.put("begin_time","2018-03-30 16:10:00");
+        map.put("end_time",LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+//        map.put("end_time","2018-03-30 20:10:00");
         map.put("map_type","BAIDU");
         map.put("method","jimi.device.track.list");
         map.put("timestamp",LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
