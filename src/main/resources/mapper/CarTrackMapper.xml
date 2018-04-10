@@ -24,4 +24,7 @@
       <!--and createTime $lt #{endTime}-->
     <!--</if>-->
   </select>
+  <select id="selectTotalInfo" parameterType="String" resultType="com.huashu.huashuManager.model.CarTrack">
+      select t.totalMile ,p.plate_no as plateNo from mile_total t left join basic_info p on t.imei = p.IMEI  where t.imei =#{imei,jdbcType=VARCHAR}
+  </select>
 </mapper>

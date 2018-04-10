@@ -115,6 +115,9 @@ public class JIMIAPIService {
         String result =  RestClientUtil.exchange(UtilConstants.JIMIAPI.JIMIURL,strpara.toString());
         System.out.print(result);
         JSONObject obj= JSON.parseObject(result);
+        CarTrack carTrack=catTrackService.selectTotalInfo(imei);
+        obj.put("totalMile",carTrack.getTotalMile());
+        obj.put("plateNo",carTrack.getPlateNo());
         return obj;
     }
 
@@ -147,6 +150,7 @@ public class JIMIAPIService {
         String result =  RestClientUtil.exchange(UtilConstants.JIMIAPI.JIMIURL,strpara.toString());
         System.out.print("CarTrack:"+result);
         JSONObject obj= JSON.parseObject(result);
+        //todo jia fanhui chepai
         return obj;
     }
 

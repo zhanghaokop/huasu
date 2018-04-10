@@ -13,4 +13,5 @@ public interface CatTrackService {
     void updateCarTotal(CarTrack carTrack);
     JSONArray selectByTrackTime(CarTrack carTrack);
     JSONObject getImeiTrackByTime(CarTrack carTrack);
+    CarTrack selectTotalInfo(String imei);
 }

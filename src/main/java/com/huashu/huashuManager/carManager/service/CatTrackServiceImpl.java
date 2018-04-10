@@ -85,4 +85,9 @@ public class CatTrackServiceImpl implements CatTrackService{
         jsonArray = JSONArray.parseArray(str.toString());
         return jsonArray;
     }
+
+    @Override
+    public CarTrack selectTotalInfo(String imei) {
+        return carTrackMapper.selectTotalInfo(imei);
+    }
 }

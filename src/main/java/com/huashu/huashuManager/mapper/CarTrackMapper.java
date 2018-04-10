@@ -10,4 +10,5 @@ public interface CarTrackMapper {
     void insertCarTotalMile(CarTrack carTrack);
     void updateCarTotal(CarTrack carTrack);
     List<CarTrack> selectByTrackTime(CarTrack carTrack);
+    CarTrack selectTotalInfo(String imei);
 }

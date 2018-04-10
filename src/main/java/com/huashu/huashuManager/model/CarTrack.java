@@ -21,9 +21,10 @@ public class CarTrack {
     private String trackValue;
     private String createTime;
     private String imei;
-    private int totalMile;
+    private long totalMile;
     private String beginTime;
     private String endTime;
+    private String plateNo;
     public String getId() {
         return id;
     }
@@ -80,11 +81,11 @@ public class CarTrack {
         this.imei = imei;
     }
 
-    public int getTotalMile() {
+    public long getTotalMile() {
         return totalMile;
     }
 
-    public void setTotalMile(int totalMile) {
+    public void setTotalMile(long totalMile) {
         this.totalMile = totalMile;
     }
 
@@ -102,5 +103,13 @@ public class CarTrack {
 
     public void setEndTime(String endTime) {
         this.endTime = endTime;
+    }
+
+    public String getPlateNo() {
+        return plateNo;
+    }
+
+    public void setPlateNo(String plateNo) {
+        this.plateNo = plateNo;
     }
 }
