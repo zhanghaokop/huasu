@@ -68,14 +68,14 @@ public class JIMIAPIService {
         JSONObject obj= JSON.parseObject(result);
         JSONObject tokenJson = JSON.parseObject(obj.get("result").toString());
         redisTemplate.opsForValue().set("JIMITOKEN",tokenJson.get("accessToken").toString());
-        redisTemplate.expire("JIMITOKEN",7200, TimeUnit.SECONDS);
+        redisTemplate.expire("JIMITOKEN",120, TimeUnit.SECONDS);
         return tokenJson.get("accessToken").toString();
     }
 
     public String getJIMITOKEN(){
         String token =redisTemplate.opsForValue().get("JIMITOKEN");
         if(!StringUtils.isEmpty(token)){
-           // return token; todo redis整合，有问题
+            return token; //todo redis整合，有问题
         }
         return getToken();
     }
