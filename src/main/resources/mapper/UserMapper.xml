@@ -13,7 +13,7 @@
             <collection property="menus" ofType="com.huashu.huashuManager.model.Menu">
                 <result column="m_menuid" jdbcType="VARCHAR" property="menuid"/>
                 <result column="m_url" jdbcType="VARCHAR" property="url"/>
-                <result column="m_name" jdbcType="VARCHAR" property="name"/>
+                <result column="m_menuName" jdbcType="VARCHAR" property="name"/>
                 <result column="m_parentid" jdbcType="VARCHAR" property="parentid"/>
             </collection>
         </association>
