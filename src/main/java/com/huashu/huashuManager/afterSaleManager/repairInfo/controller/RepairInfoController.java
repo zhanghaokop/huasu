@@ -1,10 +1,12 @@
 package com.huashu.huashuManager.afterSaleManager.repairInfo.controller;
 
 import com.huashu.huashuManager.afterSaleManager.repairInfo.service.RepairInfoService;
+import com.huashu.huashuManager.auth.SessionStateHolder;
 import com.huashu.huashuManager.common.bo.PageEntity;
 import com.huashu.huashuManager.common.bo.ResponseEntity;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.model.RepairInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -48,6 +50,15 @@ public class RepairInfoController {
      */
     @PostMapping("add")
     public ResponseEntity<String> add(@RequestBody RepairInfo repairInfo){
+
+        String openId = (String) SessionStateHolder.get().getAttr("openId");
+
+        if (StringUtils.isNotBlank(openId)) {
+            throw new IllegalStateException("未能找到用户openId");
+        }
+
+        repairInfo.setOpenId(openId);
+
         String id = UUIDUtils.getUUID();
         repairInfo.setId(id);
         repairInfoService.addRepairInfo(repairInfo);

@@ -1,5 +1,6 @@
 package com.huashu.huashuManager.common.file.service;
 
+import com.huashu.huashuManager.common.utils.UUIDUtils;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -45,9 +46,12 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public String saveFileByteArray(String fileName, byte[] content) {
-        Path filePath = fileDepositary.resolve(fileName);
+
+        String fileId = UUIDUtils.getUUID();
+
+        Path filePath = fileDepositary.resolve(fileId);
         if (Files.exists(filePath)) {
-            throw new IllegalArgumentException(String.format("存在同名称文件[%s]，请修改名称再上传", fileName));
+            throw new IllegalArgumentException(String.format("存在同名称文件[%s]，请修改名称再上传", fileId));
         }
         try {
             Files.createFile(filePath);
@@ -56,14 +60,19 @@ public class FileServiceImpl implements FileService {
             e.printStackTrace();
         }
 
-        return fileName;
+        return fileId;
     }
 
     @Override
     public String saveFileStream(String fileName, InputStream is) {
-        Path filePath = fileDepositary.resolve(fileName);
+
+        String suffix = fileName.split("\\.")[1];
+
+        String fileId = UUIDUtils.getUUID() + "." + suffix;
+
+        Path filePath = fileDepositary.resolve(fileId);
         if (Files.exists(filePath)) {
-            throw new IllegalArgumentException(String.format("存在同名称文件[%s]，请修改名称再上传", fileName));
+            throw new IllegalArgumentException(String.format("存在同名称文件[%s]，请修改名称再上传", fileId));
         }
         try {
             Files.createFile(filePath);
@@ -72,13 +81,66 @@ public class FileServiceImpl implements FileService {
             e.printStackTrace();
         }
 
-        return fileName;
+        return fileId;
 
+    }
+
+    private Path getFileFolder(String folder){
+
+        Path folderPath = fileDepositary.resolve(folder);
+
+        if(Files.notExists(folderPath)) {
+            try {
+                Files.createDirectories(folderPath);
+            } catch (IOException e) {
+                throw new IllegalArgumentException("创建文件夹失败" + e);
+            }
+        }
+
+        return folderPath;
+    }
+
+    @Override
+    public String saveFileStream(String folder, String fileName, InputStream is) {
+
+        Path folderPath = getFileFolder(folder);
+
+        String suffix = fileName.split("\\.")[1];
+
+        String fileId = UUIDUtils.getUUID() + "." + suffix;
+
+        Path filePath = folderPath.resolve(fileId);
+
+        if (Files.exists(filePath)) {
+            throw new IllegalArgumentException(String.format("存在同名称文件[%s]，请修改名称再上传", fileId));
+        }
+        try {
+            Files.createFile(filePath);
+            FileUtils.copyInputStreamToFile(is, filePath.toFile());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return fileId;
     }
 
     @Override
     public byte[] getFileByteArray(String fileName) {
         Path filePath = fileDepositary.resolve(fileName);
+        if (Files.notExists(filePath)) {
+            throw new IllegalArgumentException(String.format("下载文件[%s]不存在", fileName));
+        }
+        try {
+            return Files.readAllBytes(filePath);
+        } catch (IOException e) {
+            throw new IllegalArgumentException("读取文件异常", e);
+        }
+    }
+
+    @Override
+    public byte[] getFileByteArray(String folder, String fileName) {
+        Path folderPath = getFileFolder(folder);
+        Path filePath = folderPath.resolve(fileName);
         if (Files.notExists(filePath)) {
             throw new IllegalArgumentException(String.format("下载文件[%s]不存在", fileName));
         }
@@ -97,6 +159,15 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
+    public boolean exist(String folder, String fileName) {
+        Path folderPath = getFileFolder(folder);
+        Path filePath = folderPath.resolve(fileName);
+
+
+        return Files.exists(filePath);
+    }
+
+    @Override
     public boolean deleteFile(String fileName) {
         Path filePath = fileDepositary.resolve(fileName);
 
@@ -105,5 +176,17 @@ public class FileServiceImpl implements FileService {
         } catch (IOException e) {
             throw new IllegalArgumentException("删除文件错误:" + fileName);
         }
+    }
+
+    @Override
+    public boolean deleteFile(String folder, String fileName) {
+        Path folderPath = getFileFolder(folder);
+        Path filePath = folderPath.resolve(fileName);
+        try {
+            return Files.deleteIfExists(filePath);
+        } catch (IOException e) {
+            throw new IllegalArgumentException("删除文件错误:" + fileName);
+        }
+
     }
 }

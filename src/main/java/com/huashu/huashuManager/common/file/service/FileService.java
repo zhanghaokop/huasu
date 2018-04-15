@@ -20,12 +20,15 @@ public interface FileService {
      */
     String saveFileStream(String fileName, InputStream is);
 
+    String saveFileStream(String folder, String fileName, InputStream is);
+
     /**
      * 根据文件名读取文件字节
      * @param fileName
      * @return
      */
     byte[] getFileByteArray(String fileName);
+    byte[] getFileByteArray(String folder, String fileName);
 
     /**
      * 文件是否存在
@@ -33,6 +36,8 @@ public interface FileService {
      * @return
      */
     boolean exist(String fileName);
+    boolean exist(String folder, String fileName);
 
     boolean deleteFile(String fileName);
+    boolean deleteFile(String folder, String fileName);
 }

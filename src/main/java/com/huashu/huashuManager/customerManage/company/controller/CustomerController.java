@@ -6,7 +6,6 @@ import com.huashu.huashuManager.common.utils.JIMIAPIService;
 import com.huashu.huashuManager.common.utils.UUIDUtils;
 import com.huashu.huashuManager.customerManage.company.service.CustomerService;
 import com.huashu.huashuManager.model.Customers;
-
 import com.huashu.huashuManager.promessionsManager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -49,7 +48,6 @@ public class CustomerController {
      */
     @GetMapping("/listCompany")
     public ResponseEntity<List<Customers>> listAllCustomers(){
-        api.getCarTrack("1895098932cda8b8c0a0f0b626ac12cf");
         return new ResponseEntity.Builder<List<Customers>>().setData(customerService.listAllCompanyAndID()).build();
     }
     /**

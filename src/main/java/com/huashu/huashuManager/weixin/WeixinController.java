@@ -226,6 +226,18 @@ public class WeixinController {
     @Autowired
     private RepairInfoService repairInfoService;
 
+    @PostMapping("repair")
+    public String addRepair(RepairInfo repairInfo){
+
+        String openId = (String) SessionStateHolder.get().getAttr("openId");
+
+        repairInfo.setOpenId(openId);
+
+        repairInfoService.addRepairInfo(repairInfo);
+
+        return WX_MAIN_REDIRECT;
+    }
+
     /**
      * 维修历史
      * @param model
