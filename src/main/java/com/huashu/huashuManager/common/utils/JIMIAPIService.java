@@ -116,8 +116,10 @@ public class JIMIAPIService {
         System.out.print(result);
         JSONObject obj= JSON.parseObject(result);
         CarTrack carTrack=catTrackService.selectTotalInfo(imei);
-        obj.put("totalMile",carTrack.getTotalMile());
-        obj.put("plateNo",carTrack.getPlateNo());
+        if(carTrack!=null) {
+            obj.put("totalMile", carTrack.getTotalMile());
+            obj.put("plateNo", carTrack.getPlateNo());
+        }
         return obj;
     }
 

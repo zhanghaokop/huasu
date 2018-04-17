@@ -104,9 +104,9 @@
     </if>
   </select>
 
-  <select id="gitImeiCompany"  resultType="com.huashu.huashuManager.model.BasicInfo">
+  <!--<select id="gitImeiCompany"  resultType="com.huashu.huashuManager.model.BasicInfo">
       SELECT c.company as customer , t.companyId from (SELECT companyId from basic_info where imei is not null ) t left join customers c on t.companyId = c.id
-  </select>
+  </select>-->
 
 
   <select id="gitCompanyCar" parameterType="com.huashu.huashuManager.model.BasicInfo" resultType="com.huashu.huashuManager.model.BasicInfo">

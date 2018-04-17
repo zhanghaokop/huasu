@@ -14,7 +14,7 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="position" jdbcType="VARCHAR" property="position" />
     <result column="handle" jdbcType="VARCHAR" property="handle" />
-    <result column="album" jdbcType="LONGVARBINARY" property="album" />
+    <result column="album" jdbcType="VARCHAR" property="album" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from supplier_info
@@ -29,7 +29,7 @@
     values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
       #{person,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{rem,jdbcType=VARCHAR}, 
       #{deltag,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{tax,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{position,jdbcType=VARCHAR}, #{handle,jdbcType=VARCHAR}, #{album,jdbcType=LONGVARBINARY}
+      #{position,jdbcType=VARCHAR}, #{handle,jdbcType=VARCHAR}, #{album,jdbcType=VARCHAR}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.SupplierInfo">
@@ -45,7 +45,7 @@
       email = #{email,jdbcType=VARCHAR},
       position = #{position,jdbcType=VARCHAR},
       handle = #{handle,jdbcType=VARCHAR},
-      album = #{album,jdbcType=LONGVARBINARY}
+      album = #{album,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">

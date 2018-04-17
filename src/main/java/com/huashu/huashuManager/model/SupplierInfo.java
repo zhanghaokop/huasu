@@ -62,7 +62,7 @@ public class SupplierInfo {
      */
     private String handle;
 
-    private byte[] album;
+    private String album;
 
     public String getId() {
         return id;
@@ -160,11 +160,11 @@ public class SupplierInfo {
         this.handle = handle == null ? null : handle.trim();
     }
 
-    public byte[] getAlbum() {
+    public String getAlbum() {
         return album;
     }
 
-    public void setAlbum(byte[] album) {
+    public void setAlbum(String album) {
         this.album = album;
     }
 }
