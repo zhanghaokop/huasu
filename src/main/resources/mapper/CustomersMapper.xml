@@ -108,6 +108,10 @@
       SELECT c.company as customer , t.companyId from (SELECT companyId from basic_info where imei is not null ) t left join customers c on t.companyId = c.id
   </select>-->
 
+  <select id="gitImeiCompany"  resultType="com.huashu.huashuManager.model.BasicInfo">
+    SELECT c.company as customer , t.companyId from (
+  select companyId from basic_info where imei !=null or imei !='') t INNER  join customers c on t.companyId = c.id
+ </select>
 
   <select id="gitCompanyCar" parameterType="com.huashu.huashuManager.model.BasicInfo" resultType="com.huashu.huashuManager.model.BasicInfo">
       select t.company as customer, k.id,k.plate_No as plateNo,k.owner,k.address,k.model,k.power_type,k.imei from basic_info k left join customers t on k.companyId =t.id where k.companyid=#{companyid,jdbcType=VARCHAR} and k.imei is not null and k.imei !=''
