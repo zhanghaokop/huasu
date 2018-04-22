@@ -16,7 +16,7 @@ $(document).ready(function(){
 		$('#uploaderFiles').append(str);
 		uploading = true;
 		$.ajax({
-            url: "/file/upload",
+            url: "/huasu/wxgzh/file/upload",
             type: 'POST',
             data: formData,
 			dataType:"json",
@@ -28,9 +28,9 @@ $(document).ready(function(){
 				data.data.forEach(function(items,index){
 					items = items.replace('\\','/');
 					$('#uploaderFiles .up').eq(index).css({
-						'background-image': 'url(/file/render/'+items+')'
+						'background-image': 'url(/huasu/wxgzh/file/render?fileName='+items+')'
 					});
-					$('form').append('<input type="hidden" name="album[]" value="'+items+'" />');
+					$('form').append('<input type="hidden" name="file[]" value="'+items+'" />');
 				});
 				$('#uploaderFiles .up .weui-uploader__file-content').remove();
 				$('.up').removeClass('up');

@@ -233,6 +233,10 @@ public class WeixinController {
 
         repairInfo.setOpenId(openId);
 
+        String id = UUIDUtils.getUUID();
+
+        repairInfo.setId(id);
+
         repairInfoService.addRepairInfo(repairInfo);
 
         return WX_MAIN_REDIRECT;

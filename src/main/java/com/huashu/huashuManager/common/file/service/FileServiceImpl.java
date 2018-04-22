@@ -105,9 +105,14 @@ public class FileServiceImpl implements FileService {
 
         Path folderPath = getFileFolder(folder);
 
-        String suffix = fileName.split("\\.")[1];
+        String fileId = UUIDUtils.getUUID();
 
-        String fileId = UUIDUtils.getUUID() + "." + suffix;
+        if (fileName.contains(".")) {
+            String suffix = fileName.split("\\.")[1];
+
+            fileId = fileId + "." + suffix;
+
+        }
 
         Path filePath = folderPath.resolve(fileId);
 
