@@ -19,6 +19,7 @@
     <result column="total" jdbcType="INTEGER" property="total" />
     <result column="deltag" jdbcType="VARCHAR" property="deltag" />
     <result column="companyId" jdbcType="VARCHAR" property="companyid" />
+    <result column="album" jdbcType="VARCHAR" property="album" />
   </resultMap>
 
   <sql id="insInfoFactor">
@@ -42,13 +43,13 @@
       comp_ins_no, comp_ins_money, comp_ins_start, 
       comp_ins_end, busi_ins_no, busi_ins_money, 
       busi_ins_start, busi_ins_end, total, 
-      deltag, companyId)
+      deltag, companyId,album)
     values (#{id,jdbcType=VARCHAR}, #{plateNo,jdbcType=VARCHAR}, #{insuranceNo,jdbcType=VARCHAR}, 
       #{insuranceCompany,jdbcType=VARCHAR}, #{insurancePerson,jdbcType=VARCHAR}, #{insurancePersonTel,jdbcType=VARCHAR}, 
       #{compInsNo,jdbcType=VARCHAR}, #{compInsMoney,jdbcType=INTEGER}, #{compInsStart,jdbcType=DATE}, 
       #{compInsEnd,jdbcType=DATE}, #{busiInsNo,jdbcType=VARCHAR}, #{busiInsMoney,jdbcType=INTEGER}, 
       #{busiInsStart,jdbcType=DATE}, #{busiInsEnd,jdbcType=DATE}, #{total,jdbcType=INTEGER}, 
-      #{deltag,jdbcType=VARCHAR}, #{companyid,jdbcType=VARCHAR})
+      #{deltag,jdbcType=VARCHAR}, #{companyid,jdbcType=VARCHAR}, #{album,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.huashu.huashuManager.model.InsuranceInfo">
     update insurance_info
@@ -67,20 +68,21 @@
       busi_ins_end = #{busiInsEnd,jdbcType=VARCHAR},
       total = #{total,jdbcType=INTEGER},
       deltag = #{deltag,jdbcType=VARCHAR},
-      companyId = #{companyid,jdbcType=VARCHAR}
+      companyId = #{companyid,jdbcType=VARCHAR},
+      album=#{album,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select id, plate_no, insurance_no, insurance_company, insurance_person, insurance_person_tel, 
     comp_ins_no, comp_ins_money, comp_ins_start, comp_ins_end, busi_ins_no, busi_ins_money, 
-    busi_ins_start, busi_ins_end, total, deltag, companyId
+    busi_ins_start, busi_ins_end, total, deltag, companyId,album
     from insurance_info
     where id = #{id,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, plate_no, insurance_no, insurance_company, insurance_person, insurance_person_tel, 
     comp_ins_no, comp_ins_money, comp_ins_start, comp_ins_end, busi_ins_no, busi_ins_money, 
-    busi_ins_start, busi_ins_end, total, deltag, companyId
+    busi_ins_start, busi_ins_end, total, deltag, companyId,album
     from insurance_info
     where 1=1
     <include refid="insInfoFactor" ></include>

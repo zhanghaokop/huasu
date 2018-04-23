@@ -35,6 +35,8 @@ public class InsuranceInfo {
 
     private String companyid;
 
+    private String album;
+
     public String getId() {
         return id;
     }
@@ -171,5 +173,13 @@ public class InsuranceInfo {
 
     public void setCompanyid(String companyid) {
         this.companyid = companyid == null ? null : companyid.trim();
+    }
+
+    public String getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(String album) {
+        this.album = album;
     }
 }
