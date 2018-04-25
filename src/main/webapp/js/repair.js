@@ -35,7 +35,8 @@ $(document).ready(function(){
 				});
 
 				if (album) {
-                    $('form').append('<input type="hidden" name="album" value="'+ album +'" />');
+            		album = album.substring(0, album.length - 1);
+					$('form').append('<input type="hidden" name="album" value="'+ album +'" />');
 				}
 				$('#uploaderFiles .up .weui-uploader__file-content').remove();
 				$('.up').removeClass('up');
