@@ -25,13 +25,18 @@ $(document).ready(function(){
             processData: false, //不可缺参数
             success: function(data) {
             	uploading = false;
+            	var album;
 				data.data.forEach(function(items,index){
 					items = items.replace('\\','/');
 					$('#uploaderFiles .up').eq(index).css({
 						'background-image': 'url(/huasu/wxgzh/file/render?fileName='+items+')'
 					});
-					$('form').append('<input type="hidden" name="file[]" value="'+items+'" />');
+					album += items + ",";
 				});
+
+				if (album) {
+                    $('form').append('<input type="hidden" name="album" value="'+ album +'" />');
+				}
 				$('#uploaderFiles .up .weui-uploader__file-content').remove();
 				$('.up').removeClass('up');
             }

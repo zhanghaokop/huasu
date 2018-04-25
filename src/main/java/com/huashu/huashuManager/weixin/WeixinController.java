@@ -23,6 +23,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -236,6 +237,10 @@ public class WeixinController {
         String id = UUIDUtils.getUUID();
 
         repairInfo.setId(id);
+
+        repairInfo.setSubmitTime(new Date());
+        repairInfo.setRepairNo(System.currentTimeMillis() + id);
+        repairInfo.setStatus("已提交");
 
         repairInfoService.addRepairInfo(repairInfo);
 

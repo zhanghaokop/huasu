@@ -58,7 +58,7 @@
                         <p>车牌号</p>
                     </div>
                     <div class="weui-cell__ft">
-                        <input type="text" name="plate_no" pattern="^[0-9a-zA-Z\u4e00-\u9fa5]{1,10}$" placeholder="请输入车牌号" >
+                        <input type="text" name="plateNo" pattern="^[0-9a-zA-Z\u4e00-\u9fa5]{1,10}$" placeholder="请输入车牌号" >
                     </div>
                 </div>
                 <div class="weui-cell">
@@ -66,7 +66,7 @@
                         <p>单位名称</p>
                     </div>
                     <div class="weui-cell__ft">
-                        <input type="text" name="sub_company" pattern="^[0-9a-zA-Z\u4e00-\u9fa5]{1,10}$" placeholder="请输入所在单位" >
+                        <input type="text" name="subCompany" pattern="^[0-9a-zA-Z\u4e00-\u9fa5]{1,10}$" placeholder="请输入所在单位" >
                     </div>
                 </div>
                 <div class="weui-cell">
@@ -74,7 +74,7 @@
                         <p>故障代码</p>
                     </div>
                     <div class="weui-cell__ft">
-                        <input type="text" name="error_code" pattern="^[0-9a-zA-Z]{0,10}$" placeholder="请输入故障代码" >
+                        <input type="text" name="errorCode" pattern="^[0-9a-zA-Z]{0,10}$" placeholder="请输入故障代码" >
                     </div>
                 </div>
                 <div class="weui-cell">
